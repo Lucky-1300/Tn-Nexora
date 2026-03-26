@@ -1,9 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useCallback } from 'react';
 
 const navLinks = [
   { name: "Home", type: "route", to: "/" },
   { name: "About Us", type: "route", to: "/about" },
-
   {
     name: "Reviews",
     type: "dropdown",
@@ -49,6 +49,22 @@ const navLinks = [
 
 export default function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  // Smooth scroll to section
+  const handleSectionNav = useCallback((e, hash) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/', { replace: false });
+      setTimeout(() => {
+        const el = document.getElementById(hash.replace('#', ''));
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const el = document.getElementById(hash.replace('#', ''));
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [location, navigate]);
 
   return (
     <header className="w-full bg-[#101522] border-b border-[#23263a] sticky top-0 z-50">
@@ -56,7 +72,7 @@ export default function Navbar() {
         
         {/* Logo */}
         <div className="flex items-center gap-2 font-bold text-xl text-white">
-          <span className="text-blue-400">&#9670;</span> Nexora
+          <img src="/image.png" alt="Logo" className="h-10 w-40 max-h-full object-contain" />
         </div>
 
         {/* Nav Links */}
@@ -69,7 +85,10 @@ export default function Navbar() {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-white/90 hover:text-white transition"
+                    onClick={e => handleSectionNav(e, link.href)}
+                    className={
+                      link.href === '#home' && location.pathname === '/' ? 'text-white font-semibold' : 'text-white/90 hover:text-white transition'
+                    }
                   >
                     {link.name}
                   </a>
