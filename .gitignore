@@ -1,0 +1,44 @@
+node_modules/
+# Backend dependencies
+backend/node_modules/
+# Frontend dependencies
+frontend/node_modules/
+
+# Environment variables
+.env
+backend/.env
+frontend/.env
+
+# Build outputs
+dist/
+build/
+out/
+frontend/dist/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test coverage
+coverage/
+
+# Editor directories and files
+.vscode/
+.idea/
+
+# Cache and misc
+.eslintcache
+.cache/
+frontend/.cache/
+.parcel-cache/
+.next/
+.turbo/
+
+# Public static if generated
+frontend/public/static/
