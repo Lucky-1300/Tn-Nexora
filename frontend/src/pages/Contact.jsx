@@ -1,5 +1,8 @@
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import Contact from "../components/Contact";
 
-export default function Contact() {
+export default function ContactPage() {
   return (
     <main className="flex-1 flex flex-col items-center justify-center px-4 py-16 bg-[#0a0f1c] text-white">
       <h1 className="text-3xl md:text-5xl font-bold mb-6 text-center">Contact Us</h1>
@@ -18,5 +21,12 @@ export default function Contact() {
         <button type="submit" className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold shadow-lg transition hover:scale-105">Send Message</button>
       </form>
     </main>
+    <div className="min-h-screen bg-[#0a0f1c] flex flex-col">
+      <Navbar />
+      <main className="flex-1 max-w-7xl mx-auto px-8 py-16 w-full">
+        <Contact />
+      </main>
+      <Footer />
+    </div>
   );
 }

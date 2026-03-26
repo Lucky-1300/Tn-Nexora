@@ -252,15 +252,30 @@ function CTA() {
 // MAIN HOME PAGE COMPONENT
 export default function Home() {
   return (
-    <main className="bg-[#0a0f1c] min-h-screen">
-      <Hero />
-      <Stats />
-      <Services />
-      <AboutGrowth />
-      <Testimonials />
-      <Team />
-      <FAQ />
-      <CTA />
-    </main>
+    <div className="bg-[#0a0f1c] min-h-screen text-white">
+      <Navbar />
+      <main>
+        <Hero />
+        <section className="max-w-6xl mx-auto px-4 py-12">
+          <About />
+        </section>
+        <section className="max-w-6xl mx-auto px-4 py-12">
+          <Services />
+        </section>
+        <section className="max-w-6xl mx-auto px-4 py-12">
+          <Testimonials />
+        </section>
+        <section className="max-w-6xl mx-auto px-4 py-12">
+          <Team />
+        </section>
+        <section className="max-w-6xl mx-auto px-4 py-12">
+          <FAQ />
+        </section>
+        <section className="max-w-6xl mx-auto px-4 py-12">
+          <Contact />
+        </section>
+      </main>
+      <Footer />
+    </div>
   );
 }
