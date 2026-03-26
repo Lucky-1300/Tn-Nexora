@@ -1,14 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { name: "Home", type: "anchor", href: "#home" },
-  { name: "About Us", type: "anchor", href: "#about" },
+  { name: "Home", type: "route", to: "/" },
+  { name: "About Us", type: "route", to: "/about" },
 
   {
     name: "Reviews",
     type: "dropdown",
     items: [
-      { name: "Testimonials", href: "#testimonials" },
+      { name: "Testimonials", type: "route", to: "/testimonials" },
       { name: "SEO Case Study", href: "#seo-case-study" },
       { name: "PPC Case Study", href: "#ppc-case-study" },
       { name: "Website Case Study", href: "#website-case-study" },
@@ -96,10 +96,10 @@ export default function Navbar() {
                   </span>
 
                   {/* DROPDOWN ITEMS */}
-                  <ul className="absolute left-0 mt-2 min-w-[220px] bg-[#181c2e] border border-[#23263a] rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity z-10">
+                  <ul className="absolute left-0 mt-2 min-w-[220px] bg-[#181c2e] border border-[#23263a] rounded shadow-lg invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 ease-in-out group-hover:ease-out z-50">
 
                     {link.items.map((item) => (
-                      <li key={item.name}>
+                      <li key={item.name} className="pointer-events-auto">
                         
                         {/* 🔥 THIS IS THE IMPORTANT FIX */}
                         {item.type === "route" ? (
