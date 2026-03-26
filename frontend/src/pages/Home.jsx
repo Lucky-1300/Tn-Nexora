@@ -89,7 +89,7 @@ function Services() {
 }
 
 // 4. ABOUT / GROWTH SECTION
-function AboutGrowth() {
+function About() {
   return (
     <section id="about" className="max-w-7xl mx-auto py-20 px-4 grid md:grid-cols-2 gap-12 items-center">
       {/* Left: Image Placeholder */}
@@ -248,34 +248,58 @@ function CTA() {
     </section>
   );
 }
-
+// 9. CONTACT FORM SECTION
+function ContactForm() {
+  return (
+    <section id="contact" className="max-w-2xl mx-auto py-20 px-4">
+      <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-4">Get in Touch</h2>
+      <p className="text-center text-gray-400 mb-12">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+      <form className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-white/10">
+        <div className="mb-6">
+          <label className="block text-white font-semibold mb-2">Name</label>
+          <input type="text" placeholder="Your name" className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 focus:outline-none focus:bg-white/30 transition" />
+        </div>
+        <div className="mb-6">
+          <label className="block text-white font-semibold mb-2">Email</label>
+          <input type="email" placeholder="your@email.com" className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 focus:outline-none focus:bg-white/30 transition" />
+        </div>
+        <div className="mb-6">
+          <label className="block text-white font-semibold mb-2">Message</label>
+          <textarea rows={5} placeholder="Your message..." className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 focus:outline-none focus:bg-white/30 transition" />
+        </div>
+        <button type="submit" className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold shadow-lg hover:scale-105 transition">Send Message</button>
+      </form>
+    </section>
+  );
+}
 // MAIN HOME PAGE COMPONENT
 export default function Home() {
   return (
-    <div className="bg-[#0a0f1c] min-h-screen text-white">
-      <Navbar />
-      <main>
+    <>
+      <main className="bg-[#0a0f1c]">
         <Hero />
-        <section className="max-w-6xl mx-auto px-4 py-12">
+        <section className="max-w-7xl mx-auto px-4 py-12">
           <About />
         </section>
-        <section className="max-w-6xl mx-auto px-4 py-12">
+        <section className="max-w-7xl mx-auto px-4 py-12">
           <Services />
         </section>
-        <section className="max-w-6xl mx-auto px-4 py-12">
+        <section className="max-w-7xl mx-auto px-4 py-12">
           <Testimonials />
         </section>
-        <section className="max-w-6xl mx-auto px-4 py-12">
+        <section className="max-w-7xl mx-auto px-4 py-12">
           <Team />
         </section>
-        <section className="max-w-6xl mx-auto px-4 py-12">
+        <section className="max-w-7xl mx-auto px-4 py-12">
+          <CTA />
+        </section>
+        <section className="max-w-7xl mx-auto px-4 py-12">
           <FAQ />
         </section>
-        <section className="max-w-6xl mx-auto px-4 py-12">
-          <Contact />
+        <section className="max-w-7xl mx-auto px-4 py-12">
+          <ContactForm />
         </section>
       </main>
-      <Footer />
-    </div>
+    </>
   );
 }
