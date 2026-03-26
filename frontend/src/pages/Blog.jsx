@@ -1,5 +1,4 @@
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+// ...existing code...
 
 const posts = [
   {
@@ -22,7 +21,6 @@ const posts = [
 export default function Blog() {
   return (
     <div className="bg-[#0a0f1c] min-h-screen text-white flex flex-col">
-      <Navbar />
       <main className="flex-1 max-w-4xl mx-auto px-4 py-16">
         <h1 className="text-3xl md:text-5xl font-bold mb-10 text-center">Blog</h1>
         <div className="flex flex-col gap-8">
@@ -35,7 +33,7 @@ export default function Blog() {
           ))}
         </div>
       </main>
-      <Footer />
+      {/* Footer is rendered by App.jsx */}
     </div>
   );
 }

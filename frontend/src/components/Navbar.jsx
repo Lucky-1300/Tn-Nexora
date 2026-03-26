@@ -1,6 +1,7 @@
 
 
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useCallback } from 'react';
 
 const navLinks = [
   { name: 'Home', type: 'anchor', href: '#home' },
@@ -35,12 +36,29 @@ const navLinks = [
 
 export default function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  // Smooth scroll to section
+  const handleSectionNav = useCallback((e, hash) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/', { replace: false });
+      setTimeout(() => {
+        const el = document.getElementById(hash.replace('#', ''));
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const el = document.getElementById(hash.replace('#', ''));
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [location, navigate]);
+
   return (
     <header className="w-full bg-[#101522] border-b border-[#23263a] sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-8 py-3">
         {/* Logo */}
         <div className="flex items-center gap-2 font-bold text-xl text-white">
-          <span className="text-blue-400">&#9670;</span> Nexora
+          <img src="/image.png" alt="Logo" className="h-10 w-40 max-h-full object-contain" />
         </div>
         {/* Nav Links */}
         <ul className="flex-1 flex justify-center gap-8 text-base font-medium">
@@ -50,6 +68,7 @@ export default function Navbar() {
                 <li key={link.name}>
                   <a
                     href={link.href}
+                    onClick={e => handleSectionNav(e, link.href)}
                     className={
                       link.href === '#home' && location.pathname === '/' ? 'text-white font-semibold' : 'text-white/90 hover:text-white transition'
                     }
@@ -68,7 +87,13 @@ export default function Navbar() {
                   <ul className="absolute left-0 mt-2 min-w-[180px] bg-[#181c2e] border border-[#23263a] rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity z-10">
                     {link.items.map(item => (
                       <li key={item.name}>
-                        <a href={item.href} className="block px-6 py-3 text-white hover:bg-[#23263a] hover:text-blue-400 transition-colors">{item.name}</a>
+                        <a
+                          href={item.href}
+                          onClick={e => handleSectionNav(e, item.href)}
+                          className="block px-6 py-3 text-white hover:bg-[#23263a] hover:text-blue-400 transition-colors"
+                        >
+                          {item.name}
+                        </a>
                       </li>
                     ))}
                   </ul>
