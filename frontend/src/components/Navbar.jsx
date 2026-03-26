@@ -3,8 +3,8 @@
 import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
-  { name: 'Home', type: 'anchor', href: '#home' },
-  { name: 'About Us', type: 'anchor', href: '#about' },
+  { name: 'Home', type: 'route', to: '/' },
+  { name: 'About Us', type: 'route', to: '/about' },
   { name: 'Reviews', type: 'dropdown', items: [
     { name: 'Testimonials', href: '#testimonials' },
     { name: 'SEO Case Study', href: '#seo-case-study' },
