@@ -1,44 +1,30 @@
+# dependencies
 node_modules/
-# Backend dependencies
-backend/node_modules/
-# Frontend dependencies
-frontend/node_modules/
 
-# Environment variables
-.env
-backend/.env
-frontend/.env
-
-# Build outputs
+# production build
 dist/
 build/
-out/
-frontend/dist/
 
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Log files
-*.log
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Test coverage
-coverage/
+# environment variables
+.env
+.env.local
+.env.*.local
 
-# Editor directories and files
+# system files
+.DS_Store
+Thumbs.db
+
+# editor
 .vscode/
 .idea/
 
-# Cache and misc
-.eslintcache
-.cache/
-frontend/.cache/
-.parcel-cache/
-.next/
-.turbo/
+# vite
+.vite/
 
-# Public static if generated
-frontend/public/static/
+# misc
+*.log

@@ -1,32 +1,30 @@
-# Node.js dependencies
+# dependencies
 node_modules/
 
-# Environment variables
+# environment variables
 .env
 
-# Build outputs
-dist/
-build/
-out/
-
-# Log files
+# logs
+logs/
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
-# Test coverage
+# runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# coverage
 coverage/
 
-# Editor directories and files
-.vscode/
-.idea/
+# build files
+dist/
 
-# OS generated files
+# system files
 .DS_Store
 Thumbs.db
 
-# Cache and misc
-.eslintcache
-.cache/
-.parcel-cache/
+# editor
+.vscode/
+.idea/
