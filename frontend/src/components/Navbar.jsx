@@ -30,7 +30,7 @@ const navLinks = [
     { name: 'Performance Marketing Pricing', href: '#performance-marketing-pricing' },
   ] },
   { name: 'Blog', type: 'route', to: '/blog' },
-  { name: 'Contact Us', type: 'route', to: '/contact' },
+  { name: 'Contact Us', type: 'anchor', href: '#contact' }
 ];
 
 export default function Navbar() {
