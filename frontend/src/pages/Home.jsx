@@ -29,7 +29,7 @@ export default function Home() {
         <section className="max-w-6xl mx-auto px-4 py-12">
           <FAQ />
         </section>
-        <section className="max-w-2xl mx-auto px-4 py-12">
+        <section className="max-w-6xl mx-auto px-4 py-12">
           <Contact />
         </section>
       </main>
