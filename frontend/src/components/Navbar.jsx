@@ -6,7 +6,7 @@ const navLinks = [
   { name: 'Home', type: 'route', to: '/' },
   { name: 'About Us', type: 'route', to: '/about' },
   { name: 'Reviews', type: 'dropdown', items: [
-    { name: 'Testimonials', href: '#testimonials' },
+    { name: 'Testimonials', type: 'route', to: '/testimonials' },
     { name: 'SEO Case Study', href: '#seo-case-study' },
     { name: 'PPC Case Study', href: '#ppc-case-study' },
     { name: 'Website Case Study', href: '#website-case-study' },
@@ -65,10 +65,14 @@ export default function Navbar() {
                   <span className="text-white/90 hover:text-white transition flex items-center">
                     {link.name} <svg className="ml-1 w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
                   </span>
-                  <ul className="absolute left-0 mt-2 min-w-[180px] bg-[#181c2e] border border-[#23263a] rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity z-10">
+                  <ul className="absolute left-0 mt-2 min-w-[180px] bg-[#181c2e] border border-[#23263a] rounded shadow-lg invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 ease-in-out group-hover:ease-out z-50">
                     {link.items.map(item => (
-                      <li key={item.name}>
-                        <a href={item.href} className="block px-6 py-3 text-white hover:bg-[#23263a] hover:text-blue-400 transition-colors">{item.name}</a>
+                      <li key={item.name} className="pointer-events-auto">
+                        {item.type === 'route' ? (
+                          <Link to={item.to} className="block px-6 py-3 text-white hover:bg-[#23263a] hover:text-blue-400 transition-colors">{item.name}</Link>
+                        ) : (
+                          <a href={item.href} className="block px-6 py-3 text-white hover:bg-[#23263a] hover:text-blue-400 transition-colors">{item.name}</a>
+                        )}
                       </li>
                     ))}
                   </ul>
