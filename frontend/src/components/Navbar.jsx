@@ -66,10 +66,10 @@ export default function Navbar() {
 
   return (
     <header className="w-full bg-[#101522] border-b border-[#23263a] sticky top-0 z-50">
-      <nav ref={navRef} className="max-w-7xl mx-auto flex items-center justify-between px-8 py-3">
+      <nav ref={navRef} className="max-w-8xl mx-auto flex items-center justify-between px-4 py-2">
         {/* Logo */}
         <div className="flex items-center gap-2 font-bold text-xl text-white">
-          <img src="/image.png" alt="Logo" className="h-10 w-40 object-contain" />
+          <img src="/image.png" alt="Logo" className="h-13 w-50 object-contain" />
         </div>
 
         {/* Nav Links */}
