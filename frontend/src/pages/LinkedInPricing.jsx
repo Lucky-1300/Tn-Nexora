@@ -3,7 +3,7 @@ import React from "react";
 const plans = [
   {
     name: "BRONZE",
-    price: "₹3,999",
+    price: "$350",
     features: [
       "PERSONAL PAGE",
       "Create 10–15 targeted audience",
@@ -35,7 +35,7 @@ const plans = [
   },
   {
     name: "GOLD",
-    price: "₹8,999",
+    price: "$550",
     highlight: true,
     features: [
       "PERSONAL PAGE",
@@ -69,7 +69,7 @@ const plans = [
   },
   {
     name: "PLATINUM",
-    price: "₹17,999",
+    price: "$650",
     features: [
       "PERSONAL PAGE",
       "Create 40–60 targeted audience",

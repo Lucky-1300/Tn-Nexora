@@ -3,7 +3,7 @@ import React from "react";
 const plans = [
   {
     name: "BASIC",
-    price: "₹5,999",
+    price: "$350",
     features: [
       "Setup Fee ₹200",
       "Free Trial 10 Days Free Trial",
@@ -27,7 +27,7 @@ const plans = [
   },
   {
     name: "GOLD",
-    price: "₹12,999",
+    price: "$550",
     highlight: true,
     features: [
       "Setup Fee ₹200",
@@ -52,7 +52,7 @@ const plans = [
   },
   {
     name: "PLATINUM",
-    price: "₹24,999",
+    price: "$800",
     features: [
       "Setup Fee ₹200",
       "Free Trial 10 Days Free Trial",
