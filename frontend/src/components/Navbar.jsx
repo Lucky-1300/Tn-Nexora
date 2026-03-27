@@ -45,7 +45,7 @@ const navLinks = [
   },
 
   { name: "Blog", type: "route", to: "/blog" },
-  { name: "Contact Us", type: "anchor", href: "#contact" },
+  { name: "Contact Us", type: "anchor", href: "/contact" },
 ];
 
 export default function Navbar() {
