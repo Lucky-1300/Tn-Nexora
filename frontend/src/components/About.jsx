@@ -2,7 +2,7 @@ export default function About() {
   return (
     <div id="about" className="flex flex-col md:flex-row items-center gap-8 bg-white/10 backdrop-blur-lg rounded-xl shadow-2xl p-8 border border-white/20">
       <img
-        src="/src/assets/about.jpg"
+        src="/src/assets/About.jpeg"
         alt="Team working"
         className="w-full md:w-1/2 rounded-xl object-cover h-64 md:h-72 shadow-lg"
       />
