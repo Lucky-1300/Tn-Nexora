@@ -1,6 +1,8 @@
+
+
 import React from "react";
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+// import Navbar from '../components/Navbar';
+// import Footer from '../components/Footer';
 import Services from '../components/Services';
 import HomeEffortsReviews from '../components/HomeEffortsReviews';
 import Contact from '../components/Contact';
@@ -27,7 +29,7 @@ export default function Home() {
         </section>
 
         {/* Our Services Section */}
-        <section className="pt-0 pb-4">
+        <section className="pt-8 pb-4">
           <Services />
         </section>
 
@@ -41,7 +43,7 @@ export default function Home() {
           <Contact />
         </section>
       </main>
-   
+      
     </div>
   );
 }

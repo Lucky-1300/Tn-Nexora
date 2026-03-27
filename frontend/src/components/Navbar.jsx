@@ -67,7 +67,6 @@ export default function Navbar() {
   return (
     <header className="w-full bg-[#101522] border-b border-[#23263a] sticky top-0 z-50">
       <nav ref={navRef} className="max-w-7xl mx-auto flex items-center justify-between px-8 py-3">
-        
         {/* Logo */}
         <div className="flex items-center gap-2 font-bold text-xl text-white">
           <img src="/image.png" alt="Logo" className="h-10 w-40 object-contain" />
@@ -76,7 +75,6 @@ export default function Navbar() {
         {/* Nav Links */}
         <ul className="flex-1 flex justify-center gap-8 text-base font-medium">
           {navLinks.map((link) => {
-
             // 🔹 ANCHOR LINKS
             if (link.type === "anchor") {
               return (
@@ -95,14 +93,11 @@ export default function Navbar() {
               );
             }
 
-            // 🔹 DROPDOWN
+            // 🔹 DROPDOWN (open on click, close on outside click)
             if (link.type === "dropdown") {
               const isOpen = openDropdown === link.name;
-
               return (
                 <li key={link.name} className="relative cursor-pointer select-none">
-                  
-                  {/* ✅ FIXED LINE */}
                   <span
                     className={`text-white/90 hover:text-white transition flex items-center ${isOpen ? 'font-semibold' : ''}`}
                     onClick={() => setOpenDropdown(isOpen ? null : link.name)}
@@ -118,10 +113,8 @@ export default function Navbar() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
                   </span>
-
-                  {/* Dropdown Items */}
                   {isOpen && (
-                    <ul className="absolute left-0 mt-2 min-w-[180px] bg-[#181c2e] border border-[#23263a] rounded shadow-lg z-10">
+                    <ul className="absolute left-0 mt-2 min-w-[180px] bg-[#181c2e] border border-[#23263a] rounded shadow-lg z-10 animate-fadeIn">
                       {link.items.map(item => (
                         <li key={item.name}>
                           {item.type === 'route' ? (
@@ -145,7 +138,6 @@ export default function Navbar() {
                       ))}
                     </ul>
                   )}
-
                 </li>
               );
             }
@@ -172,7 +164,7 @@ export default function Navbar() {
           })}
         </ul>
 
-        {/* CTA Button */}
+        {/* CTA BUTTON */}
         <Link
           to="/contact"
           className="ml-6 px-5 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold shadow-lg hover:scale-105 transition"
