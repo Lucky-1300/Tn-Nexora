@@ -81,13 +81,11 @@ export default function TestimonialsPage() {
   ];
 
   return (
-    <div className="bg-[#0a0f1c] min-h-screen text-white">
-      <Navbar />
-      <main className="flex-1">
-        {/* Hero Section */}
+    <>
+      {/* Hero Section */}
         <section className="relative flex flex-col items-center justify-center min-h-[40vh] text-center px-4 py-12">
           <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-600/40 via-purple-700/30 to-indigo-900/20 blur-2xl opacity-70" />
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-6 max-w-3xl">
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-6 max-w-3xl text-white">
             Our Efforts Speak
           </h1>
           <p className="text-lg text-white/80 max-w-2xl">
@@ -137,7 +135,7 @@ export default function TestimonialsPage() {
         <section className="relative py-12 px-4 overflow-hidden">
           <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900" />
           <div className="max-w-7xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Ready to Work With Us?</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Ready to Work With Us?</h2>
             <p className="text-white/80 mb-8 max-w-2xl mx-auto text-lg">
               Join hundreds of satisfied clients who have transformed their business with TN Nexora
             </p>
@@ -146,8 +144,6 @@ export default function TestimonialsPage() {
             </button>
           </div>
         </section>
-      </main>
-     
-    </div>
+    </>
   );
 }
