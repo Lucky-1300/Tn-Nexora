@@ -156,7 +156,7 @@ const services = [
 export default function Services() {
   const navigate = useNavigate();
   return (
-    <section id="services">
+   <section id="services" className="px-4 md:px-10 lg:px-20">
       <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-white">
         Our Services
       </h2>
