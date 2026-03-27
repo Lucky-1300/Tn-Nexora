@@ -1,9 +1,10 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useCallback } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
 
 const navLinks = [
   { name: "Home", type: "route", to: "/" },
   { name: "About Us", type: "route", to: "/about" },
+
   {
     name: "Reviews",
     type: "dropdown",
@@ -35,11 +36,11 @@ const navLinks = [
     name: "Pricing",
     type: "dropdown",
     items: [
-      { name: "SMO Pricing", href: "#smo-pricing" },
-      { name: "PPC Pricing", href: "#ppc-pricing" },
-      { name: "LinkedIn Pricing", href: "#linkedin-pricing" },
-      { name: "GMB Package", href: "#gmb-package" },
-      { name: "Performance Marketing Pricing", href: "#performance-marketing-pricing" },
+      { name: "SMO Pricing", type: "route", to: "/pricing/smo" },
+      { name: "PPC Pricing", type: "route", to: "/pricing/ppc" },
+      { name: "LinkedIn Pricing", type: "route", to: "/pricing/linkedin" },
+      { name: "GMB Package", type: "route", to: "/pricing/gmb" },
+      { name: "Performance Marketing Pricing", type: "route", to: "/pricing/performance" },
     ],
   },
 
@@ -49,30 +50,27 @@ const navLinks = [
 
 export default function Navbar() {
   const location = useLocation();
-  const navigate = useNavigate();
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const navRef = useRef();
 
-  // Smooth scroll to section
-  const handleSectionNav = useCallback((e, hash) => {
-    e.preventDefault();
-    if (location.pathname !== '/') {
-      navigate('/', { replace: false });
-      setTimeout(() => {
-        const el = document.getElementById(hash.replace('#', ''));
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    } else {
-      const el = document.getElementById(hash.replace('#', ''));
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+  // Close dropdown on outside click
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setOpenDropdown(null);
+      }
     }
-  }, [location, navigate]);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <header className="w-full bg-[#101522] border-b border-[#23263a] sticky top-0 z-50">
-      <nav className="max-w-7xl mx-auto flex items-center justify-between px-8 py-3">
+      <nav ref={navRef} className="max-w-7xl mx-auto flex items-center justify-between px-8 py-3">
         
         {/* Logo */}
         <div className="flex items-center gap-2 font-bold text-xl text-white">
-          <img src="/image.png" alt="Logo" className="h-10 w-40 max-h-full object-contain" />
+          <img src="/image.png" alt="Logo" className="h-10 w-40 object-contain" />
         </div>
 
         {/* Nav Links */}
@@ -85,9 +83,10 @@ export default function Navbar() {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    onClick={e => handleSectionNav(e, link.href)}
                     className={
-                      link.href === '#home' && location.pathname === '/' ? 'text-white font-semibold' : 'text-white/90 hover:text-white transition'
+                      link.href === '#home' && location.pathname === '/'
+                        ? 'text-white font-semibold'
+                        : 'text-white/90 hover:text-white transition'
                     }
                   >
                     {link.name}
@@ -98,10 +97,16 @@ export default function Navbar() {
 
             // 🔹 DROPDOWN
             if (link.type === "dropdown") {
+              const isOpen = openDropdown === link.name;
+
               return (
-                <li key={link.name} className="relative group cursor-pointer">
+                <li key={link.name} className="relative cursor-pointer select-none">
                   
-                  <span className="text-white/90 hover:text-white transition flex items-center">
+                  {/* ✅ FIXED LINE */}
+                  <span
+                    className={`text-white/90 hover:text-white transition flex items-center ${isOpen ? 'font-semibold' : ''}`}
+                    onClick={() => setOpenDropdown(isOpen ? null : link.name)}
+                  >
                     {link.name}
                     <svg
                       className="ml-1 w-3 h-3"
@@ -114,33 +119,33 @@ export default function Navbar() {
                     </svg>
                   </span>
 
-                  {/* DROPDOWN ITEMS */}
-                  <ul className="absolute left-0 mt-2 min-w-[220px] bg-[#181c2e] border border-[#23263a] rounded shadow-lg invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 ease-in-out group-hover:ease-out z-50">
+                  {/* Dropdown Items */}
+                  {isOpen && (
+                    <ul className="absolute left-0 mt-2 min-w-[180px] bg-[#181c2e] border border-[#23263a] rounded shadow-lg z-10">
+                      {link.items.map(item => (
+                        <li key={item.name}>
+                          {item.type === 'route' ? (
+                            <Link
+                              to={item.to}
+                              className="block px-6 py-3 text-white hover:bg-[#23263a] hover:text-blue-400 transition-colors"
+                              onClick={() => setOpenDropdown(null)}
+                            >
+                              {item.name}
+                            </Link>
+                          ) : (
+                            <a
+                              href={item.href}
+                              className="block px-6 py-3 text-white hover:bg-[#23263a] hover:text-blue-400 transition-colors"
+                              onClick={() => setOpenDropdown(null)}
+                            >
+                              {item.name}
+                            </a>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
 
-                    {link.items.map((item) => (
-                      <li key={item.name} className="pointer-events-auto">
-                        
-                        {/* 🔥 THIS IS THE IMPORTANT FIX */}
-                        {item.type === "route" ? (
-                          <Link
-                            to={item.to}
-                            className="block px-6 py-3 text-white hover:bg-[#23263a] hover:text-blue-400 transition-colors"
-                          >
-                            {item.name}
-                          </Link>
-                        ) : (
-                          <a
-                            href={item.href}
-                            className="block px-6 py-3 text-white hover:bg-[#23263a] hover:text-blue-400 transition-colors"
-                          >
-                            {item.name}
-                          </a>
-                        )}
-
-                      </li>
-                    ))}
-
-                  </ul>
                 </li>
               );
             }
@@ -167,13 +172,14 @@ export default function Navbar() {
           })}
         </ul>
 
-        {/* CTA BUTTON */}
+        {/* CTA Button */}
         <Link
           to="/contact"
           className="ml-6 px-5 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold shadow-lg hover:scale-105 transition"
         >
           Let's Talk
         </Link>
+
       </nav>
     </header>
   );

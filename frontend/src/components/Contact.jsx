@@ -2,9 +2,9 @@ import { Mail, Phone, Building2 } from "lucide-react";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-16 px-0 w-full">
+    <section id="contact" className="py-20 px-2 md:px-8 w-full flex flex-col items-center justify-center bg-transparent">
       {/* Heading */}
-      <div className="mb-12">
+      <div className="mb-12 w-full max-w-7xl mx-auto">
         <p className="inline-block px-4 py-1 text-sm bg-indigo-500/20 text-indigo-400 rounded-full mb-4">
           CONTACT US
         </p>
@@ -13,10 +13,10 @@ export default function Contact() {
         </h2>
       </div>
 
-      {/* 🔥 GRID FIX HERE */}
-      <div className="grid md:grid-cols-5 gap-12 w-full">
-        {/* LEFT SIDE (SMALLER) */}
-        <div className="md:col-span-2 space-y-8">
+      {/* Responsive Grid Layout */}
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-16 items-stretch">
+        {/* LEFT SIDE (Contact Info) */}
+        <div className="md:col-span-2 space-y-8 flex flex-col justify-between">
           {/* Branch */}
           <div className="flex items-start gap-4 group">
             <div className="p-4 bg-indigo-500/10 border border-indigo-400/20 rounded-xl group-hover:scale-110 transition duration-300">
@@ -121,54 +121,51 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* RIGHT FORM (BIGGER 🔥) */}
-        <div className="md:col-span-3 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-10 shadow-xl hover:shadow-indigo-500/10 hover:scale-[1.01] transition duration-300">
-          <h3 className="text-2xl font-semibold text-white mb-6">Contact Us</h3>
-
-          <form className="space-y-5">
-            <div className="grid md:grid-cols-2 gap-4">
+        {/* RIGHT FORM (Contact Form) */}
+        <div className="md:col-span-3 flex items-center">
+          <div className="w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-10 shadow-xl hover:shadow-indigo-500/10 hover:scale-[1.01] transition duration-300">
+            <h3 className="text-2xl font-semibold text-white mb-6">Contact Us</h3>
+            <form className="space-y-5">
+              <div className="grid md:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  className="input-style"
+                />
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  className="input-style"
+                />
+              </div>
               <input
                 type="text"
-                placeholder="First Name"
+                placeholder="Phone Number"
                 className="input-style"
               />
               <input
-                type="text"
-                placeholder="Last Name"
+                type="email"
+                placeholder="Email Address"
                 className="input-style"
               />
-            </div>
-
-            <input
-              type="text"
-              placeholder="Phone Number"
-              className="input-style"
-            />
-            <input
-              type="email"
-              placeholder="Email Address"
-              className="input-style"
-            />
-            <input type="text" placeholder="Website" className="input-style" />
-
-            <textarea
-              rows="4"
-              placeholder="Your Message"
-              className="input-style"
-            ></textarea>
-
-            <div className="flex items-start gap-2 text-white/60 text-sm">
-              <input type="checkbox" className="mt-1 accent-indigo-500" />
-              <p>I agree to receive updates and communications.</p>
-            </div>
-
-            <button
-              type="submit"
-              className="w-full py-3 rounded-lg bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-semibold hover:scale-105 hover:shadow-lg transition duration-300"
-            >
-              Submit Now
-            </button>
-          </form>
+              <input type="text" placeholder="Website" className="input-style" />
+              <textarea
+                rows="4"
+                placeholder="Your Message"
+                className="input-style"
+              ></textarea>
+              <div className="flex items-start gap-2 text-white/60 text-sm">
+                <input type="checkbox" className="mt-1 accent-indigo-500" />
+                <p>I agree to receive updates and communications.</p>
+              </div>
+              <button
+                type="submit"
+                className="w-full py-3 rounded-lg bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-semibold hover:scale-105 hover:shadow-lg transition duration-300"
+              >
+                Submit Now
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
