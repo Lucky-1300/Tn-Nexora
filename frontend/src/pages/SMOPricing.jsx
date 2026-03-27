@@ -3,7 +3,7 @@ import React from "react";
 const plans = [
   {
     name: "BASIC (FB, INSTA, TWITTER)",
-    price: "₹4,999",
+    price: "$350",
     features: [
       "Organic Promotion",
       "Competitor Analysis",
@@ -27,7 +27,7 @@ const plans = [
   },
   {
     name: "STANDARD",
-    price: "₹9,999",
+    price: "$550",
     highlight: true,
     features: [
       "Organic Promotion",
@@ -52,7 +52,7 @@ const plans = [
   },
   {
     name: "PREMIUM",
-    price: "₹19,999",
+    price: "$800",
     features: [
       "Organic Promotion",
       "Competitor Analysis",
