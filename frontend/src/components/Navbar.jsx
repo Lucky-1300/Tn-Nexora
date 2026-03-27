@@ -69,7 +69,7 @@ export default function Navbar() {
       <nav ref={navRef} className="max-w-7xl mx-auto flex items-center justify-between px-8 py-3">
         {/* Logo */}
         <div className="flex items-center gap-2 font-bold text-xl text-white">
-          <img src="/image.png" alt="Logo" className="h-10 w-40 object-contain" />
+          <img src="/image.png" alt="Logo" className="h-13 w-50 object-contain" />
         </div>
 
         {/* Nav Links */}
