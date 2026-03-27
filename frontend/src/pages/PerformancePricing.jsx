@@ -547,54 +547,50 @@ const plans = [
     "Ad Performance & ROI Report ✔",
   ]
 }
-];
-
-export default function PerformancePricing() {
+];export default function PerformancePricing() {
   return (
-    <div>
+    <div className="bg-[#0a0f1c] min-h-screen">
 
-      {/* 🔥 Header */}
-      <div className="bg-[#1b1e3a] py-16 text-center">
+      {/* Header */}
+      <div className="bg-gradient-to-r from-indigo-900 to-black py-12 text-center">
         <h1 className="text-3xl md:text-4xl font-bold text-white">
           Performance Marketing Pricing
         </h1>
-
-        <div className="mt-3 text-sm text-white/60">
-          <span className="hover:text-indigo-400 cursor-pointer">Home</span>
-          <span className="mx-2 text-orange-400">›</span>
-          <span className="text-white/80">
-            Performance Marketing Pricing
-          </span>
-        </div>
+        <p className="text-white/60 mt-2 text-sm">
+          Home / Pricing / Performance
+        </p>
       </div>
 
-      {/* 🔥 Main Section */}
-      <div className="bg-[#0a0f1c] min-h-screen p-10">
-        <div className="grid md:grid-cols-4 gap-6">
+      {/* ✅ Section Heading (PPC same) */}
+      <div className="text-center mt-12 mb-10 px-4">
+        <span className="text-indigo-400 text-xs uppercase font-semibold tracking-wider">
+          Our Pricing
+        </span>
+        <h2 className="text-2xl md:text-3xl font-bold text-white mt-2">
+          The Best Price Just For You
+        </h2>
+        <p className="text-white/70 mt-3 max-w-xl mx-auto">
+          Generate quality leads and boost conversions with result-oriented performance marketing.
+        </p>
+      </div>
 
+      {/* Cards */}
+      <div className="max-w-7xl mx-auto px-6 pb-16">
+        <div className="grid md:grid-cols-4 gap-8 items-start">
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`bg-white/5 border border-white/10 rounded-xl p-5 flex flex-col
-                transition-all duration-300 ease-in-out
-                hover:scale-[1.03]
-                hover:border-indigo-500/60
-                hover:shadow-[0_0_25px_rgba(99,102,241,0.4)]
-                ${plan.highlight ? "scale-[1.03] border-indigo-500 shadow-[0_0_30px_rgba(99,102,241,0.5)]" : ""}
-              `}
+              className={`rounded-2xl border border-white/10 bg-white/5 p-6 flex flex-col ${
+                plan.highlight ? "border-indigo-500" : ""
+              }`}
             >
 
-              {/* 🔥 Icon */}
-              <div className="flex justify-center mb-4">
-                <div className="bg-orange-500 w-10 h-10 rounded-full flex items-center justify-center text-white">
-                  🏢
-                </div>
-              </div>
-
+              {/* Title */}
               <h2 className="text-white text-lg font-bold text-center mb-4">
                 {plan.name}
               </h2>
 
+              {/* Features */}
               <ul className="text-sm text-white/80 space-y-2 mb-6">
                 {plan.features.map((f, i) => {
                   const isSection = f === f.toUpperCase();
@@ -604,13 +600,15 @@ export default function PerformancePricing() {
                     <li
                       key={i}
                       className={`flex gap-2 ${
-                        isSection ? "text-indigo-300 font-semibold mt-4" : ""
+                        isSection
+                          ? "text-indigo-300 font-semibold mt-4"
+                          : ""
                       }`}
                     >
                       {!isSection && (
                         <span
                           className={`text-xs mt-1 ${
-                            isCross ? "text-red-400" : "text-green-400"
+                            isCross ? "text-red-400" : "text-indigo-400"
                           }`}
                         >
                           {isCross ? "✖" : "✔"}
@@ -622,21 +620,22 @@ export default function PerformancePricing() {
                 })}
               </ul>
 
+              {/* Price */}
               <div className="text-center mt-auto">
-                <p className="text-indigo-400 font-bold text-xl">
+                <p className="text-xl font-bold text-indigo-400">
                   {plan.price}
                 </p>
-                <button className="mt-3 w-full py-2 bg-gradient-to-r from-indigo-500 to-blue-500 rounded text-white hover:scale-105 transition">
+                <p className="text-xs text-white/50 mb-3">per month</p>
+
+                <button className="w-full py-2 rounded bg-indigo-500 text-white">
                   Buy Now
                 </button>
               </div>
 
             </div>
           ))}
-
         </div>
       </div>
-
     </div>
   );
 }
