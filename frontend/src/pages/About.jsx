@@ -22,9 +22,9 @@ export default function About() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Image */}
-            <div className="f12x justify-center">
+            <div className="flex justify-center">
               <img
-                src="/src/assets/About.jpeg"
+                src="/About.jpeg"
                 alt="TN Nexora Team"
                 className="rounded-xl shadow-2xl object-cover w-full h-80 md:h-96"
               />
@@ -274,7 +274,7 @@ export default function About() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900" />
         <div className="absolute inset-0 -z-10 opacity-20">
           <img
-            src="/src/assets/About.jpeg"
+            src="/About.jpeg"
             alt="Background"
             className="w-full h-full object-cover"
           />
