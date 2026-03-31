@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import aboutImg from "../assets/About.jpeg";
 export default function About() {
   return (
     <>
@@ -24,7 +25,7 @@ export default function About() {
             {/* Image */}
             <div className="f12x justify-center">
               <img
-                src="/src/assets/About.jpeg"
+                src={aboutImg}
                 alt="TN Nexora Team"
                 className="rounded-xl shadow-2xl object-cover w-full h-80 md:h-96"
               />

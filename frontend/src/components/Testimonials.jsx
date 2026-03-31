@@ -1,12 +1,15 @@
 import { Link } from 'react-router-dom';
+import VarunBatraImg from '../assets/VarunBatra.png';
+import JamesMitchellImg from '../assets/JamesMitchell.png';
+import JunSeoLeeImg from '../assets/Jun-SeoLee.png';
 
 export default function Testimonials() {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Anderson",
+      name: "Varun Batra",
       company: "E-Commerce Solutions",
-      image: "https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?w=500&h=500&fit=crop",
+      image: VarunBatraImg ,
       text: "TN Nexora increased our online sales by 150% in just 3 months. Their digital marketing strategy was exactly what we needed.",
       service: "Digital Marketing"
     },
@@ -14,15 +17,15 @@ export default function Testimonials() {
       id: 2,
       name: "James Mitchell",
       company: "Tech Startup Inc",
-      image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?w=500&h=500&fit=crop",
+      image: JamesMitchellImg ,
       text: "The team's expertise in SEO and content strategy transformed our online presence. Highly professional and results-driven.",
       service: "SEO & Content"
     },
     {
       id: 3,
-      name: "Emma Davis",
+      name: "Jun-Seo Lee",
       company: "Healthcare Services",
-      image: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?w=500&h=500&fit=crop",
+      image: JunSeoLeeImg ,
       text: "Exceptional service! TN Nexora helped us reach our target audience effectively. Definitely recommend their services.",
       service: "Lead Generation"
     },

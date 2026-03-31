@@ -23,20 +23,21 @@ function App() {
        <div className="flex-1"></div>
     <Routes>
       <Route path="/" element={<Home />} />
-      {/* <Route path="/contact" element={<ContactPage />} /> */}
       <Route path="/contact" element={<Contact />} /> 
       <Route path="/blog" element={<Blog />} />
       <Route path="/about" element={<About />} />
       <Route path="/testimonials" element={<TestimonialsPage />} />
-      {/* <Route path="/contact" element={<Contact />} /> */}
-      <Route path="/pricing" element={<Pricing />} />
-      <Route path="/services/:slug" element={<ServiceDetail />} />
       
+      {/* ✅ PRICING ROUTES - MUST COME BEFORE /services/:slug */}
+      <Route path="/pricing" element={<Pricing />} />
       <Route path="/pricing/smo" element={<SMOPricing />} />
       <Route path="/pricing/ppc" element={<PPCPricing />} />
       <Route path="/pricing/linkedin" element={<LinkedInPricing />} />
       <Route path="/pricing/gmb" element={<GMBPricing />} />
       <Route path="/pricing/performance" element={<PerformancePricing />} />
+      
+      {/* ✅ GENERIC SERVICES ROUTE - COMES LAST */}
+      <Route path="/services/:slug" element={<ServiceDetail />} />
     </Routes>
     
       <Footer />

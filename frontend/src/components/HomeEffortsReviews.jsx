@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom";
+import VarunBatraImg from '../assets/VarunBatra.png';
+import JamesMitchellImg from '../assets/JamesMitchell.png';
+import JunSeoLeeImg from '../assets/Jun-SeoLee.png';
+
 const reviews = [
   {
-    name: "Sarah Anderson",
+    name: "Varun Batra",
     company: "E-Commerce Solutions",
     tag: "Digital Marketing",
     review:
       '"TN Nexora increased our online sales by 150% in just 3 months. Their digital marketing strategy was exactly what we needed."',
     rating: 5,
     image:
-      "https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?w=500&h=500&fit=crop",
+      VarunBatraImg,
   },
   {
     name: "James Mitchell",
@@ -18,17 +22,17 @@ const reviews = [
       '"The team\'s expertise in SEO and content strategy transformed our online presence. Highly professional and results-driven."',
     rating: 5,
     image:
-      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?w=500&h=500&fit=crop",
+      JamesMitchellImg,
   },
   {
-    name: "Emma Davis",
+    name: "Jun-Seo Lee",
     company: "Healthcare Services",
     tag: "Lead Generation",
     review:
       '"Exceptional service! TN Nexora helped us reach our target audience effectively. Definitely recommend their services."',
     rating: 5,
     image:
-      "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?w=500&h=500&fit=crop",
+      JunSeoLeeImg,
   },
 ];
 
@@ -47,11 +51,11 @@ export default function HomeEffortsReviews() {
             key={i}
             className="bg-[#181e2a] rounded-2xl shadow-lg overflow-hidden border border-white/10 flex flex-col"
           >
-            <div className="h-56 w-full bg-gray-300 object-cover">
+            <div className="h-56 overflow-hidden bg-black flex items-center justify-center">
               <img
                 src={r.image}
                 alt={r.name}
-                className="h-full w-full object-cover"
+                className="w-full h-full object-cover object-top"
                 loading="lazy"
               />
             </div>

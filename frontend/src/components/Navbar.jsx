@@ -95,6 +95,12 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // ✅ Close mobile menu when route changes
+  useEffect(() => {
+    setMenuOpen(false);
+    setOpenDropdown(null);
+  }, [location.pathname]);
+
   return (
     <header className="w-full bg-[#101522] border-b border-[#23263a] sticky top-0 z-50">
       <nav
@@ -186,17 +192,17 @@ export default function Navbar() {
 
                       {/* Dropdown Items */}
                       {isOpen && (
-                        <div className="pl-4 mt-2 flex flex-col gap-2">
+                        <div className="pl-4 mt-2 flex flex-col gap-1 bg-white/5 rounded">
                           {link.items.map((item) =>
                             item.type === "route" ? (
                               <Link
                                 key={item.name}
                                 to={item.to}
+                                className="block text-sm text-white/80 hover:text-indigo-400 hover:bg-white/10 px-3 py-2 rounded transition cursor-pointer"
                                 onClick={() => {
                                   setMenuOpen(false);
                                   setOpenDropdown(null);
                                 }}
-                                className="text-sm text-white/80 hover:text-indigo-400 transition"
                               >
                                 {item.name}
                               </Link>
@@ -204,11 +210,11 @@ export default function Navbar() {
                               <a
                                 key={item.name}
                                 href={item.href}
+                                className="block text-sm text-white/80 hover:text-indigo-400 hover:bg-white/10 px-3 py-2 rounded transition cursor-pointer"
                                 onClick={() => {
                                   setMenuOpen(false);
                                   setOpenDropdown(null);
                                 }}
-                                className="text-sm text-white/80 hover:text-indigo-400 transition"
                               >
                                 {item.name}
                               </a>
