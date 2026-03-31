@@ -169,9 +169,9 @@ export default function Services() {
             className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-xl p-8 flex flex-col items-center text-center transition-transform hover:scale-105 hover:shadow-blue-500/40 cursor-pointer"
           >
             <div className="mb-4">{service.icon}</div>
-            <h3 className="text-xl font-semibold mb-2 text-white/90">
+            <h1 className="text-xl font-semibold mb-2 text-white/90">
               {service.title}
-            </h3>
+            </h1>
             <p className="text-white/70 text-sm">{service.desc}</p>
           </div>
         ))}

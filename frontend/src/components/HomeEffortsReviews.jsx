@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 const reviews = [
   {
@@ -5,7 +6,7 @@ const reviews = [
     company: "E-Commerce Solutions",
     tag: "Digital Marketing",
     review:
-      '"TN Nexora increased our online sales by 150% in just 3 months. Their digital marketing strategy was exactly what we needed."',
+      '"TN Nexora helped us improve our digital marketing efforts in a structured way. Earlier, we were trying different things but nothing was giving consistent results. Their team analyzed everything and created a proper plan. After implementing their strategies, we saw a steady improvement in leads and visibility. It wasn’t overnight, but the growth was real and sustainable."',
     rating: 5,
     image:
       "https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?w=500&h=500&fit=crop",
@@ -15,7 +16,7 @@ const reviews = [
     company: "Tech Startup Inc",
     tag: "SEO & Content",
     review:
-      '"The team\'s expertise in SEO and content strategy transformed our online presence. Highly professional and results-driven."',
+      '"Working with TN Nexora has been easy and comfortable. They understood what we needed and handled everything in a proper way. The team stays active and keeps things clear, which makes the process simple to follow. We appreciate their steady work and the improvement we have noticed over time. Overall, it has been a good experience working with them."',
     rating: 5,
     image:
       "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?w=500&h=500&fit=crop",
@@ -25,7 +26,7 @@ const reviews = [
     company: "Healthcare Services",
     tag: "Lead Generation",
     review:
-      '"Exceptional service! TN Nexora helped us reach our target audience effectively. Definitely recommend their services."',
+      '"Digital marketing can be confusing sometimes, especially when you don’t have much technical knowledge. TN Nexora made things simpler for us. They guided us step by step and helped us understand what’s important and what’s not.Their support has been consistent, and we never felt lost during the process. That kind of guidance really helps when you’re trying to grow your business online."',
     rating: 5,
     image:
       "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?w=500&h=500&fit=crop",

@@ -1,6 +1,3 @@
-// import { Link, useLocation } from 'react-router-dom';
-// import React, { useState, useRef, useEffect } from 'react';
-
 const navLinks = [
   { name: "Home", type: "route", to: "/" },
   { name: "About Us", type: "route", to: "/about" },
@@ -76,7 +73,7 @@ const navLinks = [
   { name: "Contact Us", type: "anchor", href: "/contact" },
 ];
 
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import React, { useState, useRef, useEffect } from "react";
 
 export default function Navbar() {
@@ -84,6 +81,7 @@ export default function Navbar() {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false); // ✅ mobile menu
   const navRef = useRef();
+  const navigate = useNavigate();
 
   useEffect(() => {
     function handleClickOutside(event) {
