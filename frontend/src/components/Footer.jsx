@@ -6,10 +6,16 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 pb-8">
         {/* Company Info */}
         <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-blue-400 text-2xl font-bold">&#9670;</span>
-            <span className="text-white text-2xl font-bold">Nexora</span>
-          </div>
+          {/* <div > */}
+            {/* Logo */}
+            <div className="mb-2">
+              <img
+                src="/image.png"
+                alt="Logo"
+                className="h-15 w-50 object-contain"
+              />
+            </div>
+          {/* </div> */}
           <p className="mb-2 text-sm">We build innovative digital solutions that help businesses grow and scale in the modern world.</p>
           <span className="text-xs text-blue-400">Empowering businesses through technology.</span>
         </div>
