@@ -1,73 +1,7 @@
 
 import React, { useState } from "react";
-
-
-const categories = ["All", "AI", "Design", "Marketing", "Cloud"];
-
-const blogs = [
-  {
-    id: 1,
-    title: "How AI is Transforming SaaS",
-    description: "Explore how artificial intelligence is revolutionizing SaaS products, from automation to personalization.",
-    category: "AI",
-    author: "Priya Sharma",
-    date: "2026-03-20",
-    readTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "Design Systems for Modern Startups",
-    description: "A guide to building scalable, beautiful design systems for SaaS and tech startups.",
-    category: "Design",
-    author: "Alex Kim",
-    date: "2026-03-18",
-    readTime: "4 min read",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    id: 3,
-    title: "10 Marketing Tactics for SaaS Growth",
-    description: "Proven marketing strategies to help your SaaS product stand out and scale fast.",
-    category: "Marketing",
-    author: "Sara Lee",
-    date: "2026-03-15",
-    readTime: "6 min read",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    id: 4,
-    title: "Cloud Platforms: AWS vs Azure vs GCP",
-    description: "A deep dive into the top cloud platforms for SaaS businesses and how to choose the right one.",
-    category: "Cloud",
-    author: "John Doe",
-    date: "2026-03-10",
-    readTime: "7 min read",
-    image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    id: 5,
-    title: "UX Trends in 2026",
-    description: "Discover the latest UX trends shaping the future of SaaS and digital products.",
-    category: "Design",
-    author: "Emily Chen",
-    date: "2026-03-08",
-    readTime: "3 min read",
-    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    id: 6,
-    title: "AI-Powered Customer Support",
-    description: "How AI chatbots and automation are redefining customer support for SaaS companies.",
-    category: "AI",
-    author: "Ravi Patel",
-    date: "2026-03-05",
-    readTime: "4 min read",
-    image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
-  },
-  // ...more blogs
-];
+import { Link } from "react-router-dom";
+import { blogCategories, blogs } from "../data/blogs";
 
 export default function Blog() {
   const [search, setSearch] = useState("");
@@ -99,7 +33,7 @@ export default function Blog() {
               className="w-full md:w-80 px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
             />
             <div className="flex gap-2 mt-2 md:mt-0">
-              {categories.map(cat => (
+              {blogCategories.map(cat => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
@@ -132,7 +66,12 @@ export default function Blog() {
                 <span>•</span>
                 <span>{featured.readTime}</span>
               </div>
-              <button className="px-6 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold shadow-lg hover:scale-105 hover:shadow-blue-500/30 transition duration-300">Read More</button>
+              <Link
+                to={`/blog/${featured.slug}`}
+                className="px-6 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold shadow-lg hover:scale-105 hover:shadow-blue-500/30 transition duration-300"
+              >
+                Read More
+              </Link>
             </div>
             <div className="absolute inset-0 pointer-events-none rounded-2xl group-hover:shadow-[0_0_40px_10px_rgba(99,102,241,0.2)] transition duration-300"></div>
           </section>
@@ -161,7 +100,12 @@ export default function Blog() {
                 <span>•</span>
                 <span>{blog.readTime}</span>
               </div>
-              <button className="self-start px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold shadow hover:scale-105 hover:shadow-blue-500/30 transition duration-300">Read More →</button>
+              <Link
+                to={`/blog/${blog.slug}`}
+                className="self-start px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold shadow hover:scale-105 hover:shadow-blue-500/30 transition duration-300"
+              >
+                Read More →
+              </Link>
               <div className="absolute inset-0 pointer-events-none rounded-2xl group-hover:shadow-[0_0_32px_6px_rgba(99,102,241,0.18)] transition duration-300"></div>
             </div>
           ))}
