@@ -2,9 +2,9 @@ import { Mail, Phone, Building2 } from "lucide-react";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 px-2 md:px-8 w-full flex flex-col items-center justify-center bg-transparent">
+    <section id="contact" className="mb-12 py-4 px-2 md:px-8 w-full flex flex-col items-center justify-center bg-transparent">
       {/* Heading */}
-      <div className="mb-12 w-full max-w-7xl mx-auto">
+      <div className="mb-10 w-full max-w-7xl mx-auto">
         <p className="inline-block px-4 py-1 text-sm bg-indigo-500/20 text-indigo-400 rounded-full mb-4">
           CONTACT US
         </p>
@@ -27,7 +27,7 @@ export default function Contact() {
                 Branch Office
               </h3>
               <p className="text-white/60 text-sm">
-                #116, 1100 Leander Rd #126, kanpur, TX 78628
+                kanpur, Uttarpardesh.
               </p>
             </div>
           </div>
@@ -40,7 +40,7 @@ export default function Contact() {
             <div>
               <h3 className="text-lg font-semibold text-white">Head Office</h3>
               <p className="text-white/60 text-sm">
-                1309 Coffeen Avenue STE 1200 Sheridan,Kanpur 82801
+                kanpur, Uttarpardesh.
               </p>
             </div>
           </div>
