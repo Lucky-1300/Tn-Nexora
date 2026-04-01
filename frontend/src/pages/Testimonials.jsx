@@ -83,9 +83,9 @@ export default function TestimonialsPage() {
   return (
     <>
       {/* Hero Section */}
-        <section className="relative flex flex-col items-center justify-center min-h-[40vh] text-center px-4 py-12">
+        <section className="relative flex flex-col items-center justify-center text-center px-4 py-8">
           <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-600/40 via-purple-700/30 to-indigo-900/20 blur-2xl opacity-70" />
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-6 max-w-3xl text-white">
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-2 max-w-3xl text-white">
             Our Efforts Speak
           </h1>
           <p className="text-lg text-white/80 max-w-2xl">
