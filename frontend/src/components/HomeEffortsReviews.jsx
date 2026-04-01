@@ -35,7 +35,7 @@ const reviews = [
 
 export default function HomeEffortsReviews() {
   return (
-    <section className="max-w-7xl mx-auto py-20 px-4">
+    <section className="max-w-7xl mx-auto py-5 px-4">
       <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-2">
         Our Efforts Speak
       </h2>
