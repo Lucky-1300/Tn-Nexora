@@ -114,7 +114,7 @@ export default function Contact() {
             <div>
               <h3 className="text-lg font-semibold text-white">Email</h3>
               <p className="text-indigo-300 text-sm">
-                tnnexora@technologies.us
+                tnnexoratechnologies@gmail.com
               </p>
             </div>
           </div>
