@@ -2,7 +2,7 @@ import React from "react";
 
 export default function HomeHeroBrandSection() {
   return (
-    <section className="flex flex-col items-center justify-center text-center py-16 px-4 bg-[#0a0f1c]">
+    <section className="flex flex-col items-center justify-center text-center py-5 px-4 bg-[#0a0f1c]">
       <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">
         Building Brands <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Digital</span> Age Strategies
       </h1>

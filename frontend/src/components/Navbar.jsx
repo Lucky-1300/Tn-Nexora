@@ -7,9 +7,9 @@ const navLinks = [
     type: "dropdown",
     items: [
       { name: "Testimonials", type: "route", to: "/testimonials" },
-      { name: "SEO Case Study", href: "#seo-case-study" },
-      { name: "PPC Case Study", href: "#ppc-case-study" },
-      { name: "Website Case Study", href: "#website-case-study" },
+      { name: "SEO Case Study", type: "route", to: "/case-study/seo" },
+      { name: "PPC Case Study", type: "route", to: "/case-study/ppc" },
+      { name: "Website Case Study", type: "route", to: "/case-study/website" },
     ],
   },
 
@@ -91,8 +91,9 @@ export default function Navbar() {
         setOpenDropdown(null);
       }
     }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+
+    document.addEventListener("click", handleClickOutside); // ✅ use click instead of mousedown
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
   useEffect(() => {
@@ -240,7 +241,7 @@ export default function Navbar() {
                                   setMenuOpen(false);
                                   setOpenDropdown(null);
                                 }}
-                                className="text-sm text-white/80 hover:text-indigo-400 transition"
+                                className="block w-full text-sm text-white/80 hover:text-indigo-400 transition py-1"
                               >
                                 {item.name}
                               </Link>
@@ -248,11 +249,7 @@ export default function Navbar() {
                               <a
                                 key={item.name}
                                 href={item.href}
-                                onClick={() => {
-                                  setMenuOpen(false);
-                                  setOpenDropdown(null);
-                                }}
-                                className="text-sm text-white/80 hover:text-indigo-400 transition"
+                                className="block w-full text-sm ..."
                               >
                                 {item.name}
                               </a>
