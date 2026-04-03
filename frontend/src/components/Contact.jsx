@@ -1,8 +1,61 @@
 import { Mail, Phone, Building2 } from "lucide-react";
-
+import { useState } from "react";
 export default function Contact() {
+  const [result, setResult] = useState("");
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending...");
+
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "ee3598a3-c466-424e-b6d7-0087ada49894");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+    console.log(data);
+    if (data.success) {
+      // ✅ SEND DATA TO GOOGLE SHEET
+      fetch(
+        "https://script.google.com/macros/s/AKfycbzC5FwY_sJ4lQyM51toxauohXOJw3RuRtP7n4BuHZafC7VvgPwl8HeGlIZi8kr8KY-q/exec",
+        {
+          method: "POST",
+          mode: "no-cors", 
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            first_name: formData.get("first_name"),
+            last_name: formData.get("last_name"),
+            phone: formData.get("phone"),
+            email: formData.get("email"),
+            website: formData.get("website"),
+            message: formData.get("message"),
+          }),
+        },
+      )
+        .then((res) => res.text())
+        .then((data) => console.log("Sheet response:", data))
+        .catch((err) => console.log("Sheet error:", err));
+
+      setResult("SUCCESS");
+      event.target.reset();
+    } else {
+      setResult("ERROR");
+    }
+
+    setTimeout(() => {
+      setResult("");
+    }, 3000);
+  };
   return (
-    <section id="contact" className="mb-12 py-4 px-2 md:px-8 w-full flex flex-col items-center justify-center bg-transparent">
+    <section
+      id="contact"
+      className="mb-12 py-4 px-2 md:px-8 w-full flex flex-col items-center justify-center bg-transparent"
+    >
       {/* Heading */}
       <div className="mb-10 w-full max-w-7xl mx-auto">
         <p className="inline-block px-4 py-1 text-sm bg-indigo-500/20 text-indigo-400 rounded-full mb-4">
@@ -26,9 +79,7 @@ export default function Contact() {
               <h3 className="text-lg font-semibold text-white">
                 Branch Office
               </h3>
-              <p className="text-white/60 text-sm">
-                kanpur, Uttarpardesh.
-              </p>
+              <p className="text-white/60 text-sm">kanpur, Uttarpardesh.</p>
             </div>
           </div>
 
@@ -39,9 +90,7 @@ export default function Contact() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-white">Head Office</h3>
-              <p className="text-white/60 text-sm">
-                kanpur, Uttarpardesh.
-              </p>
+              <p className="text-white/60 text-sm">kanpur, Uttarpardesh.</p>
             </div>
           </div>
 
@@ -124,40 +173,66 @@ export default function Contact() {
         {/* RIGHT FORM (Contact Form) */}
         <div className="md:col-span-3 flex items-center">
           <div className="w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-10 shadow-xl hover:shadow-indigo-500/10 hover:scale-[1.01] transition duration-300">
-            <h3 className="text-2xl font-semibold text-white mb-6">Contact Us</h3>
-            <form className="space-y-5">
+            <h3 className="text-2xl font-semibold text-white mb-6">
+              Contact Us
+            </h3>
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid md:grid-cols-2 gap-4">
                 <input
                   type="text"
+                  name="first_name"
                   placeholder="First Name"
                   className="input-style"
+                  required
                 />
                 <input
                   type="text"
+                  name="last_name"
                   placeholder="Last Name"
                   className="input-style"
+                  required
                 />
               </div>
+
               <input
                 type="text"
+                name="phone"
                 placeholder="Phone Number"
                 className="input-style"
               />
+
               <input
                 type="email"
+                name="email"
                 placeholder="Email Address"
                 className="input-style"
+                required
               />
-              <input type="text" placeholder="Website" className="input-style" />
+
+              <input
+                type="text"
+                name="website"
+                placeholder="Website"
+                className="input-style"
+              />
+
               <textarea
+                name="message"
                 rows="4"
                 placeholder="Your Message"
                 className="input-style"
+                required
               ></textarea>
+
               <div className="flex items-start gap-2 text-white/60 text-sm">
-                <input type="checkbox" className="mt-1 accent-indigo-500" />
+                <input
+                  type="checkbox"
+                  className="mt-1 accent-indigo-500"
+                  required
+                />
                 <p>I agree to receive updates and communications.</p>
               </div>
+
               <button
                 type="submit"
                 className="w-full py-3 rounded-lg bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-semibold hover:scale-105 hover:shadow-lg transition duration-300"
@@ -165,6 +240,23 @@ export default function Contact() {
                 Submit Now
               </button>
             </form>
+            {result === "SUCCESS" && (
+              <div className="fixed top-5 right-5 bg-green-500 text-white px-6 py-3 rounded-lg">
+                ✅ Message sent successfully!
+              </div>
+            )}
+
+            {result === "ERROR" && (
+              <div className="fixed top-5 right-5 bg-red-500 text-white px-6 py-3 rounded-lg">
+                ❌ Something went wrong!
+              </div>
+            )}
+
+            {result === "Sending..." && (
+              <div className="fixed top-5 right-5 bg-yellow-500 text-black px-6 py-3 rounded-lg">
+                ⏳ Sending...
+              </div>
+            )}
           </div>
         </div>
       </div>
