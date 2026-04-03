@@ -77,7 +77,7 @@ export default function Contact() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-white">
-                Branch Office
+                Execution Office
               </h3>
               <p className="text-white/60 text-sm">kanpur, Uttarpardesh.</p>
             </div>
@@ -101,8 +101,8 @@ export default function Contact() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-white">Phone</h3>
-              <p className="text-white/70 text-sm">+1 562-983-9466</p>
-              <p className="text-white/70 text-sm">+1 592-993-6913</p>
+              <p className="text-white/70 text-sm">+91 9320050310</p>
+              <p className="text-white/70 text-sm">+91 9420050310</p>
             </div>
           </div>
 
@@ -127,7 +127,7 @@ export default function Contact() {
             <div className="flex gap-4">
               {/* LinkedIn */}
               <a
-                href="#"
+                href="https://www.linkedin.com/company/tn-nexora-technologies/posts/?feedView=all" target="_blank" rel="noopener noreferrer"
                 className="w-10 h-10 flex items-center justify-center bg-white/10 border border-white/20 rounded-full text-white/80 hover:scale-110 hover:bg-blue-500/20 transition"
               >
                 <svg
@@ -141,7 +141,7 @@ export default function Contact() {
 
               {/* Instagram */}
               <a
-                href="#"
+                href="https://twitter.com" target="_blank" rel="noopener noreferrer"
                 className="w-10 h-10 flex items-center justify-center bg-white/10 border border-white/20 rounded-full text-white/80 hover:scale-110 hover:bg-pink-500/20 transition"
               >
                 <svg
@@ -155,7 +155,7 @@ export default function Contact() {
 
               {/* YouTube */}
               <a
-                href="#"
+                href="https://youtube.com" target="_blank" rel="noopener noreferrer"
                 className="w-10 h-10 flex items-center justify-center bg-white/10 border border-white/20 rounded-full text-white/80 hover:scale-110 hover:bg-red-500/20 transition"
               >
                 <svg

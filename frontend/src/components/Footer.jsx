@@ -67,7 +67,7 @@ export default function Footer() {
               <a href="mailto:tnnexoratechnologies@gmail.com" className="hover:text-white transition-colors duration-200">tnnexoratechnologies@gmail.com</a>
             </li>
             <li>
-              <a href="tel:+919876543210" className="hover:text-white transition-colors duration-200">+91 9876543210</a>
+              <a href="tel:+9320050310" className="hover:text-white transition-colors duration-200">+91 9320050310</a>
             </li>
             <li>
               <span>India</span>
