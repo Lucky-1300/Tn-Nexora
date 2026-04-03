@@ -24,10 +24,10 @@ export default function BlogDetail() {
 
   return (
     <div className="bg-gradient-to-br from-[#0a0f1c] to-black min-h-screen">
-      <main className="w-full max-w-4xl mx-auto px-4 py-12">
+      <main className="w-full max-w-6xl mx-auto px-4 py-12">
         <Link
           to="/blog"
-          className="inline-block mb-6 text-sm text-blue-300 hover:text-blue-200 transition"
+          className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-5 py-2.5 text-sm font-semibold text-blue-200 transition hover:border-blue-300/50 hover:bg-blue-500/20 hover:text-white"
         >
           ← Back to Blog
         </Link>

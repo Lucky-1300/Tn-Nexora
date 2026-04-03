@@ -1,6 +1,14 @@
 import { Mail, Phone, Building2 } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
 
 export default function Contact() {
+  const [searchParams] = useSearchParams();
+  const selectedService = searchParams.get("service") || "";
+  const selectedPlan = searchParams.get("plan") || "";
+  const selectedPackage = [selectedService, selectedPlan]
+    .filter(Boolean)
+    .join(" - ");
+
   return (
     <section id="contact" className="mb-12 py-4 px-2 md:px-8 w-full flex flex-col items-center justify-center bg-transparent">
       {/* Heading */}
@@ -65,7 +73,7 @@ export default function Contact() {
             <div>
               <h3 className="text-lg font-semibold text-white">Email</h3>
               <p className="text-indigo-300 text-sm">
-                tnnexora@technologies.us
+                tnnexoratechnologies@gmail.com
               </p>
             </div>
           </div>
@@ -126,6 +134,14 @@ export default function Contact() {
           <div className="w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-10 shadow-xl hover:shadow-indigo-500/10 hover:scale-[1.01] transition duration-300">
             <h3 className="text-2xl font-semibold text-white mb-6">Contact Us</h3>
             <form className="space-y-5">
+              {selectedPackage && (
+                <input
+                  type="text"
+                  value={selectedPackage}
+                  readOnly
+                  className="input-style"
+                />
+              )}
               <div className="grid md:grid-cols-2 gap-4">
                 <input
                   type="text"
