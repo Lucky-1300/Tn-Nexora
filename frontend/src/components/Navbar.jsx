@@ -92,8 +92,10 @@ export default function Navbar() {
       }
     }
 
-    document.addEventListener("click", handleClickOutside); // ✅ use click instead of mousedown
-    return () => document.removeEventListener("click", handleClickOutside);
+    document.addEventListener("click", handleClickOutside); // ✅ CHANGE BACK TO mousedown
+
+    return () =>
+      document.removeEventListener("click", handleClickOutside);
   }, []);
 
   useEffect(() => {
@@ -209,9 +211,12 @@ export default function Navbar() {
                   {link.type === "dropdown" && (
                     <>
                       <div
-                        onClick={() =>
-                          setOpenDropdown(isOpen ? null : link.name)
-                        }
+                        onClick={(e) => {
+                        e.stopPropagation();
+                        setOpenDropdown((prev) =>
+                          prev === link.name ? null : link.name
+                        );
+                      }}
                         onDragOver={(event) => handleDropdownDragOver(event, link.name)}
                         onDrop={(event) => handleDropdownDrop(event, link.name)}
                         onDragLeave={() => handleDropdownDragLeave(link.name)}
