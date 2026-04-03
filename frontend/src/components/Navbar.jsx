@@ -73,15 +73,17 @@ const navLinks = [
   { name: "Contact Us", type: "anchor", href: "/contact" },
 ];
 
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import React, { useState, useRef, useEffect } from "react";
 
 export default function Navbar() {
   const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false); // ✅ mobile menu
+  const [dragOverDropdown, setDragOverDropdown] = useState(null);
+  const [droppedDropdown, setDroppedDropdown] = useState(null);
   const navRef = useRef();
-  const navigate = useNavigate();
+  const dropResetTimerRef = useRef(null);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -92,6 +94,47 @@ export default function Navbar() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  useEffect(() => {
+    return () => {
+      if (dropResetTimerRef.current) {
+        clearTimeout(dropResetTimerRef.current);
+      }
+    };
+  }, []);
+
+  function getDropdownIcon(dropdownName, isOpen) {
+    if (dragOverDropdown === dropdownName) return "⬇";
+    if (droppedDropdown === dropdownName) return "✓";
+    return isOpen ? "▴" : "▾";
+  }
+
+  function handleDropdownDragOver(event, dropdownName) {
+    event.preventDefault();
+    if (dragOverDropdown !== dropdownName) {
+      setDragOverDropdown(dropdownName);
+    }
+  }
+
+  function handleDropdownDrop(event, dropdownName) {
+    event.preventDefault();
+    setDragOverDropdown(null);
+    setDroppedDropdown(dropdownName);
+
+    if (dropResetTimerRef.current) {
+      clearTimeout(dropResetTimerRef.current);
+    }
+
+    dropResetTimerRef.current = setTimeout(() => {
+      setDroppedDropdown(null);
+    }, 800);
+  }
+
+  function handleDropdownDragLeave(dropdownName) {
+    if (dragOverDropdown === dropdownName) {
+      setDragOverDropdown(null);
+    }
+  }
 
   return (
     <header className="w-full bg-[#101522] border-b border-[#23263a] sticky top-0 z-50">
@@ -168,6 +211,9 @@ export default function Navbar() {
                         onClick={() =>
                           setOpenDropdown(isOpen ? null : link.name)
                         }
+                        onDragOver={(event) => handleDropdownDragOver(event, link.name)}
+                        onDrop={(event) => handleDropdownDrop(event, link.name)}
+                        onDragLeave={() => handleDropdownDragLeave(link.name)}
                         className="flex justify-between items-center py-2 border-b border-white/10 cursor-pointer"
                       >
                         <span>{link.name}</span>
@@ -178,7 +224,7 @@ export default function Navbar() {
                             isOpen ? "rotate-180" : ""
                           }`}
                         >
-                          ▼
+                          {getDropdownIcon(link.name, isOpen)}
                         </span>
                       </div>
 
@@ -270,9 +316,12 @@ export default function Navbar() {
         <li key={link.name} className="relative cursor-pointer">
           <span
             onClick={() => setOpenDropdown(isOpen ? null : link.name)}
+            onDragOver={(event) => handleDropdownDragOver(event, link.name)}
+            onDrop={(event) => handleDropdownDrop(event, link.name)}
+            onDragLeave={() => handleDropdownDragLeave(link.name)}
             className="text-white/90 hover:text-white flex items-center"
           >
-            {link.name} ▾
+            {link.name} <span className="ml-1">{getDropdownIcon(link.name, isOpen)}</span>
           </span>
 
           {isOpen && (

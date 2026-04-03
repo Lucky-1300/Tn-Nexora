@@ -1,4 +1,5 @@
 import { FaLinkedin, FaTwitter, FaInstagram, FaGithub } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -23,11 +24,17 @@ export default function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-3">Quick Links</h4>
           <ul className="space-y-2">
-            {['Home','About Us','Services','Pricing','Blog','Contact Us'].map(link => (
-              <li key={link}>
-                <a href={`#${link.toLowerCase().replace(/ /g,'-')}`} className="hover:text-white transition-colors duration-200 rounded px-1 focus:outline-none focus:text-white">
-                  {link}
-                </a>
+            {[
+              { label: 'Home', href: '/' },
+              { label: 'About Us', href: '/about' },
+              { label: 'Services', href: '/#services' },
+              { label: 'Blog', href: '/blog' },
+              { label: 'Contact Us', href: '/contact' },
+            ].map((link) => (
+              <li key={link.label}>
+                <Link to={link.href} className="hover:text-white transition-colors duration-200 rounded px-1 focus:outline-none focus:text-white">
+                  {link.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -36,11 +43,18 @@ export default function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-3">Services</h4>
           <ul className="space-y-2">
-            {['Web Development','App Development','UI/UX Design','Cloud Solutions','Digital Marketing'].map(service => (
-              <li key={service}>
-                <a href={`#${service.toLowerCase().replace(/ /g,'-')}`} className="hover:text-white transition-colors duration-200 rounded px-1 focus:outline-none focus:text-white">
-                  {service}
-                </a>
+            {[
+              { label: 'Search Engine Optimization', href: '/services/seo' },
+              { label: 'Social Media Marketing', href: '/services/smm' },
+              { label: 'Pay Per Click', href: '/services/ppc' },
+              { label: 'Technical SEO', href: '/services/technical-seo' },
+              { label: 'WordPress Development', href: '/services/wordpress' },
+              { label: 'Website Analysis', href: '/services/website-analysis' },
+            ].map((service) => (
+              <li key={service.label}>
+                <Link to={service.href} className="hover:text-white transition-colors duration-200 rounded px-1 focus:outline-none focus:text-white">
+                  {service.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -50,7 +64,7 @@ export default function Footer() {
           <h4 className="text-white font-semibold mb-3">Contact</h4>
           <ul className="space-y-2 mb-4">
             <li>
-              <a href="mailto:contact@nexora.com" className="hover:text-white transition-colors duration-200">contact@nexora.com</a>
+              <a href="mailto:tnnexoratechnologies@gmail.com" className="hover:text-white transition-colors duration-200">tnnexoratechnologies@gmail.com</a>
             </li>
             <li>
               <a href="tel:+919876543210" className="hover:text-white transition-colors duration-200">+91 9876543210</a>
@@ -60,7 +74,7 @@ export default function Footer() {
             </li>
           </ul>
           <div className="flex gap-4 mt-2">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors text-xl"><FaLinkedin /></a>
+            <a href="https://www.linkedin.com/company/tn-nexora-technologies/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors text-xl"><FaLinkedin /></a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors text-xl"><FaTwitter /></a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-pink-400 transition-colors text-xl"><FaInstagram /></a>
             <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-200 transition-colors text-xl"><FaGithub /></a>
