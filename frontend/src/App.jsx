@@ -1,4 +1,6 @@
-import { Routes, Route } from 'react-router-dom';
+// import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -16,11 +18,27 @@ import LinkedInPricing from './pages/LinkedInPricing';
 import GMBPricing from './pages/GMBPricing';
 import PerformancePricing from './pages/PerformancePricing';
 
+import NotFound from "./pages/NotFound";
+import Forbidden from "./pages/Forbidden";
+import ServerError from "./pages/ServerError";
+
 function App() {
+
+const location = useLocation();
+
+const hideLayout =
+  location.pathname === "/403" ||
+  location.pathname === "/500" ||
+  location.pathname === "/404";
+
   return (
     <div className="bg-[#0a0f1c] min-h-screen flex flex-col">
       
-      <Navbar />
+      {/* <Navbar /> */}
+     {!hideLayout && <Navbar />}
+
+
+
 
       {/* ✅ FIXED: Routes wrapped inside flex-1 */}
       <div className="flex-1">
@@ -40,19 +58,36 @@ function App() {
           <Route path="/pricing/gmb" element={<GMBPricing />} />
           <Route path="/pricing/performance" element={<PerformancePricing />} />
 
+          
+
           {/* ✅ ADDED: 404 fallback (broken links fix) */}
-          <Route 
+          {/* <Route 
             path="*" 
             element={
               <h1 className="text-white text-center mt-20 text-2xl">
                 404 Page Not Found
               </h1>
             } 
-          />
+          /> */}
+          {/* <Route path="/403" element={<Forbidden />} />
+<Route path="/500" element={<ServerError />} />
+<Route path="*" element={<NotFound />} /> */}
+<Route path="/403" element={<Forbidden />} />
+<Route path="/500" element={<ServerError />} />
+<Route path="/404" element={<NotFound />} />
+<Route path="*" element={<Navigate to="/404" />} />
+
+
+
+
+
+
+
         </Routes>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
+      {!hideLayout && <Footer />}
     </div>
   );
 }

@@ -1,14 +1,37 @@
 
 
-import React from "react";
+
+// import React from "react";
 // import Navbar from '../components/Navbar';
 // import Footer from '../components/Footer';
+// import api from "../services/api";
+import { useEffect } from "react";
+import api from "../services/api";
 import Services from '../components/Services';
 import HomeEffortsReviews from '../components/HomeEffortsReviews';
 import Contact from '../components/Contact';
 import HomeHeroBrandSection from '../components/HomeHeroBrandSection';
 
 export default function Home() {
+
+  // 403
+//   useEffect(() => {
+//   api.get("/forbidden");   // backend का 403 route
+// }, []);
+
+// 404 page not found
+//   useEffect(() => {
+//   api.get("/forbidden");   // backend का 403 route
+// }, []);
+
+// 500 test error
+// 500 test
+  // useEffect(() => {
+  //   api.get("/error");
+  // }, []);
+
+
+
   return (
     <div className="bg-[#0a0f1c] min-h-screen text-white">
      
