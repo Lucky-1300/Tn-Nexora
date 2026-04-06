@@ -94,8 +94,7 @@ export default function Navbar() {
 
     document.addEventListener("click", handleClickOutside); // ✅ CHANGE BACK TO mousedown
 
-    return () =>
-      document.removeEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
   useEffect(() => {
@@ -141,6 +140,7 @@ export default function Navbar() {
 
   return (
     <header className="w-full bg-[#101522] border-b border-[#23263a] sticky top-0 z-50">
+  
       <nav
         ref={navRef}
         className="max-w-8xl mx-auto flex items-center justify-between px-4 py-3"
@@ -212,12 +212,14 @@ export default function Navbar() {
                     <>
                       <div
                         onClick={(e) => {
-                        e.stopPropagation();
-                        setOpenDropdown((prev) =>
-                          prev === link.name ? null : link.name
-                        );
-                      }}
-                        onDragOver={(event) => handleDropdownDragOver(event, link.name)}
+                          e.stopPropagation();
+                          setOpenDropdown((prev) =>
+                            prev === link.name ? null : link.name,
+                          );
+                        }}
+                        onDragOver={(event) =>
+                          handleDropdownDragOver(event, link.name)
+                        }
                         onDrop={(event) => handleDropdownDrop(event, link.name)}
                         onDragLeave={() => handleDropdownDragLeave(link.name)}
                         className="flex justify-between items-center py-2 border-b border-white/10 cursor-pointer"
@@ -323,7 +325,8 @@ export default function Navbar() {
             onDragLeave={() => handleDropdownDragLeave(link.name)}
             className="text-white/90 hover:text-white flex items-center"
           >
-            {link.name} <span className="ml-1">{getDropdownIcon(link.name, isOpen)}</span>
+            {link.name}{" "}
+            <span className="ml-1">{getDropdownIcon(link.name, isOpen)}</span>
           </span>
 
           {isOpen && (

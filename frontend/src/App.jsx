@@ -40,7 +40,6 @@ function App() {
           <Route path="/pricing/gmb" element={<GMBPricing />} />
           <Route path="/pricing/performance" element={<PerformancePricing />} />
 
-          {/* ✅ ADDED: 404 fallback (broken links fix) */}
           <Route 
             path="*" 
             element={
