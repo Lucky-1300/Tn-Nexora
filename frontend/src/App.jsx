@@ -62,6 +62,7 @@ const hideLayout =
 
           {/* ✅ ADDED: 404 fallback (broken links fix) */}
           {/* <Route 
+          <Route 
             path="*" 
             element={
               <h1 className="text-white text-center mt-20 text-2xl">

@@ -2,6 +2,7 @@
 
 
 // import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 // import Navbar from '../components/Navbar';
 // import Footer from '../components/Footer';
 // import api from "../services/api";
@@ -31,23 +32,49 @@ export default function Home() {
   // }, []);
 
 
+  const videoRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="bg-[#0a0f1c] min-h-screen text-white">
      
       <main className="flex flex-col gap-0">
         {/* Hero Section with Video */}
-        <section id="home" className="relative flex flex-col items-center justify-center text-center py-0 px-0 bg-[#0a0f1c] overflow-hidden">
-          <video
-            src="/WhatsApp%20Video%202026-03-26%20at%204.00.38%20PM.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full max-h-[500px] object-cover"
-          >
-            Your browser does not support the video tag.
-          </video>
+        <section
+          id="home"
+          ref={videoRef}
+          className="relative flex flex-col items-center justify-center text-center py-0 px-0 bg-[#0a0f1c] overflow-hidden"
+        >
+          {isVisible && (
+            <video
+              src="/WhatsApp%20Video%202026-03-26%20at%204.00.38%20PM.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full max-h-[500px] object-cover"
+            >
+              Your browser does not support the video tag.
+            </video>
+          )}
           <HomeHeroBrandSection />
         </section>
 
