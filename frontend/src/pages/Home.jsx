@@ -65,8 +65,6 @@ export default function Home() {
           >
             Your browser does not support the video tag.
           </video>
-
-          )}
           <HomeHeroBrandSection />
         </section>
 
