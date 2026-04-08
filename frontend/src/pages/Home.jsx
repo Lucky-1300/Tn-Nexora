@@ -1,12 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import api from "../services/api";
-import Services from '../components/Services';
-import HomeEffortsReviews from '../components/HomeEffortsReviews';
-import Contact from '../components/Contact';
-import HomeHeroBrandSection from '../components/HomeHeroBrandSection';
+import Services from "../components/Services";
+import HomeEffortsReviews from "../components/HomeEffortsReviews";
+import Contact from "../components/Contact";
+import Team from "../components/Team";
+import HomeHeroBrandSection from "../components/HomeHeroBrandSection";
 
 export default function Home() {
-
   const videoRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -18,7 +18,7 @@ export default function Home() {
           observer.disconnect();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     if (videoRef.current) {
@@ -30,7 +30,6 @@ export default function Home() {
 
   return (
     <div className="bg-[#0a0f1c] min-h-screen text-white">
-     
       <main className="flex flex-col gap-0">
         {/* Hero Section with Video */}
         <section
@@ -58,6 +57,11 @@ export default function Home() {
           <Services />
         </section>
 
+        {/* Our Team Section */}
+        <section className="pt-0 pb-4">
+          <Team />
+        </section>
+
         {/* Our Efforts Speak (Testimonials) */}
         <section className="pt-0 pb-4">
           <HomeEffortsReviews />
@@ -68,7 +72,6 @@ export default function Home() {
           <Contact />
         </section>
       </main>
-      
     </div>
   );
 }
