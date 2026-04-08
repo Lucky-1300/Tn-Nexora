@@ -22,9 +22,8 @@ const teamMembers = [
   {
     name: "Lucky Ray",
     role: "Full Stack Developer",
-    image: "/team/lucky.jpg",
-    linkedin:
-      "https://www.linkedin.com/in/lucky-ray-5a6642338?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    image: "/Team/Lucky.jpeg",
+    linkedin: "https://www.linkedin.com/in/lucky-ray-5a6642338?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     desc: "Focuses on building efficient and modern web solutions with full-stack expertise.",
   },
   {
