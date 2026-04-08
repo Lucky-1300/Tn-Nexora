@@ -185,14 +185,14 @@ export default function Contact() {
                   type="text"
                   name="first_name"
                   placeholder="First Name"
-                  className="input-style"
+                  className={`w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? 'bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500' : 'bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500'}`}
                   required
                 />
                 <input
                   type="text"
                   name="last_name"
                   placeholder="Last Name"
-                  className="input-style"
+                  className={`w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? 'bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500' : 'bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500'}`}
                   required
                 />
               </div>
@@ -201,14 +201,14 @@ export default function Contact() {
                 type="text"
                 name="phone"
                 placeholder="Phone Number"
-                className="input-style"
+                className={`w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? 'bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500' : 'bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500'}`}
               />
 
               <input
                 type="email"
                 name="email"
                 placeholder="Email Address"
-                className="input-style"
+                className={`w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? 'bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500' : 'bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500'}`}
                 required
               />
 
@@ -216,14 +216,14 @@ export default function Contact() {
                 type="text"
                 name="website"
                 placeholder="Website"
-                className="input-style"
+                className={`w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? 'bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500' : 'bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500'}`}
               />
 
               <textarea
                 name="message"
                 rows="4"
                 placeholder="Your Message"
-                className="input-style"
+                className={`w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? 'bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500' : 'bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500'}`}
                 required
               ></textarea>
 
