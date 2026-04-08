@@ -1,6 +1,7 @@
 const navLinks = [
   { name: "Home", type: "route", to: "/" },
   { name: "About Us", type: "route", to: "/about" },
+  { name: "Team", type: "anchor", href: "/team",},
 
   {
     name: "Reviews",
@@ -140,7 +141,6 @@ export default function Navbar() {
 
   return (
     <header className="w-full bg-[#101522] border-b border-[#23263a] sticky top-0 z-50">
-  
       <nav
         ref={navRef}
         className="max-w-8xl mx-auto flex items-center justify-between px-4 py-3"
