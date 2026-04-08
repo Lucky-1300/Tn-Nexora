@@ -6,7 +6,21 @@ html {
 
 
 .input-style {
-  @apply w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition;
+  @apply w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2;
+}
+
+/* Dark mode inputs */
+@media (prefers-color-scheme: dark) {
+  .input-style {
+    @apply bg-white/10 border-white/20 text-white placeholder-white/50 focus:ring-blue-500;
+  }
+}
+
+/* Light mode inputs */
+@media (prefers-color-scheme: light) {
+  .input-style {
+    @apply bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500;
+  }
 }
 
 @keyframes fadeIn {
@@ -22,4 +36,10 @@ html {
 
 .animate-fadeIn {
   animation: fadeIn 0.8s ease forwards;
+}
+
+/* Light Mode Theme Colors */
+:root {
+  --light-mode-primary: #FF8C00;
+  --dark-mode-primary: #ffffff;
 }

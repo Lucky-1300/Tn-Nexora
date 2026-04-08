@@ -1,4 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
+import { useContext } from 'react';
+import { ThemeContext } from './context/ThemeContext';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -17,13 +19,15 @@ import GMBPricing from './pages/GMBPricing';
 import PerformancePricing from './pages/PerformancePricing';
 
 function App() {
+  const { isDark } = useContext(ThemeContext);
+
   return (
-    <div className="bg-[#0a0f1c] min-h-screen flex flex-col">
+    <div className={`${isDark ? 'bg-[#0a0f1c] text-white' : 'bg-white text-[#FF8C00]'} min-h-screen flex flex-col transition-colors duration-300`}>
       
       <Navbar />
 
       {/* ✅ FIXED: Routes wrapped inside flex-1 */}
-      <div className="flex-1">
+      <div className={`flex-1 ${isDark ? '' : 'bg-white'} transition-colors duration-300`}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} /> 

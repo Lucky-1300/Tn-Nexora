@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { useTheme } from './ThemeWrapper';
+
 const services = [
   {
     title: "Search Engine Optimization",
@@ -155,9 +157,11 @@ const services = [
 
 export default function Services() {
   const navigate = useNavigate();
+  const { isDark, bgColor, textColor, headingColor } = useTheme();
+  
   return (
-   <section id="services" className="px-4 md:px-10 lg:px-20">
-      <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-white">
+   <section id="services" className={`px-4 md:px-10 lg:px-20 ${bgColor}`}>
+      <h2 className={`text-2xl md:text-3xl font-bold mb-8 text-center ${isDark ? 'text-white' : 'text-orange-500'}`}>
         Our Services
       </h2>
 
@@ -166,13 +170,15 @@ export default function Services() {
           <div
             key={service.title}
             onClick={() => navigate(`/services/${service.slug}`)}
-            className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-xl p-8 flex flex-col items-center text-center transition-transform hover:scale-105 hover:shadow-blue-500/40 cursor-pointer"
+            className={`${isDark ? 'bg-white/10 border-white/20 hover:shadow-blue-500/40' : 'bg-orange-100/30 border-orange-300/40 hover:shadow-orange-400/40'} backdrop-blur-lg border rounded-xl shadow-xl p-8 flex flex-col items-center text-center transition-transform hover:scale-105 cursor-pointer`}
           >
             <div className="mb-4">{service.icon}</div>
-            <h1 className="text-xl font-semibold mb-2 text-white/90">
+            <h1 className={`text-xl font-semibold mb-2 ${isDark ? 'text-white/90' : 'text-orange-600'}`}>
               {service.title}
             </h1>
-            <p className="text-white/70 text-sm">{service.desc}</p>
+            <p className={isDark ? 'text-white/70' : 'text-gray-700'}>
+              {service.desc}
+            </p>
           </div>
         ))}
       </div>

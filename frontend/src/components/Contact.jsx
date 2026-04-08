@@ -1,7 +1,10 @@
 import { Mail, Phone, Building2 } from "lucide-react";
 import { useState } from "react";
+import { useTheme } from './ThemeWrapper';
+
 export default function Contact() {
   const [result, setResult] = useState("");
+  const { isDark, bgColor, textColor } = useTheme();
   const handleSubmit = async (event) => {
     event.preventDefault();
     setResult("Sending...");
@@ -54,14 +57,14 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="mb-12 py-4 px-2 md:px-8 w-full flex flex-col items-center justify-center bg-transparent"
+      className={`mb-12 py-4 px-2 md:px-8 w-full flex flex-col items-center justify-center ${bgColor}`}
     >
       {/* Heading */}
       <div className="mb-10 w-full max-w-7xl mx-auto">
-        <p className="inline-block px-4 py-1 text-sm bg-indigo-500/20 text-indigo-400 rounded-full mb-4">
+        <p className={`inline-block px-4 py-1 text-sm ${isDark ? 'bg-indigo-500/20 text-indigo-400' : 'bg-orange-400/20 text-orange-600'} rounded-full mb-4`}>
           CONTACT US
         </p>
-        <h2 className="text-3xl md:text-4xl font-bold text-white">
+        <h2 className={`text-3xl md:text-4xl font-bold ${isDark ? 'text-white' : 'text-orange-500'}`}>
           Get In Touch With TN Nexora
         </h2>
       </div>
@@ -72,48 +75,48 @@ export default function Contact() {
         <div className="md:col-span-2 space-y-8 flex flex-col justify-between">
           {/* Branch */}
           <div className="flex items-start gap-4 group">
-            <div className="p-4 bg-indigo-500/10 border border-indigo-400/20 rounded-xl group-hover:scale-110 transition duration-300">
-              <Building2 className="text-indigo-400" />
+            <div className={`p-4 ${isDark ? 'bg-indigo-500/10 border-indigo-400/20' : 'bg-orange-400/10 border-orange-400/20'} border rounded-xl group-hover:scale-110 transition duration-300`}>
+              <Building2 className={isDark ? 'text-indigo-400' : 'text-orange-500'} />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-orange-600'}`}>
                 Execution Office
               </h3>
-              <p className="text-white/60 text-sm">kanpur, Uttarpardesh.</p>
+              <p className={isDark ? 'text-white/60' : 'text-gray-700'}>kanpur, Uttarpardesh.</p>
             </div>
           </div>
 
           {/* Head */}
           <div className="flex items-start gap-4 group">
-            <div className="p-4 bg-blue-500/10 border border-blue-400/20 rounded-xl group-hover:scale-110 transition duration-300">
-              <Building2 className="text-blue-400" />
+            <div className={`p-4 ${isDark ? 'bg-blue-500/10 border-blue-400/20' : 'bg-blue-400/10 border-blue-400/20'} border rounded-xl group-hover:scale-110 transition duration-300`}>
+              <Building2 className={isDark ? 'text-blue-400' : 'text-blue-600'} />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-white">Head Office</h3>
-              <p className="text-white/60 text-sm">kanpur, Uttarpardesh.</p>
+              <h3 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-orange-600'}`}>Head Office</h3>
+              <p className={isDark ? 'text-white/60' : 'text-gray-700'}>kanpur, Uttarpardesh.</p>
             </div>
           </div>
 
           {/* Phone */}
           <div className="flex items-start gap-4 group">
-            <div className="p-4 bg-slate-500/10 border border-slate-400/20 rounded-xl group-hover:scale-110 transition duration-300">
-              <Phone className="text-slate-300" />
+            <div className={`p-4 ${isDark ? 'bg-slate-500/10 border-slate-400/20' : 'bg-slate-400/10 border-slate-400/20'} border rounded-xl group-hover:scale-110 transition duration-300`}>
+              <Phone className={isDark ? 'text-slate-300' : 'text-slate-700'} />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-white">Phone</h3>
-              <p className="text-white/70 text-sm">+91 9320050310</p>
-              <p className="text-white/70 text-sm">+91 9420050310</p>
+              <h3 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-orange-600'}`}>Phone</h3>
+              <p className={isDark ? 'text-white/70' : 'text-gray-700'}>+91 9320050310</p>
+              <p className={isDark ? 'text-white/70' : 'text-gray-700'}>+91 9420050310</p>
             </div>
           </div>
 
           {/* Email */}
           <div className="flex items-start gap-4 group">
-            <div className="p-4 bg-indigo-500/10 border border-indigo-400/20 rounded-xl group-hover:scale-110 transition duration-300">
-              <Mail className="text-indigo-300" />
+            <div className={`p-4 ${isDark ? 'bg-indigo-500/10 border-indigo-400/20' : 'bg-orange-400/10 border-orange-400/20'} border rounded-xl group-hover:scale-110 transition duration-300`}>
+              <Mail className={isDark ? 'text-indigo-300' : 'text-orange-500'} />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-white">Email</h3>
-              <p className="text-indigo-300 text-sm">
+              <h3 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-orange-600'}`}>Email</h3>
+              <p className={isDark ? 'text-indigo-300' : 'text-orange-600'}>
                 tnnexoratechnologies@gmail.com
               </p>
             </div>
@@ -121,14 +124,14 @@ export default function Contact() {
 
           {/* Social */}
 
-          <div className="pt-6 border-t border-white/10">
-            <p className="text-white/70 mb-4">Follow Our Social Media</p>
+          <div className={`pt-6 border-t ${isDark ? 'border-white/10' : 'border-orange-300/40'}`}>
+            <p className={isDark ? 'text-white/70' : 'text-gray-700'}>Follow Our Social Media</p>
 
-            <div className="flex gap-4">
+            <div className="flex gap-4 mt-4">
               {/* LinkedIn */}
               <a
                 href="https://www.linkedin.com/company/tn-nexora-technologies/posts/?feedView=all" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-white/10 border border-white/20 rounded-full text-white/80 hover:scale-110 hover:bg-blue-500/20 transition"
+                className={`w-10 h-10 flex items-center justify-center border rounded-full transition hover:scale-110 ${isDark ? 'bg-white/10 border-white/20 text-white/80 hover:bg-blue-500/20' : 'bg-orange-100/50 border-orange-300/40 text-orange-600 hover:bg-orange-200/50'}`}
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -142,7 +145,7 @@ export default function Contact() {
               {/* Instagram */}
               <a
                 href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-white/10 border border-white/20 rounded-full text-white/80 hover:scale-110 hover:bg-pink-500/20 transition"
+                className={`w-10 h-10 flex items-center justify-center border rounded-full transition hover:scale-110 ${isDark ? 'bg-white/10 border-white/20 text-white/80 hover:bg-pink-500/20' : 'bg-orange-100/50 border-orange-300/40 text-orange-600 hover:bg-orange-200/50'}`}
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -156,7 +159,7 @@ export default function Contact() {
               {/* YouTube */}
               <a
                 href="https://youtube.com" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-white/10 border border-white/20 rounded-full text-white/80 hover:scale-110 hover:bg-red-500/20 transition"
+                className={`w-10 h-10 flex items-center justify-center border rounded-full transition hover:scale-110 ${isDark ? 'bg-white/10 border-white/20 text-white/80 hover:bg-red-500/20' : 'bg-orange-100/50 border-orange-300/40 text-orange-600 hover:bg-orange-200/50'}`}
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -172,8 +175,8 @@ export default function Contact() {
 
         {/* RIGHT FORM (Contact Form) */}
         <div className="md:col-span-3 flex items-center">
-          <div className="w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-10 shadow-xl hover:shadow-indigo-500/10 hover:scale-[1.01] transition duration-300">
-            <h3 className="text-2xl font-semibold text-white mb-6">
+          <div className={`w-full backdrop-blur-xl border rounded-2xl p-6 md:p-10 shadow-xl transition duration-300 ${isDark ? 'bg-white/5 border-white/10 hover:shadow-indigo-500/10' : 'bg-orange-50/70 border-orange-300/40 hover:shadow-orange-400/10'} hover:scale-[1.01]`}>
+            <h3 className={`text-2xl font-semibold mb-6 ${isDark ? 'text-white' : 'text-orange-600'}`}>
               Contact Us
             </h3>
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -224,10 +227,10 @@ export default function Contact() {
                 required
               ></textarea>
 
-              <div className="flex items-start gap-2 text-white/60 text-sm">
+              <div className={`flex items-start gap-2 text-sm ${isDark ? 'text-white/60' : 'text-gray-700'}`}>
                 <input
                   type="checkbox"
-                  className="mt-1 accent-indigo-500"
+                  className={`mt-1 ${isDark ? 'accent-indigo-500' : 'accent-orange-500'}`}
                   required
                 />
                 <p>I agree to receive updates and communications.</p>
@@ -235,7 +238,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-lg bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-semibold hover:scale-105 hover:shadow-lg transition duration-300"
+                className={`w-full py-3 rounded-lg text-white font-semibold hover:scale-105 hover:shadow-lg transition duration-300 ${isDark ? 'bg-gradient-to-r from-indigo-500 to-blue-500' : 'bg-gradient-to-r from-orange-500 to-orange-600'}`}
               >
                 Submit Now
               </button>

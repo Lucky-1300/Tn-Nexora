@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useParams } from "react-router-dom";
+import { useTheme } from '../components/ThemeWrapper';
 
 const serviceData = {
   seo: {
@@ -217,30 +219,34 @@ const serviceData = {
 };
 
 export default function ServiceDetail() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { slug } = useParams();
+  const { isDark, bgColor, textColor, headingColor } = useTheme();
   const service = serviceData[slug];
 
   if (!service) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-white bg-[#0a0f1c]">
+      <div className={`min-h-screen flex items-center justify-center ${bgColor} ${isDark ? 'text-white' : 'text-gray-900'}`}>
         404 - Service Not Found
       </div>
     );
   }
-return (
-  <div className="bg-[#0a0f1c] text-white px-4 sm:px-6 md:px-10 lg:px-16 py-16 md:py-24">
+  return (
+  <div className={`${bgColor} ${isDark ? 'text-white' : 'text-gray-900'} px-4 sm:px-6 md:px-10 lg:px-16 py-16 md:py-24`}>
 
     {/* ✅ HEADING */}
     <div className="mb-6 md:mb-14 text-center lg:text-left">
-      <span className="inline-block px-4 py-1 text-sm bg-indigo-500/20 text-indigo-400 rounded-full">
+      <span className={`inline-block px-4 py-1 text-sm ${isDark ? 'bg-indigo-500/20 text-indigo-400' : 'bg-orange-400/20 text-orange-600'} rounded-full`}>
         Our Premium Service
       </span>
 
-      <h1 className="mt-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight bg-gradient-to-r from-indigo-400 via-blue-400 to-purple-500 text-transparent bg-clip-text">
+      <h1 className={`mt-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight ${isDark ? 'bg-gradient-to-r from-indigo-400 via-blue-400 to-purple-500 text-transparent bg-clip-text' : 'bg-gradient-to-r from-orange-500 via-orange-400 to-orange-600 text-transparent bg-clip-text'}`}>
         {service.title}
       </h1>
 
-      <div className="mt-4 w-20 h-1 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full mx-auto lg:mx-0"></div>
+      <div className={`mt-4 w-20 h-1 ${isDark ? 'bg-gradient-to-r from-indigo-500 to-blue-500' : 'bg-gradient-to-r from-orange-500 to-orange-600'} rounded-full mx-auto lg:mx-0`}></div>
     </div>
 
   
@@ -252,18 +258,18 @@ return (
         {/* LEFT → Overview */}
         <div>
          
-          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold">
+          <h2 className={`text-lg sm:text-xl md:text-2xl font-semibold ${isDark ? '' : 'text-orange-500'}`}>
             {service.sections[0].heading}
           </h2>
 
-          <p className="text-white/80 leading-relaxed text-sm sm:text-base md:text-lg">
+          <p className={`leading-relaxed text-sm sm:text-base md:text-lg ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
             {service.sections[0].text}
           </p>
         </div>
 
         {/* RIGHT → IMAGE */}
         <div className="relative group w-full">
-          <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition duration-500"></div>
+          <div className={`absolute -inset-1 ${isDark ? 'bg-gradient-to-r from-indigo-500 to-blue-500' : 'bg-gradient-to-r from-orange-500 to-orange-600'} rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition duration-500`}></div>
 
           <div className="relative overflow-hidden rounded-2xl">
             <img
@@ -282,12 +288,12 @@ return (
         {service.sections.slice(1).map((section, index) => (
           <div key={index}>
 
-            <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2">
+            <h2 className={`text-lg sm:text-xl md:text-2xl font-semibold mb-2 ${isDark ? '' : 'text-orange-500'}`}>
               {section.heading}
             </h2>
 
             {section.text && (
-              <p className="text-white/80 leading-relaxed text-sm sm:text-base md:text-lg">
+              <p className={`leading-relaxed text-sm sm:text-base md:text-lg ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
                 {section.text}
               </p>
             )}
@@ -297,7 +303,7 @@ return (
                 {section.list.map((item, i) => (
                   <li
                     key={i}
-                    className="pl-4 border-l-2 border-indigo-500 text-white/80 text-sm sm:text-base md:text-lg"
+                    className={`pl-4 border-l-2 ${isDark ? 'border-indigo-500 text-white/80' : 'border-orange-500 text-gray-700'} text-sm sm:text-base md:text-lg`}
                   >
                     {item}
                   </li>

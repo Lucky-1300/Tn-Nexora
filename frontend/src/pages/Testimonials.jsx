@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
+import { useTheme } from '../components/ThemeWrapper';
 
 
 export default function TestimonialsPage() {
+  const { isDark, bgColor, textColor, headingColor } = useTheme();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -83,24 +85,24 @@ export default function TestimonialsPage() {
   return (
     <>
       {/* Hero Section */}
-        <section className="relative flex flex-col items-center justify-center text-center px-4 py-8">
-          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-600/40 via-purple-700/30 to-indigo-900/20 blur-2xl opacity-70" />
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-2 max-w-3xl text-white">
+        <section className={`relative flex flex-col items-center justify-center text-center px-4 py-8 ${bgColor}`}>
+          <div className={`absolute inset-0 -z-10 ${isDark ? 'bg-gradient-to-br from-blue-600/40 via-purple-700/30 to-indigo-900/20' : 'bg-gradient-to-br from-orange-400/30 via-orange-300/20 to-orange-200/20'} blur-2xl opacity-70`} />
+          <h1 className={`text-4xl md:text-5xl font-extrabold mb-2 max-w-3xl ${isDark ? 'text-white' : 'text-orange-500'}`}>
             Our Efforts Speak
           </h1>
-          <p className="text-lg text-white/80 max-w-2xl">
+          <p className={`text-lg max-w-2xl ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
             Read what our satisfied clients have to say about their experience with TN Nexora
           </p>
         </section>
 
         {/* Testimonials Grid */}
-        <section className="py-12 px-4">
+        <section className={`py-12 px-4 ${bgColor}`}>
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {allTestimonials.map((testimonial) => (
                 <div 
                   key={testimonial.id} 
-                  className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg overflow-hidden hover:scale-105 transition duration-300 border border-blue-500/20 shadow-lg"
+                  className={`rounded-lg overflow-hidden hover:scale-105 transition duration-300 border shadow-lg ${isDark ? 'bg-gradient-to-br from-slate-800 to-slate-900 border-blue-500/20' : 'bg-orange-50/50 border-orange-300/40'}`}
                 >
                   {/* Image */}
                   <div className="h-56 overflow-hidden bg-black flex items-center justify-center">
@@ -113,10 +115,10 @@ export default function TestimonialsPage() {
 
                   {/* Content */}
                   <div className="p-6">
-                    <p className="text-white font-semibold mb-1">{testimonial.name}</p>
-                    <p className="text-white/60 text-sm mb-3">{testimonial.company}</p>
-                    <p className="text-blue-400 text-xs font-semibold mb-3">{testimonial.service}</p>
-                    <p className="text-white/80 text-sm leading-relaxed">"{testimonial.text}"</p>
+                    <p className={`font-semibold mb-1 ${isDark ? 'text-white' : 'text-orange-600'}`}>{testimonial.name}</p>
+                    <p className={`text-sm mb-3 ${isDark ? 'text-white/60' : 'text-gray-600'}`}>{testimonial.company}</p>
+                    <p className={`text-xs font-semibold mb-3 ${isDark ? 'text-blue-400' : 'text-orange-500'}`}>{testimonial.service}</p>
+                    <p className={`text-sm leading-relaxed ${isDark ? 'text-white/80' : 'text-gray-700'}`}>"{testimonial.text}"</p>
                     
                     {/* Stars */}
                     <div className="flex gap-1 mt-4">
@@ -132,14 +134,14 @@ export default function TestimonialsPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="relative py-12 px-4 overflow-hidden">
-          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900" />
+        <section className={`relative py-12 px-4 overflow-hidden ${bgColor}`}>
+          <div className={`absolute inset-0 -z-10 ${isDark ? 'bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900' : 'bg-gradient-to-r from-orange-100 via-orange-50 to-orange-100'}`} />
           <div className="max-w-7xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Ready to Work With Us?</h2>
-            <p className="text-white/80 mb-8 max-w-2xl mx-auto text-lg">
+            <h2 className={`text-3xl md:text-5xl font-bold mb-4 ${isDark ? 'text-white' : 'text-orange-500'}`}>Ready to Work With Us?</h2>
+            <p className={`mb-8 max-w-2xl mx-auto text-lg ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
               Join hundreds of satisfied clients who have transformed their business with TN Nexora
             </p>
-            <button className="px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold text-lg transition transform hover:scale-105">
+            <button className={`px-8 py-4 rounded-full text-white font-bold text-lg transition transform hover:scale-105 ${isDark ? 'bg-gradient-to-r from-blue-500 to-purple-600' : 'bg-gradient-to-r from-orange-500 to-orange-600'}`}>
               Get Started Today
             </button>
           </div>
