@@ -1,4 +1,5 @@
-// import { Routes, Route } from 'react-router-dom';
+import { useContext } from 'react';
+import { ThemeContext } from './context/ThemeContext';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 import Home from './pages/Home';
@@ -24,6 +25,7 @@ import Forbidden from "./pages/Forbidden";
 import ServerError from "./pages/ServerError";
 
 function App() {
+  const { isDark } = useContext(ThemeContext);
 
 const location = useLocation();
 
@@ -33,7 +35,7 @@ const hideLayout =
   location.pathname === "/404";
 
   return (
-    <div className="bg-[#0a0f1c] min-h-screen flex flex-col">
+    <div className={`${isDark ? 'bg-[#0a0f1c] text-white' : 'bg-white text-[#FF8C00]'} min-h-screen flex flex-col transition-colors duration-300`}>
       
       {/* <Navbar /> */}
      {!hideLayout && <Navbar />}
@@ -42,7 +44,7 @@ const hideLayout =
 
 
       {/* ✅ FIXED: Routes wrapped inside flex-1 */}
-      <div className="flex-1">
+      <div className={`flex-1 ${isDark ? '' : 'bg-white'} transition-colors duration-300`}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} /> 
