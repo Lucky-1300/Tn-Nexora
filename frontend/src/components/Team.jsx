@@ -1,5 +1,6 @@
 import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { useTheme } from "./ThemeWrapper";
 
 const teamMembers = [
   {
@@ -33,12 +34,13 @@ const teamMembers = [
 ];
 
 export default function Team() {
+  const { isDark } = useTheme();
   return (
-    <section id="team" className="py-5 px-4 bg-[#0a0f1c] text-white">
+    <section id="team" className={`py-5 px-4 transition duration-300 ${isDark ? 'bg-[#0a0f1c] text-white' : 'bg-white text-gray-900'}`}>
       {/* Heading */}
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold">Meet Our Team</h2>
-        <p className="mt-2 text-white/70">The people behind our success..!</p>
+        <h2 className={`text-3xl md:text-4xl font-bold transition duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>Meet Our Team</h2>
+        <p className={`mt-2 transition duration-300 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>The people behind our success..!</p>
       </div>
 
       {/* Cards */}
@@ -46,14 +48,7 @@ export default function Team() {
         {teamMembers.map((member, index) => (
           <div
             key={index}
-            className="group rounded-2xl overflow-hidden 
-          bg-white/5 backdrop-blur-lg 
-            border border-white/10 
-          hover:border-white/20
-            shadow-lg 
-            hover:shadow-[0_0_8px_rgba(59,130,246,0.25),0_0_12px_rgba(168,85,247,0.2)]
-            transition duration-300 
-            hover:-translate-y-2"
+            className={`group rounded-2xl overflow-hidden transition duration-300 ${isDark ? 'bg-white/5 border-white/10 hover:border-white/20 hover:shadow-[0_0_8px_rgba(59,130,246,0.25),0_0_12px_rgba(168,85,247,0.2)]' : 'bg-orange-50/40 border-orange-200/40 hover:border-orange-300/60 hover:shadow-[0_0_8px_rgba(249,115,22,0.25),0_0_12px_rgba(234,88,12,0.2)]'} border backdrop-blur-lg shadow-lg hover:-translate-y-2`}
           >
             {/* Image */}
             <div className="relative h-56 w-full overflow-hidden">
@@ -85,22 +80,22 @@ export default function Team() {
 
             {/* Content */}
             <div className="p-5">
-              <h3 className="text-lg font-bold text-white">{member.name}</h3>
+              <h3 className={`text-lg font-bold transition duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>{member.name}</h3>
 
-              <p className="text-sm mt-1">
-                <span className="text-indigo-400 font-semibold">
+              <p className={`text-sm mt-1 transition duration-300`}>
+                <span className={`font-semibold ${isDark ? 'text-indigo-400' : 'text-orange-600'}`}>
                   {member.role}
                 </span>
               </p>
 
-              <p className="text-xs text-white/60 mt-2 leading-relaxed">
+              <p className={`text-xs mt-2 leading-relaxed transition duration-300 ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
                 {member.desc}
               </p>
 
               <div
-                className="mt-4 h-1 w-0 
-                bg-gradient-to-r from-blue-500 to-purple-600 
-                group-hover:w-full transition-all duration-300"
+                className={`mt-4 h-1 w-0 transition-all duration-300
+                ${isDark ? 'bg-gradient-to-r from-blue-500 to-purple-600' : 'bg-gradient-to-r from-orange-500 to-orange-600'}
+                group-hover:w-full`}
               ></div>
             </div>
           </div>
