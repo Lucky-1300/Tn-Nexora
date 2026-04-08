@@ -1,6 +1,7 @@
 const navLinks = [
   { name: "Home", type: "route", to: "/" },
   { name: "About Us", type: "route", to: "/about" },
+  { name: "Team", type: "anchor", href: "/team",},
 
   {
     name: "Reviews",
@@ -96,8 +97,7 @@ export default function Navbar() {
 
     document.addEventListener("click", handleClickOutside); // ✅ CHANGE BACK TO mousedown
 
-    return () =>
-      document.removeEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
   useEffect(() => {
@@ -225,12 +225,14 @@ export default function Navbar() {
                     <>
                       <div
                         onClick={(e) => {
-                        e.stopPropagation();
-                        setOpenDropdown((prev) =>
-                          prev === link.name ? null : link.name
-                        );
-                      }}
-                        onDragOver={(event) => handleDropdownDragOver(event, link.name)}
+                          e.stopPropagation();
+                          setOpenDropdown((prev) =>
+                            prev === link.name ? null : link.name,
+                          );
+                        }}
+                        onDragOver={(event) =>
+                          handleDropdownDragOver(event, link.name)
+                        }
                         onDrop={(event) => handleDropdownDrop(event, link.name)}
                         onDragLeave={() => handleDropdownDragLeave(link.name)}
                         className="flex justify-between items-center py-2 border-b border-white/10 cursor-pointer"
@@ -336,7 +338,8 @@ export default function Navbar() {
             onDragLeave={() => handleDropdownDragLeave(link.name)}
             className="text-white/90 hover:text-white flex items-center"
           >
-            {link.name} <span className="ml-1">{getDropdownIcon(link.name, isOpen)}</span>
+            {link.name}{" "}
+            <span className="ml-1">{getDropdownIcon(link.name, isOpen)}</span>
           </span>
 
           {isOpen && (
