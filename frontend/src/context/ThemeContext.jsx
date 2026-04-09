@@ -3,15 +3,10 @@ import React, { createContext, useState, useEffect } from 'react';
 export const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [isDark, setIsDark] = useState(true);
-
-  // Load theme from localStorage on mount
-  useEffect(() => {
+  const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem('theme');
-    if (saved) {
-      setIsDark(saved === 'dark');
-    }
-  }, []);
+    return saved ? saved === 'dark' : true; // Default to dark if not saved
+  });
 
   // Save theme to localStorage whenever it changes
   useEffect(() => {
