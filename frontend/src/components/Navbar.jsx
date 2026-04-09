@@ -251,13 +251,12 @@ export default function Navbar() {
 
                       {/* Dropdown Items */}
                       {isOpen && (
-                        <div className="pl-4 mt-2 flex flex-col gap-1 bg-white/5 rounded">
+                        <div className="pl-4 mt-2 flex flex-col gap-2">
                           {link.items.map((item) =>
                             item.type === "route" ? (
                               <Link
                                 key={item.name}
                                 to={item.to}
-                                className="block text-sm text-white/80 hover:text-indigo-400 hover:bg-white/10 px-3 py-2 rounded transition cursor-pointer"
                                 onClick={() => {
                                   setMenuOpen(false);
                                   setOpenDropdown(null);

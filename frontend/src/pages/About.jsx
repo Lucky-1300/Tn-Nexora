@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Link } from "react-router-dom";
-import aboutImg from "../assets/About.jpeg";
 import { useTheme } from '../components/ThemeWrapper';
 
 export default function About() {
@@ -32,7 +31,7 @@ export default function About() {
             {/* Image */}
             <div className="flex justify-center">
               <img
-                src={aboutImg}
+                src="/About.jpeg"
                 alt="TN Nexora Team"
                 className="rounded-xl shadow-2xl object-cover w-full h-80 md:h-96"
               />

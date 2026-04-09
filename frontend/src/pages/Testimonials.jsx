@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
-import VarunBatraImg from '../assets/VarunBatra.png';
-import JamesMitchellImg from '../assets/JamesMitchell.png';
-import JunSeoLeeImg from '../assets/Jun-SeoLee.png';
+import { useTheme } from '../components/ThemeWrapper';
+
 
 export default function TestimonialsPage() {
   const { isDark, bgColor, textColor, headingColor } = useTheme();
@@ -13,8 +12,8 @@ export default function TestimonialsPage() {
       id: 1,
       name: "Varun Batra",
       company: "E-Commerce Solutions",
-      image: VarunBatraImg ,
-      text: "TN Nexora increased our online sales by 150% in just 3 months. Their digital marketing strategy was exactly what we needed.",
+      image: "/VarunBatra.png",
+      text: "TN Nexora helped us improve our digital marketing efforts in a structured way. Earlier, we were trying different things but nothing was giving consistent results. Their team analyzed everything and created a proper plan. After implementing their strategies, we saw a steady improvement in leads and visibility. It wasn’t overnight, but the growth was real and sustainable",
       service: "Digital Marketing",
       rating: 5
     },
@@ -22,8 +21,8 @@ export default function TestimonialsPage() {
       id: 2,
       name: "James Mitchell",
       company: "Tech Startup Inc",
-      image: JamesMitchellImg ,
-      text: "The team's expertise in SEO and content strategy transformed our online presence. Highly professional and results-driven.",
+      image: "/JamesMitchell.png",
+      text: "Working with TN Nexora has been easy and comfortable. They understood what we needed and handled everything in a proper way. The team stays active and keeps things clear, which makes the process simple to follow. We appreciate their steady work and the improvement we have noticed over time. Overall, it has been a good experience working with them.",
       service: "SEO & Content",
       rating: 5
     },
@@ -31,8 +30,8 @@ export default function TestimonialsPage() {
       id: 3,
       name: "Jun-Seo Lee",
       company: "Healthcare Services",
-      image: JunSeoLeeImg ,
-      text: "Exceptional service! TN Nexora helped us reach our target audience effectively. Definitely recommend their services.",
+      image: "/Jun-SeoLee.png",
+      text: "Digital marketing can be confusing sometimes, especially when you don’t have much technical knowledge. TN Nexora made things simpler for us. They guided us step by step and helped us understand what’s important and what’s not.Their support has been consistent, and we never felt lost during the process. That kind of guidance really helps when you’re trying to grow your business online.",
       service: "Lead Generation",
       rating: 5
     },
