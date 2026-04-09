@@ -181,7 +181,7 @@ export default function Navbar() {
 
         {/* ✅ Hamburger */}
         <button
-          className="lg:hidden text-white text-2xl ml-2"
+          className="lg:hidden text-white text-2xl ml-2 p-3 min-w-[48px] min-h-[48px]"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           ☰
