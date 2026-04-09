@@ -79,9 +79,9 @@ const hideLayout =
 <Route path="*" element={<NotFound />} /> */}
 <Route path="/403" element={<Forbidden />} />
 <Route path="/500" element={<ServerError />} />
-<Route path="/404" element={<NotFound />} />
-<Route path="*" element={<Navigate to="/404" />} />
-
+{/* <Route path="/404" element={<NotFound />} />
+<Route path="*" element={<Navigate to="/404" />} /> */}
+<Route path="*" element={<NotFound />} />
 
 
 

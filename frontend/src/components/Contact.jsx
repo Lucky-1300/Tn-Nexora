@@ -4,7 +4,7 @@ import { useTheme } from './ThemeWrapper';
 
 export default function Contact() {
   const [result, setResult] = useState("");
-  const { isDark, bgColor, textColor } = useTheme();
+  const { isDark, bgColor } = useTheme();
   const handleSubmit = async (event) => {
     event.preventDefault();
     setResult("Sending...");
@@ -57,7 +57,8 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className={`mb-12 py-4 px-2 md:px-8 w-full flex flex-col items-center justify-center ${bgColor}`}
+      // className={`mb-12 py-4 px-2 md:px-8 w-full flex flex-col items-center justify-center ${bgColor}`}
+      className={`py-4 px-2 md:px-8 w-full flex flex-col items-center ${bgColor}`}
     >
       {/* Heading */}
       <div className="mb-10 w-full max-w-7xl mx-auto">
