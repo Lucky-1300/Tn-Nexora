@@ -1,6 +1,6 @@
 import { Mail, Phone, Building2 } from "lucide-react";
 import { useState } from "react";
-import { useTheme } from './ThemeWrapper';
+import { useTheme } from "./ThemeWrapper";
 
 export default function Contact() {
   const [result, setResult] = useState("");
@@ -26,7 +26,7 @@ export default function Contact() {
         "https://script.google.com/macros/s/AKfycbzC5FwY_sJ4lQyM51toxauohXOJw3RuRtP7n4BuHZafC7VvgPwl8HeGlIZi8kr8KY-q/exec",
         {
           method: "POST",
-          mode: "no-cors", 
+          mode: "no-cors",
           headers: {
             "Content-Type": "application/json",
           },
@@ -61,10 +61,14 @@ export default function Contact() {
     >
       {/* Heading */}
       <div className="mb-10 w-full max-w-7xl mx-auto">
-        <p className={`inline-block px-4 py-1 text-sm ${isDark ? 'bg-indigo-500/20 text-indigo-400' : 'bg-orange-400/20 text-orange-600'} rounded-full mb-4`}>
+        <p
+          className={`inline-block px-4 py-1 text-sm ${isDark ? "bg-indigo-500/20 text-indigo-400" : "bg-orange-400/20 text-orange-600"} rounded-full mb-4`}
+        >
           CONTACT US
         </p>
-        <h2 className={`text-3xl md:text-4xl font-bold ${isDark ? 'text-white' : 'text-orange-500'}`}>
+        <h2
+          className={`text-3xl md:text-4xl font-bold ${isDark ? "text-white" : "text-orange-500"}`}
+        >
           Get In Touch With TN Nexora
         </h2>
       </div>
@@ -75,48 +79,84 @@ export default function Contact() {
         <div className="md:col-span-2 space-y-8 flex flex-col justify-between">
           {/* Branch */}
           <div className="flex items-start gap-4 group">
-            <div className={`p-4 ${isDark ? 'bg-indigo-500/10 border-indigo-400/20' : 'bg-orange-400/10 border-orange-400/20'} border rounded-xl group-hover:scale-110 transition duration-300`}>
-              <Building2 className={isDark ? 'text-indigo-400' : 'text-orange-500'} />
+            <div
+              className={`p-4 ${isDark ? "bg-indigo-500/10 border-indigo-400/20" : "bg-orange-400/10 border-orange-400/20"} border rounded-xl group-hover:scale-110 transition duration-300`}
+            >
+              <Building2
+                className={isDark ? "text-indigo-400" : "text-orange-500"}
+              />
             </div>
             <div>
-              <h3 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-orange-600'}`}>
+              <h3
+                className={`text-lg font-semibold ${isDark ? "text-white" : "text-orange-600"}`}
+              >
                 Execution Office
               </h3>
-              <p className={isDark ? 'text-white/60' : 'text-gray-700'}>kanpur, Uttarpardesh.</p>
+              <p className={isDark ? "text-white/60" : "text-gray-700"}>
+                kanpur, Uttarpardesh.
+              </p>
             </div>
           </div>
 
           {/* Head */}
           <div className="flex items-start gap-4 group">
-            <div className={`p-4 ${isDark ? 'bg-blue-500/10 border-blue-400/20' : 'bg-blue-400/10 border-blue-400/20'} border rounded-xl group-hover:scale-110 transition duration-300`}>
-              <Building2 className={isDark ? 'text-blue-400' : 'text-blue-600'} />
+            <div
+              className={`p-4 ${isDark ? "bg-blue-500/10 border-blue-400/20" : "bg-blue-400/10 border-blue-400/20"} border rounded-xl group-hover:scale-110 transition duration-300`}
+            >
+              <Building2
+                className={isDark ? "text-blue-400" : "text-blue-600"}
+              />
             </div>
             <div>
-              <h3 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-orange-600'}`}>Head Office</h3>
-              <p className={isDark ? 'text-white/60' : 'text-gray-700'}>kanpur, Uttarpardesh.</p>
+              <h3
+                className={`text-lg font-semibold ${isDark ? "text-white" : "text-orange-600"}`}
+              >
+                Head Office
+              </h3>
+              <p className={isDark ? "text-white/60" : "text-gray-700"}>
+                kanpur, Uttarpardesh.
+              </p>
             </div>
           </div>
 
           {/* Phone */}
           <div className="flex items-start gap-4 group">
-            <div className={`p-4 ${isDark ? 'bg-slate-500/10 border-slate-400/20' : 'bg-slate-400/10 border-slate-400/20'} border rounded-xl group-hover:scale-110 transition duration-300`}>
-              <Phone className={isDark ? 'text-slate-300' : 'text-slate-700'} />
+            <div
+              className={`p-4 ${isDark ? "bg-slate-500/10 border-slate-400/20" : "bg-slate-400/10 border-slate-400/20"} border rounded-xl group-hover:scale-110 transition duration-300`}
+            >
+              <Phone className={isDark ? "text-slate-300" : "text-slate-700"} />
             </div>
             <div>
-              <h3 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-orange-600'}`}>Phone</h3>
-              <p className={isDark ? 'text-white/70' : 'text-gray-700'}>+91 9320050310</p>
-              <p className={isDark ? 'text-white/70' : 'text-gray-700'}>+91 9420050310</p>
+              <h3
+                className={`text-lg font-semibold ${isDark ? "text-white" : "text-orange-600"}`}
+              >
+                Phone
+              </h3>
+              <p className={isDark ? "text-white/70" : "text-gray-700"}>
+                +91 9320050310
+              </p>
+              <p className={isDark ? "text-white/70" : "text-gray-700"}>
+                +91 9420050310
+              </p>
             </div>
           </div>
 
           {/* Email */}
           <div className="flex items-start gap-4 group">
-            <div className={`p-4 ${isDark ? 'bg-indigo-500/10 border-indigo-400/20' : 'bg-orange-400/10 border-orange-400/20'} border rounded-xl group-hover:scale-110 transition duration-300`}>
-              <Mail className={isDark ? 'text-indigo-300' : 'text-orange-500'} />
+            <div
+              className={`p-4 ${isDark ? "bg-indigo-500/10 border-indigo-400/20" : "bg-orange-400/10 border-orange-400/20"} border rounded-xl group-hover:scale-110 transition duration-300`}
+            >
+              <Mail
+                className={isDark ? "text-indigo-300" : "text-orange-500"}
+              />
             </div>
             <div>
-              <h3 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-orange-600'}`}>Email</h3>
-              <p className={isDark ? 'text-indigo-300' : 'text-orange-600'}>
+              <h3
+                className={`text-lg font-semibold ${isDark ? "text-white" : "text-orange-600"}`}
+              >
+                Email
+              </h3>
+              <p className={isDark ? "text-indigo-300" : "text-orange-600"}>
                 tnnexoratechnologies@gmail.com
               </p>
             </div>
@@ -124,14 +164,20 @@ export default function Contact() {
 
           {/* Social */}
 
-          <div className={`pt-6 border-t ${isDark ? 'border-white/10' : 'border-orange-300/40'}`}>
-            <p className={isDark ? 'text-white/70' : 'text-gray-700'}>Follow Our Social Media</p>
+          <div
+            className={`pt-6 border-t ${isDark ? "border-white/10" : "border-orange-300/40"}`}
+          >
+            <p className={isDark ? "text-white/70" : "text-gray-700"}>
+              Follow Our Social Media
+            </p>
 
             <div className="flex gap-4 mt-4">
               {/* LinkedIn */}
               <a
-                href="https://www.linkedin.com/company/tn-nexora-technologies/posts/?feedView=all" target="_blank" rel="noopener noreferrer"
-                className={`w-10 h-10 flex items-center justify-center border rounded-full transition hover:scale-110 ${isDark ? 'bg-white/10 border-white/20 text-white/80 hover:bg-blue-500/20' : 'bg-orange-100/50 border-orange-300/40 text-orange-600 hover:bg-orange-200/50'}`}
+                href="https://www.linkedin.com/company/tn-nexora-technologies/posts/?feedView=all"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-10 h-10 flex items-center justify-center border rounded-full transition hover:scale-110 ${isDark ? "bg-white/10 border-white/20 text-white/80 hover:bg-blue-500/20" : "bg-orange-100/50 border-orange-300/40 text-orange-600 hover:bg-orange-200/50"}`}
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -144,8 +190,10 @@ export default function Contact() {
 
               {/* Instagram */}
               <a
-                href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                className={`w-10 h-10 flex items-center justify-center border rounded-full transition hover:scale-110 ${isDark ? 'bg-white/10 border-white/20 text-white/80 hover:bg-pink-500/20' : 'bg-orange-100/50 border-orange-300/40 text-orange-600 hover:bg-orange-200/50'}`}
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-10 h-10 flex items-center justify-center border rounded-full transition hover:scale-110 ${isDark ? "bg-white/10 border-white/20 text-white/80 hover:bg-pink-500/20" : "bg-orange-100/50 border-orange-300/40 text-orange-600 hover:bg-orange-200/50"}`}
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -158,8 +206,10 @@ export default function Contact() {
 
               {/* YouTube */}
               <a
-                href="https://youtube.com" target="_blank" rel="noopener noreferrer"
-                className={`w-10 h-10 flex items-center justify-center border rounded-full transition hover:scale-110 ${isDark ? 'bg-white/10 border-white/20 text-white/80 hover:bg-red-500/20' : 'bg-orange-100/50 border-orange-300/40 text-orange-600 hover:bg-orange-200/50'}`}
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-10 h-10 flex items-center justify-center border rounded-full transition hover:scale-110 ${isDark ? "bg-white/10 border-white/20 text-white/80 hover:bg-red-500/20" : "bg-orange-100/50 border-orange-300/40 text-orange-600 hover:bg-orange-200/50"}`}
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -175,8 +225,12 @@ export default function Contact() {
 
         {/* RIGHT FORM (Contact Form) */}
         <div className="md:col-span-3 flex items-center">
-          <div className={`w-full backdrop-blur-xl border rounded-2xl p-6 md:p-10 shadow-xl transition duration-300 ${isDark ? 'bg-white/5 border-white/10 hover:shadow-indigo-500/10' : 'bg-orange-50/70 border-orange-300/40 hover:shadow-orange-400/10'} hover:scale-[1.01]`}>
-            <h3 className={`text-2xl font-semibold mb-6 ${isDark ? 'text-white' : 'text-orange-600'}`}>
+          <div
+            className={`w-full backdrop-blur-xl border rounded-2xl p-6 md:p-10 shadow-xl transition duration-300 ${isDark ? "bg-white/5 border-white/10 hover:shadow-indigo-500/10" : "bg-orange-50/70 border-orange-300/40 hover:shadow-orange-400/10"} hover:scale-[1.01]`}
+          >
+            <h3
+              className={`text-2xl font-semibold mb-6 ${isDark ? "text-white" : "text-orange-600"}`}
+            >
               Contact Us
             </h3>
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -185,14 +239,14 @@ export default function Contact() {
                   type="text"
                   name="first_name"
                   placeholder="First Name"
-                  className={`w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? 'bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500' : 'bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500'}`}
+                  className={`w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? "bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500" : "bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500"}`}
                   required
                 />
                 <input
                   type="text"
                   name="last_name"
                   placeholder="Last Name"
-                  className={`w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? 'bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500' : 'bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500'}`}
+                  className={`w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? "bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500" : "bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500"}`}
                   required
                 />
               </div>
@@ -201,14 +255,14 @@ export default function Contact() {
                 type="text"
                 name="phone"
                 placeholder="Phone Number"
-                className={`w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? 'bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500' : 'bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500'}`}
+                className={`w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? "bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500" : "bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500"}`}
               />
 
               <input
                 type="email"
                 name="email"
                 placeholder="Email Address"
-                className={`w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? 'bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500' : 'bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500'}`}
+                className={`w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? "bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500" : "bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500"}`}
                 required
               />
 
@@ -216,29 +270,35 @@ export default function Contact() {
                 type="text"
                 name="website"
                 placeholder="Website"
-                className={`w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? 'bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500' : 'bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500'}`}
+                className={`w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? "bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500" : "bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500"}`}
               />
 
               <textarea
                 name="message"
                 rows="4"
                 placeholder="Your Message"
-                className={`w-full px-4 py-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? 'bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500' : 'bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500'}`}
+                className={`w-full px-4 py-3 mt-3 rounded-lg border text-base transition focus:outline-none focus:ring-2 ${isDark ? "bg-slate-800 border-slate-700 text-gray-300 placeholder-slate-500 focus:ring-blue-500" : "bg-orange-50 border-orange-300/60 text-gray-900 placeholder-gray-600 focus:ring-orange-500"}`}
                 required
               ></textarea>
 
-              <div className={`flex items-start gap-2 text-sm ${isDark ? 'text-white/60' : 'text-gray-700'}`}>
-                <input
-                  type="checkbox"
-                  className={`mt-1 ${isDark ? 'accent-indigo-500' : 'accent-orange-500'}`}
-                  required
-                />
-                <p>I agree to receive updates and communications.</p>
+              <div
+                className={`flex items-start gap-2 text-sm ${isDark ? "text-white/60" : "text-gray-700"}`}
+              >
+                <label className="flex items-center gap-3 p-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    className={`w-5 h-5 ${
+                      isDark ? "accent-indigo-500" : "accent-orange-500"
+                    }`}
+                    required
+                  />
+                  <span>I accept terms and conditions</span>
+                </label>
               </div>
 
               <button
                 type="submit"
-                className={`w-full py-3 rounded-lg text-white font-semibold hover:scale-105 hover:shadow-lg transition duration-300 ${isDark ? 'bg-gradient-to-r from-indigo-500 to-blue-500' : 'bg-gradient-to-r from-orange-500 to-orange-600'}`}
+                className={`w-full py-3 rounded-lg text-white font-semibold hover:scale-105 hover:shadow-lg transition duration-300 ${isDark ? "bg-gradient-to-r from-indigo-500 to-blue-500" : "bg-gradient-to-r from-orange-500 to-orange-600"}`}
               >
                 Submit Now
               </button>
