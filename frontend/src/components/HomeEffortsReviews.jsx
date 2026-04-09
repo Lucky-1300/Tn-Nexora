@@ -1,7 +1,9 @@
+
 import { Link } from "react-router-dom";
 import VarunBatraImg from '../assets/VarunBatra.png';
 import JamesMitchellImg from '../assets/JamesMitchell.png';
 import JunSeoLeeImg from '../assets/Jun-SeoLee.png';
+import { useTheme } from './ThemeWrapper';
 
 const reviews = [
   {
@@ -9,7 +11,7 @@ const reviews = [
     company: "E-Commerce Solutions",
     tag: "Digital Marketing",
     review:
-      '"TN Nexora increased our online sales by 150% in just 3 months. Their digital marketing strategy was exactly what we needed."',
+      '"TN Nexora helped us improve our digital marketing efforts in a structured way. Earlier, we were trying different things but nothing was giving consistent results. Their team analyzed everything and created a proper plan. After implementing their strategies, we saw a steady improvement in leads and visibility. It wasn’t overnight, but the growth was real and sustainable."',
     rating: 5,
     image:
       VarunBatraImg,
@@ -19,7 +21,7 @@ const reviews = [
     company: "Tech Startup Inc",
     tag: "SEO & Content",
     review:
-      '"The team\'s expertise in SEO and content strategy transformed our online presence. Highly professional and results-driven."',
+      '"Working with TN Nexora has been easy and comfortable. They understood what we needed and handled everything in a proper way. The team stays active and keeps things clear, which makes the process simple to follow. We appreciate their steady work and the improvement we have noticed over time. Overall, it has been a good experience working with them."',
     rating: 5,
     image:
       JamesMitchellImg,
@@ -29,7 +31,7 @@ const reviews = [
     company: "Healthcare Services",
     tag: "Lead Generation",
     review:
-      '"Exceptional service! TN Nexora helped us reach our target audience effectively. Definitely recommend their services."',
+      '"Digital marketing can be confusing sometimes, especially when you don’t have much technical knowledge. TN Nexora made things simpler for us. They guided us step by step and helped us understand what’s important and what’s not.Their support has been consistent, and we never felt lost during the process. That kind of guidance really helps when you’re trying to grow your business online."',
     rating: 5,
     image:
       JunSeoLeeImg,
@@ -37,19 +39,21 @@ const reviews = [
 ];
 
 export default function HomeEffortsReviews() {
+  const { isDark, bgColor, textColor } = useTheme();
+
   return (
-    <section className="max-w-7xl mx-auto py-20 px-4">
-      <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-2">
+    <section className={`max-w-7xl mx-auto py-5 px-4 ${bgColor}`}>
+      <h2 className={`text-4xl md:text-5xl font-extrabold text-center mb-2 ${isDark ? 'text-white' : 'text-orange-500'}`}>
         Our Efforts Speak
       </h2>
-      <p className="text-center text-gray-300 mb-12 text-lg">
+      <p className={`text-center mb-12 text-lg ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
         See what our clients have to say about working with TN Nexora
       </p>
       <div className="grid md:grid-cols-3 gap-8 mb-10">
         {reviews.map((r, i) => (
           <div
             key={i}
-            className="bg-[#181e2a] rounded-2xl shadow-lg overflow-hidden border border-white/10 flex flex-col"
+            className={`rounded-2xl shadow-lg overflow-hidden flex flex-col ${isDark ? 'bg-[#181e2a] border-white/10' : 'bg-orange-50/50 border-orange-300/40'} border`}
           >
             <div className="h-56 overflow-hidden bg-black flex items-center justify-center">
               <img
@@ -60,14 +64,14 @@ export default function HomeEffortsReviews() {
               />
             </div>
             <div className="p-6 flex-1 flex flex-col">
-              <div className="text-white font-semibold text-lg mb-1">
+              <div className={`font-semibold text-lg mb-1 ${isDark ? 'text-white' : 'text-orange-600'}`}>
                 {r.name}
               </div>
-              <div className="text-gray-400 text-sm mb-1">{r.company}</div>
-              <div className="text-blue-400 text-xs font-semibold mb-2">
+              <div className={`text-sm mb-1 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{r.company}</div>
+              <div className={`text-xs font-semibold mb-2 ${isDark ? 'text-blue-400' : 'text-orange-500'}`}>
                 {r.tag}
               </div>
-              <div className="text-white/80 text-sm mb-4">{r.review}</div>
+              <div className={`text-sm mb-4 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>{r.review}</div>
               <div className="flex gap-1 mb-2">
                 {Array.from({ length: r.rating }).map((_, idx) => (
                   <span key={idx} className="text-yellow-400 text-lg">
@@ -81,7 +85,7 @@ export default function HomeEffortsReviews() {
       </div>
       <div className="flex justify-center">
         <Link to="/testimonials">
-          <button className="px-8 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg hover:from-blue-600 hover:to-purple-600 transition text-lg">
+          <button className={`px-8 py-3 rounded-xl font-semibold shadow-lg transition text-lg text-white ${isDark ? 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600' : 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700'}`}>
             View All Reviews
           </button>
         </Link>

@@ -1,18 +1,16 @@
-// import { Link, useLocation } from 'react-router-dom';
-// import React, { useState, useRef, useEffect } from 'react';
-
 const navLinks = [
   { name: "Home", type: "route", to: "/" },
   { name: "About Us", type: "route", to: "/about" },
+  { name: "Team", type: "anchor", href: "/team",},
 
   {
     name: "Reviews",
     type: "dropdown",
     items: [
       { name: "Testimonials", type: "route", to: "/testimonials" },
-      { name: "SEO Case Study", href: "#seo-case-study" },
-      { name: "PPC Case Study", href: "#ppc-case-study" },
-      { name: "Website Case Study", href: "#website-case-study" },
+      { name: "SEO Case Study", type: "route", to: "/case-study/seo" },
+      { name: "PPC Case Study", type: "route", to: "/case-study/ppc" },
+      { name: "Website Case Study", type: "route", to: "/case-study/website" },
     ],
   },
 
@@ -77,13 +75,18 @@ const navLinks = [
 ];
 
 import { Link, useLocation } from "react-router-dom";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 
 export default function Navbar() {
   const location = useLocation();
+  const { isDark, toggleTheme } = useContext(ThemeContext);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false); // ✅ mobile menu
+  const [dragOverDropdown, setDragOverDropdown] = useState(null);
+  const [droppedDropdown, setDroppedDropdown] = useState(null);
   const navRef = useRef();
+  const dropResetTimerRef = useRef(null);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -91,56 +94,104 @@ export default function Navbar() {
         setOpenDropdown(null);
       }
     }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+
+    document.addEventListener("click", handleClickOutside); // ✅ CHANGE BACK TO mousedown
+
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
-  // ✅ Close mobile menu when route changes
   useEffect(() => {
-    setMenuOpen(false);
-    setOpenDropdown(null);
-  }, [location.pathname]);
+    return () => {
+      if (dropResetTimerRef.current) {
+        clearTimeout(dropResetTimerRef.current);
+      }
+    };
+  }, []);
+
+  function getDropdownIcon(dropdownName, isOpen) {
+    if (dragOverDropdown === dropdownName) return "⬇";
+    if (droppedDropdown === dropdownName) return "✓";
+    return isOpen ? "▴" : "▾";
+  }
+
+  function handleDropdownDragOver(event, dropdownName) {
+    event.preventDefault();
+    if (dragOverDropdown !== dropdownName) {
+      setDragOverDropdown(dropdownName);
+    }
+  }
+
+  function handleDropdownDrop(event, dropdownName) {
+    event.preventDefault();
+    setDragOverDropdown(null);
+    setDroppedDropdown(dropdownName);
+
+    if (dropResetTimerRef.current) {
+      clearTimeout(dropResetTimerRef.current);
+    }
+
+    dropResetTimerRef.current = setTimeout(() => {
+      setDroppedDropdown(null);
+    }, 800);
+  }
+
+  function handleDropdownDragLeave(dropdownName) {
+    if (dragOverDropdown === dropdownName) {
+      setDragOverDropdown(null);
+    }
+  }
 
   return (
-    <header className="w-full bg-[#101522] border-b border-[#23263a] sticky top-0 z-50">
+    <header className={`w-full ${isDark ? 'bg-[#101522] border-[#23263a]' : 'bg-gradient-to-r from-orange-500 to-orange-600 border-orange-600'} border-b sticky top-0 z-50 transition-colors duration-300`}>
       <nav
         ref={navRef}
-        className="max-w-8xl mx-auto flex items-center justify-between px-4 py-3"
+        className={`max-w-8xl mx-auto flex items-center justify-between px-3 md:px-4 py-2 md:py-3 text-white gap-2`}
       >
         {/* Logo */}
-        <div className="flex items-center gap-2 font-bold text-xl text-white">
+        <div className="flex items-center gap-2 font-bold text-xl">
           <img
-            src="/image.png"
+            src={isDark ? "/image.png" : "/image.png"}
             alt="Logo"
-            className="h-12 w-40 object-contain"
+            className="h-10 w-32 md:h-12 md:w-40 object-contain"
           />
         </div>
 
         {/* ✅ Desktop Menu */}
-        <ul className="hidden md:flex flex-1 justify-center gap-8 text-base font-medium">
+        <ul className="hidden lg:flex flex-1 justify-center gap-6 xl:gap-8 text-sm lg:text-base font-medium">
           {navLinks.map((link) => renderNavItem(link))}
         </ul>
 
         {/* CTA (Desktop only) */}
         <Link
           to="/contact"
-          className="hidden md:block ml-6 px-5 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold shadow-lg hover:scale-105 transition"
+          className={`hidden lg:block ml-2 lg:ml-6 px-4 lg:px-5 py-2 rounded-full text-sm lg:text-base ${isDark ? 'bg-gradient-to-r from-blue-500 to-purple-600' : 'bg-white text-[#FF8C00]'} font-semibold shadow-lg hover:scale-105 transition`}
         >
           Let's Talk
         </Link>
 
+        <div>
+        {/* Theme Toggle */}
+        <button
+          onClick={toggleTheme}
+          className={`ml-1 md:ml-4 p-2 rounded-full transition duration-300 ${isDark ? 'bg-gray-800 text-yellow-400' : 'bg-white text-orange-500'}`}
+          title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+        >
+          {isDark ? '☀️' : '🌙'}
+        </button>
+
         {/* ✅ Hamburger */}
         <button
-          className="md:hidden text-white text-2xl"
+          className="lg:hidden text-white text-2xl ml-2"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           ☰
         </button>
+        </div>
       </nav>
 
       {/* ✅ Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#101522] border-t border-[#23263a] px-4 pb-4">
+        <div className={`lg:hidden ${isDark ? 'bg-[#101522] border-[#23263a]' : 'bg-gradient-to-r from-orange-500 to-orange-600 border-orange-600'} border-t px-4 pb-4 transition-colors duration-300`}>
           <ul className="flex flex-col gap-2 mt-3 text-white">
             {navLinks.map((link) => {
               const isOpen = openDropdown === link.name;
@@ -173,9 +224,17 @@ export default function Navbar() {
                   {link.type === "dropdown" && (
                     <>
                       <div
-                        onClick={() =>
-                          setOpenDropdown(isOpen ? null : link.name)
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setOpenDropdown((prev) =>
+                            prev === link.name ? null : link.name,
+                          );
+                        }}
+                        onDragOver={(event) =>
+                          handleDropdownDragOver(event, link.name)
                         }
+                        onDrop={(event) => handleDropdownDrop(event, link.name)}
+                        onDragLeave={() => handleDropdownDragLeave(link.name)}
                         className="flex justify-between items-center py-2 border-b border-white/10 cursor-pointer"
                       >
                         <span>{link.name}</span>
@@ -186,7 +245,7 @@ export default function Navbar() {
                             isOpen ? "rotate-180" : ""
                           }`}
                         >
-                          ▼
+                          {getDropdownIcon(link.name, isOpen)}
                         </span>
                       </div>
 
@@ -203,6 +262,7 @@ export default function Navbar() {
                                   setMenuOpen(false);
                                   setOpenDropdown(null);
                                 }}
+                                className="block w-full text-sm text-white/80 hover:text-indigo-400 transition py-1"
                               >
                                 {item.name}
                               </Link>
@@ -210,11 +270,7 @@ export default function Navbar() {
                               <a
                                 key={item.name}
                                 href={item.href}
-                                className="block text-sm text-white/80 hover:text-indigo-400 hover:bg-white/10 px-3 py-2 rounded transition cursor-pointer"
-                                onClick={() => {
-                                  setMenuOpen(false);
-                                  setOpenDropdown(null);
-                                }}
+                                className="block w-full text-sm ..."
                               >
                                 {item.name}
                               </a>
@@ -233,7 +289,7 @@ export default function Navbar() {
           <Link
             to="/contact"
             onClick={() => setMenuOpen(false)}
-            className="block mt-4 text-center px-5 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold"
+            className={`block mt-4 text-center px-5 py-2 rounded-full font-semibold transition ${isDark ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:shadow-lg hover:shadow-blue-500/30' : 'bg-white text-orange-600 hover:bg-orange-50'}`}
           >
             Let's Talk
           </Link>
@@ -278,9 +334,13 @@ export default function Navbar() {
         <li key={link.name} className="relative cursor-pointer">
           <span
             onClick={() => setOpenDropdown(isOpen ? null : link.name)}
+            onDragOver={(event) => handleDropdownDragOver(event, link.name)}
+            onDrop={(event) => handleDropdownDrop(event, link.name)}
+            onDragLeave={() => handleDropdownDragLeave(link.name)}
             className="text-white/90 hover:text-white flex items-center"
           >
-            {link.name} ▾
+            {link.name}{" "}
+            <span className="ml-1">{getDropdownIcon(link.name, isOpen)}</span>
           </span>
 
           {isOpen && (

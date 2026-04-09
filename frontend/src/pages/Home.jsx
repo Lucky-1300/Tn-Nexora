@@ -1,20 +1,50 @@
-
-
-import React from "react";
-// import Navbar from '../components/Navbar';
-// import Footer from '../components/Footer';
-import Services from '../components/Services';
-import HomeEffortsReviews from '../components/HomeEffortsReviews';
-import Contact from '../components/Contact';
-import HomeHeroBrandSection from '../components/HomeHeroBrandSection';
+import React, { useRef, useState, useEffect } from "react";
+import { useTheme } from "../components/ThemeWrapper";
+import api from "../services/api";
+import Services from "../components/Services";
+import HomeEffortsReviews from "../components/HomeEffortsReviews";
+import Contact from "../components/Contact";
+import Team from "../components/Team";
+import HomeHeroBrandSection from "../components/HomeHeroBrandSection";
 
 export default function Home() {
+  const videoRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+
+          observer.disconnect();
+        }
+      },
+
+      { threshold: 0.5 },
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const { isDark, bgColor, textColor } = useTheme();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="bg-[#0a0f1c] min-h-screen text-white">
-     
+    <div
+      className={`${bgColor} min-h-screen ${isDark ? "text-white" : "text-gray-900"}`}
+    >
       <main className="flex flex-col gap-0">
         {/* Hero Section with Video */}
-        <section id="home" className="relative flex flex-col items-center justify-center text-center py-0 px-0 bg-[#0a0f1c] overflow-hidden">
+        <section
+          id="home"
+          className={`relative flex flex-col items-center justify-center text-center py-0 px-0 ${bgColor} overflow-hidden`}
+        >
           <video
             src="/WhatsApp%20Video%202026-03-26%20at%204.00.38%20PM.mp4"
             autoPlay
@@ -33,6 +63,11 @@ export default function Home() {
           <Services />
         </section>
 
+        {/* Our Team Section */}
+        <section className="pt-0 pb-4">
+          <Team />
+        </section>
+
         {/* Our Efforts Speak (Testimonials) */}
         <section className="pt-0 pb-4">
           <HomeEffortsReviews />
@@ -43,7 +78,6 @@ export default function Home() {
           <Contact />
         </section>
       </main>
-      
     </div>
   );
 }

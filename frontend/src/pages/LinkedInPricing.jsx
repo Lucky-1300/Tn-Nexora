@@ -1,4 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useTheme } from '../components/ThemeWrapper';
+
+const heroImage = `data:image/svg+xml;utf8,${encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#10172a"/><stop offset="100%" stop-color="#27406e"/></linearGradient></defs>
+  <rect width="800" height="600" rx="34" fill="url(#g)"/>
+  <rect x="140" y="100" width="230" height="400" rx="28" fill="#0f172a" stroke="#60a5fa" stroke-opacity=".35"/>
+  <circle cx="255" cy="190" r="48" fill="#60a5fa"/>
+  <rect x="190" y="275" width="130" height="16" rx="8" fill="#cbd5e1" fill-opacity=".85"/>
+  <rect x="190" y="305" width="110" height="10" rx="5" fill="#94a3b8" fill-opacity=".6"/>
+  <rect x="420" y="100" width="250" height="400" rx="30" fill="#0f172a" stroke="#22d3ee" stroke-opacity=".35"/>
+  <circle cx="490" cy="180" r="16" fill="#60a5fa"/><circle cx="575" cy="180" r="16" fill="#22d3ee"/><circle cx="650" cy="180" r="16" fill="#7c3aed"/>
+  <path d="M490 180 L575 180 L650 180" stroke="#64748b" stroke-width="5"/>
+  <path d="M490 180 L545 260 L625 230" stroke="#64748b" stroke-width="5" fill="none"/>
+</svg>
+`)}`;
 
 const plans = [
   {
@@ -104,92 +120,141 @@ const plans = [
 ];
 
 export default function LinkedInPricing() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  const { isDark } = useTheme();
   return (
-    <div className="bg-[#0a0f1c] min-h-screen">
+    <div className={`min-h-screen overflow-x-hidden transition duration-300 ${isDark ? 'bg-[#0a0f1c]' : 'bg-white'}`}>
+      {/* Hero */}
+      <section className={`relative transition duration-300 ${isDark ? 'bg-[radial-gradient(circle_at_top,_rgba(99,102,241,0.18),_transparent_40%),linear-gradient(180deg,rgba(16,21,34,0.95),rgba(10,15,28,1))]' : 'bg-gradient-to-br from-orange-50 via-white to-white'}`}>
+        <div className="mx-auto grid w-full max-w-7xl items-center gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-18">
+          <div className="max-w-3xl">
+            <p className={`mb-4 inline-flex items-center rounded-full border px-4 py-1 text-xs font-semibold uppercase tracking-[0.22em] transition duration-300 ${isDark ? 'border-indigo-400/30 bg-indigo-400/10 text-indigo-300' : 'border-orange-400/40 bg-orange-100/50 text-orange-700'}`}>
+              LinkedIn Growth
+            </p>
+            <h1 className={`text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl transition duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              LinkedIn pricing for authority, outreach, and lead generation.
+            </h1>
+            <p className={`mt-5 max-w-2xl text-base leading-7 md:text-lg transition duration-300 ${isDark ? 'text-white/70' : 'text-gray-700'}`}>
+              Build a stronger professional presence with a structured LinkedIn
+              strategy that fits the project’s dark indigo theme and keeps the
+              layout clean, balanced, and content-rich.
+            </p>
 
-      {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-900 to-black py-12 text-center">
-        <h1 className="text-3xl md:text-4xl font-bold text-white">
-          LinkedIn Pricing
-        </h1>
-        <p className="text-white/60 mt-2 text-sm">
-          Home / Pricing / LinkedIn
-        </p>
-      </div>
-
-      {/* Section */}
-      <div className="text-center mt-12 mb-8 px-4">
-        <span className="text-indigo-400 text-xs uppercase font-semibold tracking-wider">
-          Our Pricing
-        </span>
-        <h2 className="text-2xl md:text-3xl font-bold text-white mt-2">
-          The Best Price Just For You
-        </h2>
-        <p className="text-white/70 mt-3 max-w-xl mx-auto">
-          Build authority, generate leads, and grow your professional network with powerful LinkedIn strategies.
-        </p>
-      </div>
-
-      {/* Cards */}
-      <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8 pb-16">
-        {plans.map((plan) => (
-          <div
-            key={plan.name}
-            className={`rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-8 flex flex-col transition-all duration-300 hover:scale-105 ${
-              plan.highlight
-                ? "border-indigo-500/60 shadow-indigo-500/20 scale-105"
-                : ""
-            }`}
-          >
-            {/* Title */}
-            <h3 className="text-lg font-bold text-white mb-6 text-center">
-              {plan.name}
-            </h3>
-
-            {/* Features */}
-            <ul className="text-sm text-white/80 space-y-2 mb-8">
-              {plan.features.map((feature, i) => (
-                <li
-                  key={i}
-                  className={`flex items-start gap-2 ${
-                    feature === feature.toUpperCase()
-                      ? "text-indigo-300 font-semibold mt-3"
-                      : ""
-                  }`}
-                >
-                  {!feature.includes("PAGE") &&
-                  !feature.includes("GENERATION") &&
-                  !feature.includes("REPORTING") &&
-                  !feature.includes("GROUPS") ? (
-                    <span
-                      className={`mt-1 text-xs ${
-                        feature.includes("❌")
-                          ? "text-red-400"
-                          : "text-indigo-400"
-                      }`}
-                    >
-                      {feature.includes("❌") ? "✖" : "✔"}
-                    </span>
-                  ) : null}
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-
-            {/* Price */}
-            <div className="mt-auto text-center">
-              <div className="text-2xl font-bold text-indigo-400">
-                {plan.price}
-              </div>
-              <p className="text-xs text-white/50 mb-4">per month</p>
-
-              <button className="w-full py-3 rounded-lg font-semibold bg-gradient-to-r from-indigo-500 to-blue-500 text-white shadow-lg hover:scale-105 transition">
-                Get Started
-              </button>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                href="/contact"
+                className={`rounded-full px-6 py-3 font-semibold text-white shadow-lg transition hover:-translate-y-0.5 ${isDark ? 'bg-gradient-to-r from-indigo-500 to-blue-500 shadow-indigo-500/20' : 'bg-gradient-to-r from-orange-500 to-orange-600 shadow-orange-500/20'}`}
+              >
+                Start LinkedIn growth
+              </a>
+              <a
+                href="#plans"
+                className={`rounded-full border px-6 py-3 font-semibold transition ${isDark ? 'border-white/15 bg-white/5 text-white hover:border-indigo-400/60 hover:bg-indigo-400/10' : 'border-orange-400/40 bg-orange-100/30 text-orange-700 hover:border-orange-500/60 hover:bg-orange-200/40'}`}
+              >
+                View plans
+              </a>
             </div>
           </div>
-        ))}
-      </div>
+
+          <div className="relative mx-auto w-full max-w-[560px] lg:ml-auto">
+            <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-r from-indigo-500/20 to-blue-500/20 blur-3xl" />
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-indigo-500/10 backdrop-blur">
+              <img
+                src={heroImage}
+                alt="LinkedIn growth visual"
+                style={{ objectPosition: "center top" }}
+                className="h-[320px] w-full rounded-[1.5rem] object-cover sm:h-[380px] lg:h-[460px]"
+              />
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Plans */}
+      <section id="plans" className={`mx-auto w-full max-w-7xl px-4 pb-8 sm:px-6 lg:px-8 transition duration-300 ${isDark ? '' : ''}`}>
+        <div className="text-center">
+          <span className={`text-xs font-semibold uppercase tracking-[0.2em] transition duration-300 ${isDark ? 'text-indigo-300' : 'text-orange-700'}`}>
+            Our pricing
+          </span>
+          <h2 className={`mt-3 text-3xl font-bold md:text-4xl transition duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            The best price just for you
+          </h2>
+          <p className={`mx-auto mt-4 max-w-2xl leading-7 transition duration-300 ${isDark ? 'text-white/70' : 'text-gray-700'}`}>
+            Choose the package based on your current outreach goals, posting
+            needs, and lead generation targets.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {plans.map((plan) => (
+            <div
+              key={plan.name}
+              className={`relative flex flex-col rounded-3xl border p-8 shadow-xl backdrop-blur transition duration-300 hover:-translate-y-1 ${isDark ? 'bg-white/5 hover:border-indigo-400/60 hover:shadow-indigo-500/10' : 'bg-orange-50/40 hover:border-orange-400/60 hover:shadow-orange-400/20'} ${
+                plan.highlight
+                  ? isDark ? "border-indigo-400/60 ring-1 ring-indigo-400/30 lg:-mt-2" : "border-orange-300/60 ring-1 ring-orange-300/40 lg:-mt-2"
+                  : isDark ? "border-white/10" : "border-orange-200/40"
+              }`}
+            >
+              {plan.highlight && (
+                <div className={`absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white shadow-lg ${isDark ? 'bg-indigo-500 shadow-indigo-500/20' : 'bg-orange-500 shadow-orange-500/20'}`}>
+                  Most popular
+                </div>
+              )}
+
+              <h3 className={`text-center text-xl font-bold transition duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                {plan.name}
+              </h3>
+
+              <div className={`mt-6 rounded-2xl border p-5 text-center transition duration-300 ${isDark ? 'border-white/10 bg-[#11182a]' : 'border-orange-200/50 bg-orange-100/30'}`}>
+                <div className={`text-4xl font-extrabold transition duration-300 ${isDark ? 'text-indigo-300' : 'text-orange-600'}`}>
+                  {plan.price}
+                </div>
+                <p className={`mt-1 text-sm transition duration-300 ${isDark ? 'text-white/55' : 'text-gray-600'}`}>per month</p>
+              </div>
+
+              <ul className={`mt-6 space-y-3 text-sm transition duration-300 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
+                {plan.features.map((feature, i) => {
+                  const isHeading = feature === feature.toUpperCase();
+                  const excluded = feature.includes("❌");
+
+                  return (
+                    <li
+                      key={i}
+                      className={`flex items-start gap-3 transition duration-300 ${
+                        isHeading ? isDark ? "mt-4 text-indigo-300 font-semibold" : "mt-4 text-orange-700 font-semibold" : ""
+                      }`}
+                    >
+                      {!isHeading && (
+                        <span
+                          className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold transition duration-300 ${
+                            excluded
+                              ? isDark ? "bg-red-500/15 text-red-300" : "bg-red-100/50 text-red-600"
+                              : isDark ? "bg-indigo-500/15 text-indigo-300" : "bg-orange-100/50 text-orange-600"
+                          }`}
+                        >
+                          {excluded ? "×" : "✓"}
+                        </span>
+                      )}
+                      <span>{feature}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+
+              <a
+                href={`/contact?service=linkedin&plan=${encodeURIComponent(plan.name)}`}
+                className={`mt-8 w-full rounded-xl py-3 text-center font-semibold text-white transition hover:-translate-y-0.5 ${isDark ? 'bg-gradient-to-r from-indigo-500 to-blue-500 shadow-lg shadow-indigo-500/20' : 'bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg shadow-orange-500/20'}`}
+              >
+                Get Started
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+
     </div>
   );
 }
