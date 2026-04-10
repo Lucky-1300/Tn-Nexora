@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 import { useTheme } from '../components/ThemeWrapper';
 
 export default function About() {
-  const { isDark, bgColor, textColor, headingColor } = useTheme();
+  const { isDark, bgColor, } = useTheme();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <>
       {/* Hero Section */}
-      <section className={`relative flex flex-col items-center justify-center min-h-[40vh] text-center px-4 py-12 ${bgColor}`}>
+      {/* <section className={`relative flex flex-col items-center justify-center min-h-[25vh] text-center px-4 py-6 ${bgColor}`}> */}
+      <section className={`relative flex flex-col items-center justify-center min-h-[25vh] text-center px-4 py-6 ${bgColor}`}>
         <div className={`absolute inset-0 -z-10 ${isDark ? 'bg-gradient-to-br from-blue-600/40 via-purple-700/30 to-indigo-900/20' : 'bg-gradient-to-br from-orange-400/20 via-orange-300/10 to-orange-200/10'} blur-2xl opacity-70`} />
         <span className={`inline-block mb-4 px-4 py-2 ${isDark ? 'bg-blue-500/20 text-blue-400' : 'bg-orange-400/20 text-orange-600'} rounded-full text-sm font-semibold`}>
           ABOUT TN NEXORA
