@@ -157,7 +157,7 @@ const services = [
 
 export default function Services() {
   const navigate = useNavigate();
-  const { isDark, bgColor, textColor, headingColor } = useTheme();
+  const { isDark, bgColor } = useTheme();
   
   return (
    <section id="services" className={`px-4 md:px-10 lg:px-20 ${bgColor}`}>
