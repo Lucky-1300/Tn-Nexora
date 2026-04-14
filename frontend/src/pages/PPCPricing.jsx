@@ -1,20 +1,7 @@
 import React, { useEffect } from "react";
 import { useTheme } from '../components/ThemeWrapper';
 
-const heroImage = `data:image/svg+xml;utf8,${encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#1f3b74"/></linearGradient></defs>
-  <rect width="800" height="600" rx="34" fill="url(#g)"/>
-  <rect x="95" y="100" width="610" height="400" rx="28" fill="#0b1222" stroke="#60a5fa" stroke-opacity=".3"/>
-  <rect x="150" y="360" width="52" height="100" rx="10" fill="#60a5fa"/>
-  <rect x="230" y="320" width="52" height="140" rx="10" fill="#7c3aed"/>
-  <rect x="310" y="275" width="52" height="185" rx="10" fill="#22d3ee"/>
-  <rect x="390" y="330" width="52" height="130" rx="10" fill="#818cf8"/>
-  <rect x="470" y="290" width="52" height="170" rx="10" fill="#4c7dff"/>
-  <rect x="550" y="250" width="52" height="210" rx="10" fill="#2fb6ff"/>
-  <path d="M150 240 C250 220, 340 170, 430 180 S590 140, 650 120" stroke="#c7d2fe" stroke-width="8" fill="none" stroke-linecap="round"/>
-</svg>
-`)}`;
+const heroImage = "/ppcpricing.jpeg";
 
 const plans = [
   {
@@ -132,12 +119,14 @@ export default function PPCPricing() {
           </div>
 
           <div className="relative mx-auto w-full max-w-[560px] lg:ml-auto">
-            <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-r from-indigo-500/20 to-blue-500/20 blur-3xl" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-indigo-500/10 backdrop-blur">
+            <div className={`absolute -inset-4 rounded-[2rem] blur-3xl transition duration-300 ${isDark ? 'bg-gradient-to-r from-indigo-500/20 to-blue-500/20' : 'bg-gradient-to-r from-orange-400/20 to-orange-500/20'}`} />
+            <div className={`relative overflow-hidden rounded-[2rem] p-4 shadow-2xl backdrop-blur transition duration-300 ${isDark ? 'border border-white/10 bg-white/5 shadow-indigo-500/10' : 'border border-orange-300/40 bg-orange-50/30 shadow-orange-200/20'}`}>
               <img
                 src={heroImage}
                 alt="PPC advertising visual"
-                style={{ objectPosition: "center center" }}
+                style={{
+                  objectPosition: "center center",
+                }}
                 className="h-[320px] w-full rounded-[1.5rem] object-cover sm:h-[380px] lg:h-[460px]"
               />
             </div>
@@ -182,13 +171,6 @@ export default function PPCPricing() {
                 {plan.name}
               </h3>
 
-              <div className={`mt-6 rounded-2xl border p-5 text-center transition duration-300 ${isDark ? 'border-white/10 bg-[#11182a]' : 'border-orange-200/50 bg-orange-100/30'}`}>
-                <div className={`text-4xl font-extrabold transition duration-300 ${isDark ? 'text-indigo-300' : 'text-orange-600'}`}>
-                  {plan.price}
-                </div>
-                <p className={`mt-1 text-sm transition duration-300 ${isDark ? 'text-white/55' : 'text-gray-600'}`}>per month</p>
-              </div>
-
               <ul className={`mt-6 space-y-3 text-sm transition duration-300 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
                 {plan.features.map((feature, i) => {
                   const excluded = feature.includes("❌");
@@ -209,6 +191,13 @@ export default function PPCPricing() {
                   );
                 })}
               </ul>
+
+              <div className={`mt-6 rounded-2xl border p-5 text-center transition duration-300 ${isDark ? 'border-white/10 bg-[#11182a]' : 'border-orange-200/50 bg-orange-100/30'}`}>
+                <div className={`text-4xl font-extrabold transition duration-300 ${isDark ? 'text-indigo-300' : 'text-orange-600'}`}>
+                  {plan.price}
+                </div>
+                <p className={`mt-1 text-sm transition duration-300 ${isDark ? 'text-white/55' : 'text-gray-600'}`}>per month</p>
+              </div>
 
               <a
                 href={`/contact?service=ppc&plan=${encodeURIComponent(plan.name)}`}

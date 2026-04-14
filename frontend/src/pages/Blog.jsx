@@ -10,7 +10,7 @@ export default function Blog() {
   }, []);
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
-  const { isDark, bgColor, textColor, headingColor } = useTheme();
+  const { isDark, bgColor } = useTheme();
 
   const filteredBlogs = blogs.filter(
     (b) =>
