@@ -1,20 +1,7 @@
 import React, { useEffect } from "react";
 import { useTheme } from '../components/ThemeWrapper';
 
-const heroImage = `data:image/svg+xml;utf8,${encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#10172a"/><stop offset="100%" stop-color="#1f3b74"/></linearGradient></defs>
-  <rect width="800" height="600" rx="34" fill="url(#g)"/>
-  <rect x="100" y="90" width="600" height="420" rx="30" fill="#0f172a" stroke="#94a3b8" stroke-opacity=".22"/>
-  <path d="M150 400 C230 350, 280 365, 340 300 S470 225, 540 250 S630 180, 670 145" stroke="#8b5cf6" stroke-width="10" fill="none" stroke-linecap="round"/>
-  <path d="M150 420 C230 370, 280 390, 340 325 S470 250, 540 275 S630 205, 670 170" stroke="#22d3ee" stroke-width="6" fill="none" stroke-linecap="round" opacity=".9"/>
-  <rect x="165" y="285" width="50" height="160" rx="10" fill="#60a5fa"/>
-  <rect x="240" y="250" width="50" height="195" rx="10" fill="#7c3aed"/>
-  <rect x="315" y="220" width="50" height="225" rx="10" fill="#22d3ee"/>
-  <rect x="390" y="300" width="50" height="145" rx="10" fill="#818cf8"/>
-  <rect x="465" y="260" width="50" height="185" rx="10" fill="#4c7dff"/>
-</svg>
-`)}`;
+const heroImage = "/performancepricing.jpeg";
 
 const plans = [
   {
@@ -605,22 +592,24 @@ export default function PerformancePricing() {
           </div>
 
           <div className="relative mx-auto w-full max-w-[560px] lg:ml-auto">
-            <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-r from-indigo-500/20 to-blue-500/20 blur-3xl" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-indigo-500/10 backdrop-blur">
+            <div className={`absolute -inset-4 rounded-[2rem] blur-3xl transition duration-300 ${isDark ? 'bg-gradient-to-r from-indigo-500/20 to-blue-500/20' : 'bg-gradient-to-r from-orange-400/20 to-orange-500/20'}`} />
+            <div className={`relative overflow-hidden rounded-[2rem] p-4 shadow-2xl backdrop-blur transition duration-300 ${isDark ? 'border border-white/10 bg-white/5 shadow-indigo-500/10' : 'border border-orange-300/40 bg-orange-50/30 shadow-orange-200/20'}`}>
               <img
                 src={heroImage}
                 alt="Performance marketing dashboard"
-                style={{ objectPosition: "center bottom" }}
+                style={{
+                  objectPosition: "center bottom",
+                }}
                 className="h-[320px] w-full rounded-[1.5rem] object-cover sm:h-[380px] lg:h-[460px]"
               />
 
               <div className="absolute bottom-6 left-6 right-6 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-2xl border border-white/10 bg-[#0f1628]/90 px-4 py-3 text-white shadow-xl backdrop-blur">
-                  <p className="text-xs uppercase tracking-[0.2em] text-indigo-300">ROI focus</p>
+                <div className={`rounded-2xl px-4 py-3 shadow-xl backdrop-blur transition duration-300 ${isDark ? 'border border-white/10 bg-[#0f1628]/90 text-white' : 'border border-orange-400/60 bg-white text-gray-900'}`}>
+                  <p className={`text-xs uppercase tracking-[0.2em] transition duration-300 ${isDark ? 'text-indigo-300' : 'text-orange-600 font-semibold'}`}>ROI focus</p>
                   <p className="mt-1 text-lg font-bold">Higher conversions</p>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-[#0f1628]/90 px-4 py-3 text-white shadow-xl backdrop-blur">
-                  <p className="text-xs uppercase tracking-[0.2em] text-indigo-300">Reporting</p>
+                <div className={`rounded-2xl px-4 py-3 shadow-xl backdrop-blur transition duration-300 ${isDark ? 'border border-white/10 bg-[#0f1628]/90 text-white' : 'border border-orange-400/60 bg-white text-gray-900'}`}>
+                  <p className={`text-xs uppercase tracking-[0.2em] transition duration-300 ${isDark ? 'text-indigo-300' : 'text-orange-600 font-semibold'}`}>Reporting</p>
                   <p className="mt-1 text-lg font-bold">Clear performance data</p>
                 </div>
               </div>
@@ -661,11 +650,6 @@ export default function PerformancePricing() {
 
               <h3 className={`text-center text-xl font-bold transition duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>{plan.name}</h3>
 
-              <div className={`mt-6 rounded-2xl border p-7 text-center transition duration-300 ${isDark ? 'border-white/10 bg-[#11182a]' : 'border-orange-200/50 bg-orange-100/30'}`}>
-                <div className={`text-4xl font-extrabold transition duration-300 ${isDark ? 'text-indigo-300' : 'text-orange-600'}`}>{plan.price}</div>
-                <p className={`mt-1 text-sm transition duration-300 ${isDark ? 'text-white/55' : 'text-gray-600'}`}>monthly</p>
-              </div>
-
               <ul className={`mt-6 space-y-3 text-sm transition duration-300 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
                 {plan.features.map((feature, i) => {
                   const isHeading = feature === feature.toUpperCase();
@@ -687,6 +671,11 @@ export default function PerformancePricing() {
                   );
                 })}
               </ul>
+
+              <div className={`mt-6 rounded-2xl border p-7 text-center transition duration-300 ${isDark ? 'border-white/10 bg-[#11182a]' : 'border-orange-200/50 bg-orange-100/30'}`}>
+                <div className={`text-4xl font-extrabold transition duration-300 ${isDark ? 'text-indigo-300' : 'text-orange-600'}`}>{plan.price}</div>
+                <p className={`mt-1 text-sm transition duration-300 ${isDark ? 'text-white/55' : 'text-gray-600'}`}>monthly</p>
+              </div>
 
               <a
                 href={`/contact?service=performance&plan=${encodeURIComponent(plan.name)}`}

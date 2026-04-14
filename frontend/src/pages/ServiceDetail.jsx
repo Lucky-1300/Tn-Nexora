@@ -223,7 +223,7 @@ export default function ServiceDetail() {
     window.scrollTo(0, 0);
   }, []);
   const { slug } = useParams();
-  const { isDark, bgColor, textColor, headingColor } = useTheme();
+  const { isDark, bgColor } = useTheme();
   const service = serviceData[slug];
 
   if (!service) {

@@ -1,17 +1,7 @@
 import React, { useEffect } from "react";
 import { useTheme } from '../components/ThemeWrapper';
 
-const heroImage = `data:image/svg+xml;utf8,${encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#10172a"/><stop offset="100%" stop-color="#273766"/></linearGradient></defs>
-  <rect width="800" height="600" rx="34" fill="url(#g)"/>
-  <path d="M400 95 C510 95, 600 185, 600 295 C600 415, 485 500, 400 565 C315 500, 200 415, 200 295 C200 185, 290 95, 400 95Z" fill="#0f172a" stroke="#60a5fa" stroke-opacity=".4" stroke-width="7"/>
-  <circle cx="400" cy="295" r="80" fill="#111827" stroke="#22d3ee" stroke-width="10"/>
-  <circle cx="400" cy="295" r="30" fill="#22d3ee"/>
-  <path d="M400 180 L400 265" stroke="#cbd5e1" stroke-width="10" stroke-linecap="round"/>
-  <path d="M340 295 L460 295" stroke="#cbd5e1" stroke-width="10" stroke-linecap="round"/>
-</svg>
-`)}`;
+const heroImage = "/gmbpricing.jpeg";
 
 const plans = [
   {
@@ -246,12 +236,14 @@ export default function GMBPricing() {
           </div>
 
           <div className="relative mx-auto w-full max-w-[560px] lg:ml-auto">
-            <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-r from-indigo-500/20 to-blue-500/20 blur-3xl" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-indigo-500/10 backdrop-blur">
+            <div className={`absolute -inset-4 rounded-[2rem] blur-3xl transition duration-300 ${isDark ? 'bg-gradient-to-r from-indigo-500/20 to-blue-500/20' : 'bg-gradient-to-r from-orange-400/20 to-orange-500/20'}`} />
+            <div className={`relative overflow-hidden rounded-[2rem] p-4 shadow-2xl backdrop-blur transition duration-300 ${isDark ? 'border border-white/10 bg-white/5 shadow-indigo-500/10' : 'border border-orange-300/40 bg-orange-50/30 shadow-orange-200/20'}`}>
               <img
                 src={heroImage}
                 alt="Google Business Profile visual"
-                style={{ objectPosition: "center bottom" }}
+                style={{
+                  objectPosition: "center bottom",
+                }}
                 className="h-[320px] w-full rounded-[1.5rem] object-cover sm:h-[380px] lg:h-[460px]"
               />
             </div>
@@ -295,13 +287,6 @@ export default function GMBPricing() {
                 {plan.name}
               </h3>
 
-              <div className={`mt-6 rounded-2xl border p-5 text-center transition duration-300 ${isDark ? 'border-white/10 bg-[#11182a]' : 'border-orange-200/50 bg-orange-100/30'}`}>
-                <div className={`text-4xl font-extrabold transition duration-300 ${isDark ? 'text-indigo-300' : 'text-orange-600'}`}>
-                  {plan.price}
-                </div>
-                <p className={`mt-1 text-sm transition duration-300 ${isDark ? 'text-white/55' : 'text-gray-600'}`}>per month</p>
-              </div>
-
               <ul className={`mt-6 space-y-3 text-sm transition duration-300 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
                 {plan.features.map((feature, i) => {
                   const isHeading = feature === feature.toUpperCase();
@@ -323,6 +308,13 @@ export default function GMBPricing() {
                   );
                 })}
               </ul>
+
+              <div className={`mt-6 rounded-2xl border p-5 text-center transition duration-300 ${isDark ? 'border-white/10 bg-[#11182a]' : 'border-orange-200/50 bg-orange-100/30'}`}>
+                <div className={`text-4xl font-extrabold transition duration-300 ${isDark ? 'text-indigo-300' : 'text-orange-600'}`}>
+                  {plan.price}
+                </div>
+                <p className={`mt-1 text-sm transition duration-300 ${isDark ? 'text-white/55' : 'text-gray-600'}`}>per month</p>
+              </div>
 
               <a
                 href={`/contact?service=gmb&plan=${encodeURIComponent(plan.name)}`}

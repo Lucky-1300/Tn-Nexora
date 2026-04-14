@@ -251,7 +251,7 @@ export default function Navbar() {
 
                       {/* Dropdown Items */}
                       {isOpen && (
-                        <div className="pl-4 mt-2 flex flex-col gap-2">
+                        <div className={`pl-4 mt-2 flex flex-col gap-2 transition-colors duration-300 ${isDark ? 'bg-[#0a0f1c]/50' : 'bg-orange-50/50'}`}>
                           {link.items.map((item) =>
                             item.type === "route" ? (
                               <Link
@@ -261,7 +261,7 @@ export default function Navbar() {
                                   setMenuOpen(false);
                                   setOpenDropdown(null);
                                 }}
-                                className="block w-full text-sm text-white/80 hover:text-indigo-400 transition py-1"
+                                className={`block w-full text-sm transition-colors duration-300 py-1 ${isDark ? 'text-white/80 hover:text-indigo-400' : 'text-gray-700 hover:text-orange-600'}`}
                               >
                                 {item.name}
                               </Link>
@@ -269,7 +269,7 @@ export default function Navbar() {
                               <a
                                 key={item.name}
                                 href={item.href}
-                                className="block w-full text-sm ..."
+                                className={`block w-full text-sm transition-colors duration-300 py-1 ${isDark ? 'text-white/80 hover:text-indigo-400' : 'text-gray-700 hover:text-orange-600'}`}
                               >
                                 {item.name}
                               </a>
@@ -343,14 +343,14 @@ export default function Navbar() {
           </span>
 
           {isOpen && (
-            <ul className="absolute left-0 mt-2 min-w-[180px] bg-[#181c2e] border border-[#23263a] rounded shadow-lg">
+            <ul className={`absolute left-0 mt-2 min-w-[180px] rounded shadow-lg transition-colors duration-300 ${isDark ? 'bg-[#181c2e] border border-[#23263a]' : 'bg-white border border-orange-300 shadow-orange-200/50'}`}>
               {link.items.map((item) => (
                 <li key={item.name}>
                   {item.type === "route" ? (
                     <Link
                       to={item.to}
                       onClick={() => setOpenDropdown(null)}
-                      className="block px-6 py-3 text-white hover:bg-[#23263a]"
+                      className={`block px-6 py-3 transition-colors duration-300 ${isDark ? 'text-white hover:bg-[#23263a]' : 'text-gray-800 hover:bg-orange-50'}`}
                     >
                       {item.name}
                     </Link>
@@ -358,7 +358,7 @@ export default function Navbar() {
                     <a
                       href={item.href}
                       onClick={() => setOpenDropdown(null)}
-                      className="block px-6 py-3 text-white hover:bg-[#23263a]"
+                      className={`block px-6 py-3 transition-colors duration-300 ${isDark ? 'text-white hover:bg-[#23263a]' : 'text-gray-800 hover:bg-orange-50'}`}
                     >
                       {item.name}
                     </a>

@@ -1,20 +1,7 @@
 import React, { useEffect } from "react";
 import { useTheme } from '../components/ThemeWrapper';
 
-const heroImage = `data:image/svg+xml;utf8,${encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#10172a"/><stop offset="100%" stop-color="#27406e"/></linearGradient></defs>
-  <rect width="800" height="600" rx="34" fill="url(#g)"/>
-  <rect x="140" y="100" width="230" height="400" rx="28" fill="#0f172a" stroke="#60a5fa" stroke-opacity=".35"/>
-  <circle cx="255" cy="190" r="48" fill="#60a5fa"/>
-  <rect x="190" y="275" width="130" height="16" rx="8" fill="#cbd5e1" fill-opacity=".85"/>
-  <rect x="190" y="305" width="110" height="10" rx="5" fill="#94a3b8" fill-opacity=".6"/>
-  <rect x="420" y="100" width="250" height="400" rx="30" fill="#0f172a" stroke="#22d3ee" stroke-opacity=".35"/>
-  <circle cx="490" cy="180" r="16" fill="#60a5fa"/><circle cx="575" cy="180" r="16" fill="#22d3ee"/><circle cx="650" cy="180" r="16" fill="#7c3aed"/>
-  <path d="M490 180 L575 180 L650 180" stroke="#64748b" stroke-width="5"/>
-  <path d="M490 180 L545 260 L625 230" stroke="#64748b" stroke-width="5" fill="none"/>
-</svg>
-`)}`;
+const heroImage = "/linkedinPricing.jpeg";
 
 const plans = [
   {
@@ -159,12 +146,14 @@ export default function LinkedInPricing() {
           </div>
 
           <div className="relative mx-auto w-full max-w-[560px] lg:ml-auto">
-            <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-r from-indigo-500/20 to-blue-500/20 blur-3xl" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-indigo-500/10 backdrop-blur">
+            <div className={`absolute -inset-4 rounded-[2rem] blur-3xl transition duration-300 ${isDark ? 'bg-gradient-to-r from-indigo-500/20 to-blue-500/20' : 'bg-gradient-to-r from-orange-400/20 to-orange-500/20'}`} />
+            <div className={`relative overflow-hidden rounded-[2rem] p-4 shadow-2xl backdrop-blur transition duration-300 ${isDark ? 'border border-white/10 bg-white/5 shadow-indigo-500/10' : 'border border-orange-300/40 bg-orange-50/30 shadow-orange-200/20'}`}>
               <img
                 src={heroImage}
                 alt="LinkedIn growth visual"
-                style={{ objectPosition: "center top" }}
+                style={{
+                  objectPosition: "center top",
+                }}
                 className="h-[320px] w-full rounded-[1.5rem] object-cover sm:h-[380px] lg:h-[460px]"
               />
             </div>
@@ -208,13 +197,6 @@ export default function LinkedInPricing() {
                 {plan.name}
               </h3>
 
-              <div className={`mt-6 rounded-2xl border p-5 text-center transition duration-300 ${isDark ? 'border-white/10 bg-[#11182a]' : 'border-orange-200/50 bg-orange-100/30'}`}>
-                <div className={`text-4xl font-extrabold transition duration-300 ${isDark ? 'text-indigo-300' : 'text-orange-600'}`}>
-                  {plan.price}
-                </div>
-                <p className={`mt-1 text-sm transition duration-300 ${isDark ? 'text-white/55' : 'text-gray-600'}`}>per month</p>
-              </div>
-
               <ul className={`mt-6 space-y-3 text-sm transition duration-300 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
                 {plan.features.map((feature, i) => {
                   const isHeading = feature === feature.toUpperCase();
@@ -243,6 +225,13 @@ export default function LinkedInPricing() {
                   );
                 })}
               </ul>
+
+              <div className={`mt-6 rounded-2xl border p-5 text-center transition duration-300 ${isDark ? 'border-white/10 bg-[#11182a]' : 'border-orange-200/50 bg-orange-100/30'}`}>
+                <div className={`text-4xl font-extrabold transition duration-300 ${isDark ? 'text-indigo-300' : 'text-orange-600'}`}>
+                  {plan.price}
+                </div>
+                <p className={`mt-1 text-sm transition duration-300 ${isDark ? 'text-white/55' : 'text-gray-600'}`}>per month</p>
+              </div>
 
               <a
                 href={`/contact?service=linkedin&plan=${encodeURIComponent(plan.name)}`}

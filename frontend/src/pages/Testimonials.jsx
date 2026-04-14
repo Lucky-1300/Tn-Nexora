@@ -3,7 +3,7 @@ import { useTheme } from '../components/ThemeWrapper';
 
 
 export default function TestimonialsPage() {
-  const { isDark, bgColor, textColor, headingColor } = useTheme();
+  const { isDark, bgColor } = useTheme();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
