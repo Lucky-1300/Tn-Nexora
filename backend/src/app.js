@@ -1,10 +1,14 @@
 import express from "express";
 import cors from "cors";
+import contactRoutes from "./routes/contactRoutes.js";
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
+
+// ROUTES
+app.use("/api", contactRoutes);
 
 /* TEST ROUTE */
 app.get("/", (req, res) => {
