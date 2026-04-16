@@ -23,12 +23,12 @@ export default function Home() {
           className={`relative flex flex-col items-center justify-center text-center py-0 px-0 ${bgColor} overflow-hidden`}
         >
           <video
-            src="/headerVid.mp4"
+            src="https://res.cloudinary.com/doblrowxb/video/upload/v1776328207/headerVid_jyb0yt.mp4"
             autoPlay
             loop
             muted
             playsInline
-            className="w-full max-h-[500px] object-cover"
+            className="w-full h-[500px] object-cover"
           >
             Your browser does not support the video tag.
           </video>
