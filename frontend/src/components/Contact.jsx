@@ -44,10 +44,31 @@ export default function Contact() {
         .then((data) => console.log("Sheet response:", data))
         .catch((err) => console.log("Sheet error:", err));
 
+     
+      try {
+        const mongoRes = await fetch("http://localhost:5000/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            first_name: formData.get("first_name"),
+            last_name: formData.get("last_name"),
+            phone: formData.get("phone"),
+            email: formData.get("email"),
+            website: formData.get("website"),
+            message: formData.get("message"),
+          }),
+        });
+
+        const mongoData = await mongoRes.json();
+        console.log("MongoDB:", mongoData);
+      } catch (error) {
+        console.log("MongoDB Error:", error);
+      }
+
       setResult("SUCCESS");
       event.target.reset();
-    } else {
-      setResult("ERROR");
     }
 
     setTimeout(() => {
@@ -200,9 +221,9 @@ export default function Contact() {
           <div
             className={`p-5 rounded-xl border backdrop-blur-md transition duration-300 hover:scale-[1.02]
            ${
-           isDark
-           ? "bg-white/5 border-white/10 hover:shadow-indigo-500/10"
-           : "bg-orange-50/70 border-orange-300/40 hover:shadow-orange-400/10"
+             isDark
+               ? "bg-white/5 border-white/10 hover:shadow-indigo-500/10"
+               : "bg-orange-50/70 border-orange-300/40 hover:shadow-orange-400/10"
            }`}
           >
             <div className="flex items-start gap-4">
