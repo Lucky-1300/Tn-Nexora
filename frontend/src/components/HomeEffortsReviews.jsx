@@ -36,7 +36,7 @@ const reviews = [
 ];
 
 export default function HomeEffortsReviews() {
-  const { isDark, bgColor, textColor } = useTheme();
+  const { isDark, bgColor } = useTheme();
 
   return (
     <section className={`max-w-7xl mx-auto py-5 px-4 ${bgColor}`}>
@@ -46,11 +46,11 @@ export default function HomeEffortsReviews() {
       <p className={`text-center mb-12 text-lg ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
         See what our clients have to say about working with TN Nexora
       </p>
-      <div className="grid md:grid-cols-3 gap-8 mb-10">
+      <div className="grid md:grid-cols-3 gap-8 mb-10 items-stretch">
         {reviews.map((r, i) => (
           <div
             key={i}
-            className={`rounded-2xl shadow-lg overflow-hidden flex flex-col ${isDark ? 'bg-[#181e2a] border-white/10' : 'bg-orange-50/50 border-orange-300/40'} border`}
+            className={`h-full rounded-2xl shadow-lg overflow-hidden flex flex-col ${isDark ? 'bg-[#181e2a] border-white/10' : 'bg-orange-50/50 border-orange-300/40'} border`}
           >
             <div className="h-56 overflow-hidden bg-black flex items-center justify-center">
               <img
@@ -68,8 +68,8 @@ export default function HomeEffortsReviews() {
               <div className={`text-xs font-semibold mb-2 ${isDark ? 'text-blue-400' : 'text-orange-500'}`}>
                 {r.tag}
               </div>
-              <div className={`text-sm mb-4 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>{r.review}</div>
-              <div className="flex gap-1 mb-2">
+              <div className={`text-sm mb-4 flex-1 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>{r.review}</div>
+              <div className="flex gap-1 mt-auto mb-0">
                 {Array.from({ length: r.rating }).map((_, idx) => (
                   <span key={idx} className="text-yellow-400 text-lg">
                     ★

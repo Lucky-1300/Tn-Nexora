@@ -28,3 +28,15 @@ Thumbs.db
 
 # misc
 *.log
+
+
+# media files (avoid large uploads)
+*.mp4
+*.mov
+*.avi
+
+# optional images (if not needed in repo)
+*.jpg
+*.jpeg
+*.png
+*.gif

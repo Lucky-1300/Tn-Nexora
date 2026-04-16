@@ -158,7 +158,7 @@ function BonusSection() {
 
 
 export default function Pricing() {
-  const { isDark, bgColor, textColor } = useTheme();
+  const { isDark, bgColor } = useTheme();
 
   return (
     <div className={`${bgColor} min-h-screen flex flex-col w-full`}>
@@ -174,12 +174,14 @@ export default function Pricing() {
             </div>
 
             <div className="relative mx-auto w-full max-w-[560px] lg:ml-auto">
-              <div className={`absolute -inset-4 rounded-[2rem] ${isDark ? 'bg-gradient-to-r from-indigo-500/20 to-blue-500/20' : 'bg-gradient-to-r from-orange-400/20 to-orange-500/20'} blur-3xl`} />
-              <div className={`relative overflow-hidden rounded-[2rem] border ${isDark ? 'border-white/10 bg-white/5' : 'border-orange-300/40 bg-orange-50/10'} p-4 shadow-2xl ${isDark ? 'shadow-indigo-500/10' : 'shadow-orange-400/10'} backdrop-blur`}>
+              <div className={`absolute -inset-4 rounded-[2rem] blur-3xl transition duration-300 ${isDark ? 'bg-gradient-to-r from-indigo-500/20 to-blue-500/20' : 'bg-gradient-to-r from-orange-400/20 to-orange-500/20'}`} />
+              <div className={`relative overflow-hidden rounded-[2rem] p-4 shadow-2xl backdrop-blur transition duration-300 ${isDark ? 'border border-white/10 bg-white/5 shadow-indigo-500/10' : 'border border-orange-300/40 bg-orange-50/30 shadow-orange-200/20'}`}>
                 <img
                   src={heroImage}
                   alt="Pricing and marketing visual"
-                  style={{ objectPosition: "center center" }}
+                  style={{
+                    objectPosition: "center center",
+                  }}
                   className="h-[280px] w-full rounded-[1.5rem] object-cover object-center sm:h-[340px]"
                 />
               </div>
@@ -199,7 +201,6 @@ export default function Pricing() {
                   className={`rounded-2xl border ${isDark ? 'border-white/10 bg-white/5' : 'border-orange-300/40 bg-orange-100/20'} backdrop-blur shadow-xl flex flex-col items-center p-8 min-h-[420px] transition duration-300 cursor-pointer hover:scale-105 hover:shadow-2xl ${plan.highlight ? isDark ? 'scale-105 border-indigo-500/60 shadow-indigo-500/20' : 'scale-105 border-orange-500/60 shadow-orange-500/20' : ''}`}
                 >
                   <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-orange-600'}`}>{plan.name}</h3>
-                  <div className={`text-2xl font-extrabold mb-4 ${isDark ? 'text-indigo-400' : 'text-orange-500'}`}>{plan.price}</div>
                   <ul className="mb-8 space-y-2 text-white/80 text-sm text-left w-full max-w-xs mx-auto">
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-center gap-2">
@@ -208,6 +209,7 @@ export default function Pricing() {
                       </li>
                     ))}
                   </ul>
+                  <div className={`text-2xl font-extrabold mb-4 ${isDark ? 'text-indigo-400' : 'text-orange-500'}`}>{plan.price}</div>
                   <a
                     href={`/contact?service=${section.id}&plan=${encodeURIComponent(plan.name)}`}
                     className={`w-full py-3 rounded-lg text-center font-semibold transition bg-gradient-to-r from-indigo-500 to-blue-500 text-white shadow-lg hover:scale-105`}

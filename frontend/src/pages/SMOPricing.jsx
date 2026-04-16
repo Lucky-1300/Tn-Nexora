@@ -1,20 +1,7 @@
 import React, { useEffect } from "react";
 import { useTheme } from '../components/ThemeWrapper';
 
-const heroImage = `data:image/svg+xml;utf8,${encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#111827"/><stop offset="100%" stop-color="#2a2f68"/></linearGradient></defs>
-  <rect width="800" height="600" rx="34" fill="url(#g)"/>
-  <rect x="110" y="95" width="210" height="410" rx="24" fill="#0f172a" stroke="#7c3aed" stroke-opacity=".4"/>
-  <rect x="140" y="135" width="150" height="22" rx="11" fill="#7c3aed"/>
-  <rect x="140" y="180" width="150" height="170" rx="18" fill="#1e293b"/>
-  <circle cx="215" cy="265" r="35" fill="#22d3ee"/>
-  <rect x="350" y="100" width="340" height="405" rx="30" fill="#0f172a" stroke="#22d3ee" stroke-opacity=".35"/>
-  <circle cx="430" cy="185" r="16" fill="#22d3ee"/><circle cx="520" cy="185" r="16" fill="#7c3aed"/><circle cx="610" cy="185" r="16" fill="#60a5fa"/>
-  <path d="M430 185 L520 185 L610 185" stroke="#64748b" stroke-width="5"/>
-  <path d="M430 185 L520 260 L610 235" stroke="#64748b" stroke-width="5" fill="none"/>
-</svg>
-`)}`;
+const heroImage = "/smopricing.jpeg";
 
 const plans = [
   {
@@ -132,12 +119,14 @@ export default function SMOPricing() {
           </div>
 
           <div className="relative mx-auto w-full max-w-[560px] lg:ml-auto">
-            <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-r from-indigo-500/20 to-blue-500/20 blur-3xl" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl shadow-indigo-500/10 backdrop-blur">
+            <div className={`absolute -inset-4 rounded-[2rem] blur-3xl transition duration-300 ${isDark ? 'bg-gradient-to-r from-indigo-500/20 to-blue-500/20' : 'bg-gradient-to-r from-orange-400/20 to-orange-500/20'}`} />
+            <div className={`relative overflow-hidden rounded-[2rem] p-4 shadow-2xl backdrop-blur transition duration-300 ${isDark ? 'border border-white/10 bg-white/5 shadow-indigo-500/10' : 'border border-orange-300/40 bg-orange-50/30 shadow-orange-200/20'}`}>
               <img
                 src={heroImage}
                 alt="Social media optimization visual"
-                style={{ objectPosition: "center top" }}
+                style={{
+                  objectPosition: "center top",
+                }}
                 className="h-[320px] w-full rounded-[1.5rem] object-cover sm:h-[380px] lg:h-[460px]"
               />
             </div>
@@ -182,13 +171,6 @@ export default function SMOPricing() {
                 {plan.name}
               </h3>
 
-              <div className={`mt-6 rounded-2xl border p-5 text-center transition duration-300 ${isDark ? 'border-white/10 bg-[#11182a]' : 'border-orange-200/50 bg-orange-100/30'}`}>
-                <div className={`text-4xl font-extrabold transition duration-300 ${isDark ? 'text-indigo-300' : 'text-orange-600'}`}>
-                  {plan.price}
-                </div>
-                <p className={`mt-1 text-sm transition duration-300 ${isDark ? 'text-white/55' : 'text-gray-600'}`}>per month</p>
-              </div>
-
               <ul className={`mt-6 space-y-3 text-sm transition duration-300 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
                 {plan.features.map((feature, i) => {
                   const excluded = feature.includes("❌");
@@ -209,6 +191,13 @@ export default function SMOPricing() {
                   );
                 })}
               </ul>
+
+              <div className={`mt-6 rounded-2xl border p-5 text-center transition duration-300 ${isDark ? 'border-white/10 bg-[#11182a]' : 'border-orange-200/50 bg-orange-100/30'}`}>
+                <div className={`text-4xl font-extrabold transition duration-300 ${isDark ? 'text-indigo-300' : 'text-orange-600'}`}>
+                  {plan.price}
+                </div>
+                <p className={`mt-1 text-sm transition duration-300 ${isDark ? 'text-white/55' : 'text-gray-600'}`}>per month</p>
+              </div>
 
               <a
                 href={`/contact?service=smo&plan=${encodeURIComponent(plan.name)}`}

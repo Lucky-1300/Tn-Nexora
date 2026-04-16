@@ -4,7 +4,7 @@ import { useTheme } from "./ThemeWrapper";
 
 export default function Contact() {
   const [result, setResult] = useState("");
-  const { isDark, bgColor } = useTheme();
+  const { isDark, bgColor, textColor } = useTheme();
   const handleSubmit = async (event) => {
     event.preventDefault();
     setResult("Sending...");
@@ -44,10 +44,31 @@ export default function Contact() {
         .then((data) => console.log("Sheet response:", data))
         .catch((err) => console.log("Sheet error:", err));
 
+     
+      try {
+        const mongoRes = await fetch("http://localhost:5000/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            first_name: formData.get("first_name"),
+            last_name: formData.get("last_name"),
+            phone: formData.get("phone"),
+            email: formData.get("email"),
+            website: formData.get("website"),
+            message: formData.get("message"),
+          }),
+        });
+
+        const mongoData = await mongoRes.json();
+        console.log("MongoDB:", mongoData);
+      } catch (error) {
+        console.log("MongoDB Error:", error);
+      }
+
       setResult("SUCCESS");
       event.target.reset();
-    } else {
-      setResult("ERROR");
     }
 
     setTimeout(() => {
@@ -57,8 +78,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      // className={`mb-12 py-4 px-2 md:px-8 w-full flex flex-col items-center justify-center ${bgColor}`}
-      className={`py-4 px-2 md:px-8 w-full flex flex-col items-center ${bgColor}`}
+      className={`py-4 px-2 md:px-8 w-full flex flex-col items-center justify-center ${bgColor}`}
     >
       {/* Heading */}
       <div className="mb-10 w-full max-w-7xl mx-auto">
@@ -77,45 +97,23 @@ export default function Contact() {
       {/* Responsive Grid Layout */}
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-16 items-stretch">
         {/* LEFT SIDE (Contact Info) */}
-        <div className="md:col-span-2 space-y-8 flex flex-col justify-between">
-          {/* Branch */}
+        <div className="md:col-span-2 space-y-8 flex flex-col ">
           <div className="flex items-start gap-4 group">
             <div
               className={`p-4 ${isDark ? "bg-indigo-500/10 border-indigo-400/20" : "bg-orange-400/10 border-orange-400/20"} border rounded-xl group-hover:scale-110 transition duration-300`}
             >
               <Building2
-                className={isDark ? "text-indigo-400" : "text-orange-500"}
+                className={isDark ? "text-white" : "text-orange-600"}
               />
             </div>
             <div>
               <h3
                 className={`text-lg font-semibold ${isDark ? "text-white" : "text-orange-600"}`}
               >
-                Execution Office
+                Office
               </h3>
               <p className={isDark ? "text-white/60" : "text-gray-700"}>
-                kanpur, Uttarpardesh.
-              </p>
-            </div>
-          </div>
-
-          {/* Head */}
-          <div className="flex items-start gap-4 group">
-            <div
-              className={`p-4 ${isDark ? "bg-blue-500/10 border-blue-400/20" : "bg-blue-400/10 border-blue-400/20"} border rounded-xl group-hover:scale-110 transition duration-300`}
-            >
-              <Building2
-                className={isDark ? "text-blue-400" : "text-blue-600"}
-              />
-            </div>
-            <div>
-              <h3
-                className={`text-lg font-semibold ${isDark ? "text-white" : "text-orange-600"}`}
-              >
-                Head Office
-              </h3>
-              <p className={isDark ? "text-white/60" : "text-gray-700"}>
-                kanpur, Uttarpardesh.
+                TN Nexora Technologies <br /> Kanpur, Uttar Pradesh, India
               </p>
             </div>
           </div>
@@ -123,9 +121,9 @@ export default function Contact() {
           {/* Phone */}
           <div className="flex items-start gap-4 group">
             <div
-              className={`p-4 ${isDark ? "bg-slate-500/10 border-slate-400/20" : "bg-slate-400/10 border-slate-400/20"} border rounded-xl group-hover:scale-110 transition duration-300`}
+              className={`p-4 ${isDark ? "bg-indigo-500/10 border-indigo-400/20" : "bg-orange-400/10 border-orange-400/20"} border rounded-xl group-hover:scale-110 transition duration-300`}
             >
-              <Phone className={isDark ? "text-slate-300" : "text-slate-700"} />
+              <Phone className={isDark ? "text-white" : "text-orange-600"} />
             </div>
             <div>
               <h3
@@ -134,10 +132,7 @@ export default function Contact() {
                 Phone
               </h3>
               <p className={isDark ? "text-white/70" : "text-gray-700"}>
-                +91 9320050310
-              </p>
-              <p className={isDark ? "text-white/70" : "text-gray-700"}>
-                +91 9420050310
+                +91 7348570434
               </p>
             </div>
           </div>
@@ -220,6 +215,49 @@ export default function Contact() {
                   <path d="M23.5 6.2s-.2-1.7-.9-2.4c-.9-.9-1.9-.9-2.4-1C16.8 2.5 12 2.5 12 2.5h0s-4.8 0-8.2.3c-.5.1-1.5.1-2.4 1C.7 4.5.5 6.2.5 6.2S.2 8.2.2 10.1v1.8c0 1.9.3 3.9.3 3.9s.2 1.7.9 2.4c.9.9 2.1.9 2.7 1 2 .2 7.9.3 7.9.3s4.8 0 8.2-.3c.5-.1 1.5-.1 2.4-1 .7-.7.9-2.4.9-2.4s.3-2 .3-3.9v-1.8c0-1.9-.3-3.9-.3-3.9zM9.8 14.7V8.7l5.5 3-5.5 3z" />
                 </svg>
               </a>
+            </div>
+          </div>
+
+          <div
+            className={`p-5 rounded-xl border backdrop-blur-md transition duration-300 hover:scale-[1.02]
+           ${
+             isDark
+               ? "bg-white/5 border-white/10 hover:shadow-indigo-500/10"
+               : "bg-orange-50/70 border-orange-300/40 hover:shadow-orange-400/10"
+           }`}
+          >
+            <div className="flex items-start gap-4">
+              <div
+                className={`p-3 rounded-lg border ${
+                  isDark
+                    ? "bg-indigo-500/10 border-indigo-400/20"
+                    : "bg-orange-400/10 border-orange-400/20"
+                }`}
+              >
+                <Mail
+                  className={`w-5 h-5 ${
+                    isDark ? "text-indigo-300" : "text-orange-500"
+                  }`}
+                />
+              </div>
+              <div>
+                <h3
+                  className={`text-lg font-semibold ${
+                    isDark ? "text-white" : "text-orange-600"
+                  }`}
+                >
+                  Need Help?
+                </h3>
+
+                <p
+                  className={`text-sm mt-1 ${
+                    isDark ? "text-white/60" : "text-gray-700"
+                  }`}
+                >
+                  Our team usually responds within 24 hours. Feel free to reach
+                  out anytime.
+                </p>
+              </div>
             </div>
           </div>
         </div>
