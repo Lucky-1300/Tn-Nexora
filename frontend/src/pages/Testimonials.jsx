@@ -109,6 +109,8 @@ export default function TestimonialsPage() {
                     <img 
                       src={testimonial.image}
                       alt={testimonial.name}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover object-top"
                     />
                   </div>

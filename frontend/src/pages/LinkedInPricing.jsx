@@ -151,6 +151,9 @@ export default function LinkedInPricing() {
               <img
                 src={heroImage}
                 alt="LinkedIn growth visual"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 style={{
                   objectPosition: "center top",
                 }}

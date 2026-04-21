@@ -241,6 +241,9 @@ export default function GMBPricing() {
               <img
                 src={heroImage}
                 alt="Google Business Profile visual"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 style={{
                   objectPosition: "center bottom",
                 }}

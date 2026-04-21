@@ -6,19 +6,10 @@
       "**/.*",
       "**/node_modules/**"
     ],
-
     "rewrites": [
       {
-        "source": "/api/**",
-        "function": "app"
-      }
-    ],
-
-    "redirects": [
-      {
         "source": "**",
-        "destination": "/404.html",
-        "type": 404
+        "destination": "/index.html"
       }
     ]
   }

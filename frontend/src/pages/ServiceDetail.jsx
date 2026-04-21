@@ -275,6 +275,8 @@ export default function ServiceDetail() {
             <img
               src={service.image}
               alt={service.title}
+              loading="lazy"
+              decoding="async"
               className="w-full h-[260px] sm:h-[320px] md:h-[360px] lg:h-[420px] object-cover rounded-2xl shadow-2xl group-hover:scale-110 transition duration-700"
             />
           </div>

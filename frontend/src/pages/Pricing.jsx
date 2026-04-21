@@ -179,6 +179,9 @@ export default function Pricing() {
                 <img
                   src={heroImage}
                   alt="Pricing and marketing visual"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                   style={{
                     objectPosition: "center center",
                   }}

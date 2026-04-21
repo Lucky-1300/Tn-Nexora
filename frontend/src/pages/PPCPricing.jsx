@@ -124,6 +124,9 @@ export default function PPCPricing() {
               <img
                 src={heroImage}
                 alt="PPC advertising visual"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 style={{
                   objectPosition: "center center",
                 }}
