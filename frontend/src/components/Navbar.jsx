@@ -2,6 +2,7 @@ const navLinks = [
   { name: "Home", type: "route", to: "/" },
   { name: "About Us", type: "route", to: "/about" },
   { name: "Team", type: "anchor", href: "/team",},
+  { name: "Projects", type: "route", to: "/projects" },
 
   {
     name: "Reviews",

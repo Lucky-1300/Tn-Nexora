@@ -4,6 +4,7 @@ import Services from "../components/Services";
 import HomeEffortsReviews from "../components/HomeEffortsReviews";
 import Contact from "../components/Contact";
 import Team from "../components/Team";
+import Projects from "../components/Projects";
 import HomeHeroBrandSection from "../components/HomeHeroBrandSection";
 
 export default function Home() {
@@ -78,6 +79,11 @@ export default function Home() {
         {/* Our Services Section */}
         <section className="pt-8 pb-4">
           <Services />
+        </section>
+
+        {/* Projects Section (inserted before Team) */}
+        <section className="pt-0 pb-4">
+          <Projects />
         </section>
 
         {/* Our Team Section */}

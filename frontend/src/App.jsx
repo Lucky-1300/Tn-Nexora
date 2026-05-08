@@ -12,6 +12,7 @@ import BlogDetail from './pages/BlogDetail';
 import About from './pages/About';
 import TestimonialsPage from './pages/Testimonials';
 import Team from "./components/Team";
+import ProjectsPage from './pages/Projects';
 
 import Pricing from './pages/Pricing';
 import SMOPricing from './pages/SMOPricing';
@@ -52,6 +53,7 @@ const hideLayout =
           <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/testimonials" element={<TestimonialsPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/team" element={<Team />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/services/:slug" element={<ServiceDetail />} />
