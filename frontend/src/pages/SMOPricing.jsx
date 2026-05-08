@@ -124,6 +124,9 @@ export default function SMOPricing() {
               <img
                 src={heroImage}
                 alt="Social media optimization visual"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 style={{
                   objectPosition: "center top",
                 }}

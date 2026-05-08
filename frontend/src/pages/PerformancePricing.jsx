@@ -597,6 +597,9 @@ export default function PerformancePricing() {
               <img
                 src={heroImage}
                 alt="Performance marketing dashboard"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 style={{
                   objectPosition: "center bottom",
                 }}

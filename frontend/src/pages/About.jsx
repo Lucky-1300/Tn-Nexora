@@ -34,6 +34,8 @@ export default function About() {
               <img
                 src="/About.jpeg"
                 alt="TN Nexora Team"
+                loading="lazy"
+                decoding="async"
                 className="rounded-xl shadow-2xl object-cover w-full h-80 md:h-96"
               />
             </div>
@@ -284,6 +286,8 @@ export default function About() {
           <img
             src="/About.jpeg"
             alt="Background"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
           />
         </div>

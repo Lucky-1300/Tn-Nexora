@@ -2,6 +2,7 @@ const navLinks = [
   { name: "Home", type: "route", to: "/" },
   { name: "About Us", type: "route", to: "/about" },
   { name: "Team", type: "anchor", href: "/team",},
+  { name: "Projects", type: "route", to: "/projects" },
 
   {
     name: "Reviews",
@@ -152,6 +153,9 @@ export default function Navbar() {
           <img
             src={isDark ? "/image.png" : "/image.png"}
             alt="Logo"
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
             className="h-10 w-32 md:h-12 md:w-40 object-contain"
           />
         </div>

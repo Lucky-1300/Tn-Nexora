@@ -1,0 +1,34 @@
+[
+  {
+    "id": "first-rank-india",
+    "title": "First Rank India",
+    "images": [
+      "/projects/First%20Rank%20India/Home%20Page.png",
+      "/projects/First%20Rank%20India/Screenshot%202026-05-06%20014134.png",
+      "/projects/First%20Rank%20India/Screenshot%202026-05-06%20014302.png",
+      "/projects/First%20Rank%20India/Screenshot%202026-05-06%20014315.png",
+      "/projects/First%20Rank%20India/Screenshot%202026-05-06%20014326.png",
+      "/projects/First%20Rank%20India/Screenshot%202026-05-06%20014334.png"
+    ],
+    "homeIndex": 0
+    ,
+    "statusLabel": "Launching Soon",
+    "description": "First Rank India is a comprehensive EdTech platform designed to help students prepare smarter and perform better in competitive exams. It offers structured online tests, detailed performance analytics, and intelligent ranking systems to track progress over time.\n\nThe platform focuses on identifying student strengths and weaknesses through in-depth reports, enabling personalized improvement strategies."
+  },
+  {
+    "id": "hundred-tools",
+    "title": "Hundred Tools",
+    "images": [
+      "/projects/Hundred%20Tools/Home%20Page.png",
+      "/projects/Hundred%20Tools/Screenshot%202026-05-06%20014719.png",
+      "/projects/Hundred%20Tools/Screenshot%202026-05-06%20014735.png",
+      "/projects/Hundred%20Tools/Screenshot%202026-05-06%20014748.png",
+      "/projects/Hundred%20Tools/Screenshot%202026-05-06%20014800.png",
+      "/projects/Hundred%20Tools/Screenshot%202026-05-06%20014811.png"
+    ],
+    "homeIndex": 0
+    ,
+    "websiteUrl": "https://hundredtools.in/",
+    "description": "HundredTools is a modern web-based utility platform that provides a wide range of tools for everyday digital tasks, including file conversion, image processing, and document optimization. Built with scalability and performance in mind, it delivers fast, secure, and user-friendly solutions—eliminating the need for multiple standalone applications."
+  }
+]

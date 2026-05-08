@@ -17,6 +17,8 @@ export default function Footer() {
               <img
                 src={isDark ? "/image.png" : "/image.png"}
                 alt="Logo"
+                loading="eager"
+                decoding="async"
                 className="h-15 w-50 object-contain"
               />
             </div>
