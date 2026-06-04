@@ -3,13 +3,29 @@ import { FaLinkedin } from "react-icons/fa";
 import { useTheme } from "./ThemeWrapper";
 
 /* 🔥 Leadership */
-const leadership = {
-  name: "Sankalp Srivastava",
-  role: "Marketing Team Head",
-  image: "/Team/Sankalp.jpeg",
-  linkedin: "https://linkedin.com/in/sankalp-srivastava-813688240",
-  desc: "Sankalp Srivastava leads our marketing team with a strong focus on growth, branding, and performance-driven strategies. He specializes in digital marketing, audience targeting, and building scalable outreach systems that ensure our products reach the right audience. His leadership bridges the gap between development and market demand, helping the company grow consistently and sustainably.",
-};
+const leadershipMembers = [
+  {
+    name: "Sankalp Srivastava",
+    role: "Marketing Team Head",
+    image: "/Team/Sankalp.jpeg",
+    linkedin: "https://linkedin.com/in/sankalp-srivastava-813688240",
+    desc: "Sankalp Srivastava leads our marketing team with a strong focus on growth, branding, and performance-driven strategies. He specializes in digital marketing, audience targeting, and building scalable outreach systems that ensure our products reach the right audience. His leadership bridges the gap between development and market demand, helping the company grow consistently and sustainably.",
+  },
+  {
+    name: "Vidisha",
+    role: "Business Development Executive",
+    image: "/Team/Vidisha.jpeg",
+    linkedin: "https://linkedin.com/in/person2",
+    desc: "Works closely with international clients to understand their business needs and deliver tailored solutions. Skilled in building long-term relationships and driving global business growth.",
+  },
+  {
+    name: "Yashika",
+    role: "Business Development Executive",
+    image: "/Team/Yashika.jpeg",
+    linkedin: "https://linkedin.com/in/person3",
+    desc: "Manages communications with international clients and ensures a seamless customer experience. Dedicated to strengthening partnerships and helping businesses achieve their objectives.",
+  },
+];
 
 /* 💻 Team */
 const teamMembers = [
@@ -20,6 +36,7 @@ const teamMembers = [
     linkedin: "https://www.linkedin.com/in/ishani-rastogi-602512375",
     desc: "Builds strong backend systems and creates engaging content that connects with users.",
   },
+  
   {
     name: "Utkarsh Jaiswal",
     role: "Full Stack Developer",
@@ -37,10 +54,26 @@ const teamMembers = [
   {
     name: "Aafiya Shaikh",
     role: "UI/UX Designer + Frontend Developer",
-    image: "/Team/Aafiya-v2.png",
+    image: "/Team/Aafiya.png",
     linkedin: "https://www.linkedin.com/in/shaikh-aafiya-2442a8297",
     desc: "Designs intuitive user experiences and builds beautiful, responsive frontends.",
   },
+  // {
+  //   name: "Vidisha",
+  //   role: "Business Development Executive",
+  //   image: "/Team/Vidisha.jpeg",
+  //   // linkedin: "https://www.linkedin.com/in/shaikh-aafiya-2442a8297",
+  //   desc: "Works closely with international clients to understand their business needs and deliver tailored solutions. Skilled in building long-term relationships and driving global business growth.",
+  // },
+  //  {
+  //   name: "Yashika",
+  //   role: "Business Development Executive",
+  //   image: "/Team/Yashika.jpeg",
+  //   // linkedin: "https://www.linkedin.com/in/shaikh-aafiya-2442a8297",
+  //   desc: "Manages communications with international clients and ensures a seamless customer experience. Dedicated to strengthening partnerships and helping businesses achieve their objectives.",
+  // },
+ 
+  
 ];
 
 export default function Team() {
@@ -62,77 +95,71 @@ export default function Team() {
           The people behind our success..!
         </p>
       </div>
+{/* ================= LEADERSHIP ================= */}
+<div className="max-w-7xl mx-auto mb-20">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {leadershipMembers.map((leader, index) => (
+      <div
+        key={index}
+        className={`group relative rounded-2xl overflow-hidden border backdrop-blur-xl transition duration-300
+        ${
+          isDark
+            ? "bg-white/5 border-white/10 hover:shadow-[0_0_25px_rgba(59,130,246,0.25)]"
+            : "bg-orange-50/40 border-orange-200/40 hover:shadow-[0_0_25px_rgba(249,115,22,0.25)]"
+        }`}
+      >
+        {/* Image */}
+        <div className="relative h-[320px] overflow-hidden">
+          <img
+            src={leader.image}
+            alt={leader.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+          />
 
-      {/* ================= LEADERSHIP ================= */}
-      <div className="max-w-4xl mx-auto mb-20">
-        <div
-          className={`group relative rounded-2xl overflow-hidden border backdrop-blur-xl transition duration-300
-          ${
-            isDark
-              ? "bg-white/5 border-white/10 hover:shadow-[0_0_25px_rgba(59,130,246,0.25)]"
-              : "bg-orange-50/40 border-orange-200/40 hover:shadow-[0_0_25px_rgba(249,115,22,0.25)]"
-          }`}
-        >
-          <div className="flex flex-col md:flex-row items-center">
-
-            {/* Image */}
-            <div className="relative w-full md:w-[38%] h-[300px] md:h-[320px] overflow-hidden">
-              <img
-                src={leadership.image}
-                alt={leadership.name}
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
-              />
-
-              {/* Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
-
-              {/* Hover */}
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
-                <a
-                  href={leadership.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white text-3xl hover:text-blue-400"
-                >
-                  <FaLinkedin />
-                </a>
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="p-6 md:p-8 md:w-[62%]">
-              <h3 className="text-2xl md:text-3xl font-bold">
-                {leadership.name}
-              </h3>
-
-              <p
-                className={`mt-2 font-semibold ${
-                  isDark ? "text-indigo-400" : "text-orange-600"
-                }`}
-              >
-                {leadership.role}
-              </p>
-
-              <p
-                className={`mt-4 leading-relaxed text-sm md:text-base ${
-                  isDark ? "text-white/70" : "text-gray-600"
-                }`}
-              >
-                {leadership.desc}
-              </p>
-
-              {/* Divider */}
-              <div
-                className={`mt-6 h-[2px] w-16 rounded-full ${
-                  isDark
-                    ? "bg-gradient-to-r from-blue-500 to-purple-500"
-                    : "bg-gradient-to-r from-orange-500 to-orange-600"
-                }`}
-              ></div>
-            </div>
+          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+            <a
+              href={leader.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white text-3xl hover:text-blue-400"
+            >
+              <FaLinkedin />
+            </a>
           </div>
         </div>
+
+        {/* Content */}
+        <div className="p-6">
+          <h3 className="text-2xl font-bold">{leader.name}</h3>
+
+          <p
+            className={`mt-2 font-semibold ${
+              isDark ? "text-indigo-400" : "text-orange-600"
+            }`}
+          >
+            {leader.role}
+          </p>
+
+          <p
+            className={`mt-4 text-sm ${
+              isDark ? "text-white/70" : "text-gray-600"
+            }`}
+          >
+            {leader.desc}
+          </p>
+
+          <div
+            className={`mt-6 h-[2px] w-16 rounded-full ${
+              isDark
+                ? "bg-gradient-to-r from-blue-500 to-purple-500"
+                : "bg-gradient-to-r from-orange-500 to-orange-600"
+            }`}
+          />
+        </div>
       </div>
+    ))}
+  </div>
+</div>
 
       {/* ================= TEAM GRID ================= */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
